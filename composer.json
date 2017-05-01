@@ -1,0 +1,32 @@
+{
+    "name": "coderstudios/cscms",
+    "description": "Coder Studios CMS package",
+    "authors": [
+        {
+            "name": "Coder Studios",
+            "email": "thedevelopers@coderstudios.com"
+        }
+    ],
+    "license": "GPL-3.0",
+    "keywords": [  
+        "cms",
+        "laravel",
+        "coderstudios"
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": "~5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "CoderStudios\\CSCMS\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
