@@ -31,4 +31,4 @@ php artisan vendor:publish --tag=public --force
 
 ## Copyright and Licence
 
-Cryptokey has been written by Coder Studios and is released under the GPLv3 License.
+CSCMS has been written by Coder Studios and is released under the MIT License.

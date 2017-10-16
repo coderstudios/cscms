@@ -7,7 +7,7 @@
             "email": "thedevelopers@coderstudios.com"
         }
     ],
-    "license": "GPL-3.0",
+    "license": "MIT",
     "keywords": [  
         "cms",
         "laravel",

@@ -4,12 +4,12 @@
  *
  * NOTICE OF LICENSE
  *
- * Licensed under the terms of the GNU General Public License v3.
+ * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
  * @package    CSCMS
  * @version    1.0.0
  * @author     Coder Studios Ltd
- * @license    GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
+ * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2017, Coder Studios Ltd
  * @link       https://www.coderstudios.com
  */
