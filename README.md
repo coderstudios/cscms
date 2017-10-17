@@ -17,12 +17,10 @@ To install CSCMS as a Composer package to be used with Laravel 5+, simply add th
 "coderstudios/cscms": "1.0.*"
 ```
 
-..and run `composer update`.  Once it's installed, you can register the service provider in `app/config/app.php` in the `providers` array:
+..and run `composer update`.  Once it's installed, you can register the service provider in `app/config/app.php` in the `providers` array add:
 
 ```php
-'providers' => array(
-    'CoderStudios\CSCMS\CSCMSServiceProvider',
-)
+    CoderStudios\CSCMS\CSCMSServiceProvider::class,
 ```
 
 ## Documentation
@@ -31,7 +29,7 @@ To install CSCMS as a Composer package to be used with Laravel 5+, simply add th
 
 #Assets
 
-php artisan vendor:publish --tag=public --force
+php artisan vendor:publish --provider="CoderStudios\CSCMS\CSCMSServiceProvider"
 
 ## Copyright and Licence
 

@@ -54,4 +54,26 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->app->make('view')->composer('vendor.cscms.frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
         $this->app->make('view')->composer('vendor.cscms.backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
 	}
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->configure();
+    }
+
+    /**
+     * Setup the configuration for CSCMS.
+     *
+     * @return void
+     */
+    protected function configure()
+    {
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/cscms.php', 'cscms'
+        );
+    }
 }
