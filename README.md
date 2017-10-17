@@ -3,7 +3,11 @@ CSCMS
 
 CSCMS is a cms package in PHP for use with a Laravel project.
 
-[![Latest Stable Version](https://poser.pugx.org/coderstudios/cscms/version.svg)](https://packagist.org/packages/coderstudios/cscms) [![Latest Unstable Version](https://poser.pugx.org/coderstudios/cscms/v/unstable.svg)](//packagist.org/packages/coderstudios/cscms) [![Total Downloads](https://poser.pugx.org/coderstudios/cscms/downloads.svg)](https://packagist.org/packages/coderstudios/cscms)
+
+[![Latest Stable Version](https://poser.pugx.org/coderstudios/cscms/v/stable)](https://packagist.org/packages/coderstudios/cscms)
+[![Total Downloads](https://poser.pugx.org/coderstudios/cscms/downloads)](https://packagist.org/packages/coderstudios/cscms)
+[![Latest Unstable Version](https://poser.pugx.org/coderstudios/cscms/v/unstable)](https://packagist.org/packages/coderstudios/cscms)
+[![License](https://poser.pugx.org/coderstudios/cscms/license)](https://packagist.org/packages/coderstudios/cscms)
 
 ## Composer
 
