@@ -73,7 +73,7 @@ class CSCMSServiceProvider extends ServiceProvider
     protected function configure()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/cscms.php', 'cscms'
+            __DIR__.'/config/cscms.php', 'cscms'
         );
     }
 }
