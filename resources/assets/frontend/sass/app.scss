@@ -1,0 +1,27 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "node_modules/bootstrap/scss/bootstrap";
+
+// Font Awesome
+@import "node_modules/font-awesome/scss/font-awesome";
+
+body {
+	margin-top:1rem;
+}
+
+.footer {
+	padding:4rem 0;
+	margin-top:4rem;
+	font-size:85%;
+	background-color:#f7f7f7;
+}
+
+	.footer p {
+		margin-bottom:0;
+	}

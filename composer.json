@@ -17,6 +17,12 @@
         "php": ">=5.4.0",
         "illuminate/support": "~5.4"
     },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "orchestra/database": "~3.5",
+        "orchestra/testbench": "~3.5",
+        "phpunit/phpunit": "~6.0"
+    },
     "autoload": {
         "psr-4": {
             "CoderStudios\\CSCMS\\": "src/"
@@ -27,6 +33,13 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true
+    "extra": {
+        "laravel": {
+            "providers": [
+                "CoderStudios\\CSCMS\\CSCMSServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev"
 }

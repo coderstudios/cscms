@@ -16,6 +16,7 @@
 
 namespace CoderStudios\CSCMS;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class CSCMSServiceProvider extends ServiceProvider 
@@ -27,7 +28,8 @@ class CSCMSServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
+
+        $this->registerRoutes();
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
@@ -54,6 +56,22 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->app->make('view')->composer('vendor.cscms.frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
         $this->app->make('view')->composer('vendor.cscms.backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
 	}
+
+    /**
+     * Register the Horizon routes.
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        Route::group([
+            'prefix' => config('cscms.uri', 'cscms'),
+            'namespace' => 'CoderStudios\CSCMS\Http\Controllers',
+            'middleware' => 'web',
+        ], function () {
+            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        });
+    }
 
     /**
      * Register any application services.

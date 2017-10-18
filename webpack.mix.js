@@ -1,0 +1,44 @@
+const mix = require('laravel-mix');
+const webpack = require('webpack');
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix
+    .setPublicPath('public')
+    .js('resources/assets/backend/js/app.js', 'public/js/backend')
+    .sass('resources/assets/backend/sass/app.scss', 'public/css/backend')
+    .copy('resources/assets/backend/img', 'public/img/backend')
+    .extract(['dropzone'])
+    .sourceMaps()
+    .copy('public', '../../coderstudioscscms/public/vendor/cscms')
+    // .copy('public', '../app/public/vendor/cscms')
+    .version();
+
+mix
+    .setPublicPath('public')
+    .js('resources/assets/frontend/js/app.js', 'public/js/frontend')
+    .sass('resources/assets/frontend/sass/app.scss', 'public/css/frontend')
+    .copy('resources/assets/frontend/img', 'public/img/frontend')
+    .sourceMaps()
+    // .copy('public', '../app/public/vendor/cscms')
+    .version();
+
+mix.webpackConfig({
+    plugins: [
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ],
+    resolve: {
+        alias: {
+            'vue$': 'vue/dist/vue.runtime.esm.js'
+        }
+    }
+});
