@@ -64,13 +64,7 @@ class CSCMSServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::group([
-            'prefix' => config('cscms.uri', 'cscms'),
-            'namespace' => 'CoderStudios\CSCMS\Http\Controllers',
-            'middleware' => 'web',
-        ], function () {
-            $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
-        });
+        $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
     }
 
     /**
