@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Http\Request;
 use CoderStudios\Library\Users;

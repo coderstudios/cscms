@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;

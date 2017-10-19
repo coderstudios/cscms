@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Frontend;
+namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
 use CoderStudios\Library\Article;
 use App\Http\Controllers\Controller;
