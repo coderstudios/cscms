@@ -69,7 +69,7 @@ class CSCMSServiceProvider extends ServiceProvider
             'namespace' => 'CoderStudios\CSCMS\Http\Controllers',
             'middleware' => 'web',
         ], function () {
-            $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+            $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
         });
     }
 
