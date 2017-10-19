@@ -14,14 +14,14 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Artisan;
 use Illuminate\Http\Request;
-use CoderStudios\Library\Email;
-use CoderStudios\Library\EmailGroup;
 use App\Http\Controllers\Controller;
-use CoderStudios\Requests\EmailRequest;
+use CoderStudios\CSCMS\Library\Email;
+use CoderStudios\CSCMS\Library\EmailGroup;
+use CoderStudios\CSCMS\Requests\EmailRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class EmailController extends Controller

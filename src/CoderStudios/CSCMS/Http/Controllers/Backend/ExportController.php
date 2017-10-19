@@ -14,18 +14,18 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use CoderStudios\Library\Email;
-use CoderStudios\Library\Users;
-use CoderStudios\Library\UserRoles;
-use CoderStudios\Library\Settings;
-use CoderStudios\Library\Download;
-use CoderStudios\Models\Capability;
-use CoderStudios\Library\Capability as Capabilities;
 use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Library\Email;
+use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CSCMS\Library\UserRoles;
+use CoderStudios\CSCMS\Library\Settings;
+use CoderStudios\CSCMS\Library\Download;
+use CoderStudios\CSCMS\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Library\Capability as Capabilities;
 
 class ExportController extends Controller
 {

@@ -14,11 +14,11 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend\Auth;
 
 use Illuminate\Http\Request;
-use CoderStudios\Library\Users;
 use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Library\Users;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

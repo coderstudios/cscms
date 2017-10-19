@@ -14,12 +14,12 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Artisan;
-use CoderStudios\Library\Utils;
-use CoderStudios\Models\Capability;
 use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Library\Utils;
+use CoderStudios\CSCMS\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class CacheController extends Controller

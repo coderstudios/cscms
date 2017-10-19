@@ -14,18 +14,17 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
-use Log;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use CoderStudios\Library\Utils;
-use CoderStudios\Library\Image;
 use App\Http\Controllers\Controller;
-use CoderStudios\Helpers\ImageHelper;
 use Illuminate\Filesystem\Filesystem;
-use CoderStudios\Requests\ImageRequest;
+use CoderStudios\CSCMS\Library\Utils;
+use CoderStudios\CSCMS\Library\Image;
+use CoderStudios\CSCMS\Helpers\ImageHelper;
+use CoderStudios\CSCMS\Requests\ImageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class ImageController extends Controller
@@ -107,7 +106,6 @@ class ImageController extends Controller
         $data['filesize'] = round($size[0]);
         $data['user_id'] = Auth::user()->id;
         $data['mime'] = '';
-        Log::info($data);
         if ($file->isValid()) {
             $upload = $this->image->create($data);
             $result = $file->move(storage_path('app/images'), $data['generated_filename'] );

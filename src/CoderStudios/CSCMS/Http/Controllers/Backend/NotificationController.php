@@ -14,16 +14,16 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\Notifications;
-use CoderStudios\Library\NotificationsRead;
-use CoderStudios\Requests\NotificationRequest;
+use CoderStudios\CSCMS\Library\Notifications;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Library\NotificationsRead;
+use CoderStudios\CSCMS\Requests\NotificationRequest;
 
 class NotificationController extends Controller
 {

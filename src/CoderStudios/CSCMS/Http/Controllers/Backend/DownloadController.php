@@ -14,11 +14,11 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\Utils;
+use CoderStudios\CSCMS\Library\Utils;
 
 class DownloadController extends Controller
 {

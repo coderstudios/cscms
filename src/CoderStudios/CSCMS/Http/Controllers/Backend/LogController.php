@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Cache\Factory as Cache;

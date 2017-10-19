@@ -14,9 +14,9 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend\Auth;
 
-use CoderStudios\Models\User;
+use CoderStudios\CSCMS\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;

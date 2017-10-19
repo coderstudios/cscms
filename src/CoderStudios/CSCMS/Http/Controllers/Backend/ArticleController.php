@@ -14,15 +14,15 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Illuminate\Http\Request;
-use CoderStudios\Library\Article;
-use CoderStudios\Library\Language;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\ArticleType;
-use CoderStudios\Requests\ArticleRequest;
+use CoderStudios\CSCMS\Library\Article;
+use CoderStudios\CSCMS\Library\Language;
+use CoderStudios\CSCMS\Library\ArticleType;
+use CoderStudios\CSCMS\Requests\ArticleRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class ArticleController extends Controller

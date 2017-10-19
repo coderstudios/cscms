@@ -14,13 +14,13 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\EmailGroup;
-use CoderStudios\Requests\EmailGroupRequest;
+use CoderStudios\CSCMS\Library\EmailGroup;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Requests\EmailGroupRequest;
 
 class EmailGroupsController extends Controller
 {

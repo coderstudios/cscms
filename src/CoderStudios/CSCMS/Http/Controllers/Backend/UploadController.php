@@ -14,17 +14,16 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
-use Log;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use CoderStudios\Library\Utils;
-use CoderStudios\Library\Upload;
 use App\Http\Controllers\Controller;
 use Illuminate\Filesystem\Filesystem;
-use CoderStudios\Requests\UploadRequest;
+use CoderStudios\CSCMS\Library\Utils;
+use CoderStudios\CSCMS\Library\Upload;
+use CoderStudios\CSCMS\Requests\UploadRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class UploadController extends Controller

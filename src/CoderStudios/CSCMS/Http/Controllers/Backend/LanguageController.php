@@ -14,13 +14,13 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\Language;
-use CoderStudios\Requests\LanguageRequest;
+use CoderStudios\CSCMS\Library\Language;
+use CoderStudios\CSCMS\Requests\LanguageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class LanguageController extends Controller

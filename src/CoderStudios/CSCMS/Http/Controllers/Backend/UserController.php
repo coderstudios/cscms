@@ -14,17 +14,17 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Illuminate\Http\Request;
-use CoderStudios\Library\Mail;
-use CoderStudios\Library\Users;
-use CoderStudios\Library\UserRoles;
 use App\Http\Controllers\Controller;
-use CoderStudios\Requests\UserRequest;
-use CoderStudios\Requests\UpdateUserRequest;
+use CoderStudios\CSCMS\Library\Mail;
+use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CSCMS\Library\UserRoles;
+use CoderStudios\CSCMS\Requests\UserRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Requests\UpdateUserRequest;
 
 class UserController extends Controller
 {

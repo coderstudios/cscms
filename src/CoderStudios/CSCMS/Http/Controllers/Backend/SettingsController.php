@@ -14,12 +14,12 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use CoderStudios\Library\Settings;
 use App\Http\Controllers\Controller;
-use CoderStudios\Requests\SettingRequest;
+use CoderStudios\CSCMS\Library\Settings;
+use CoderStudios\CSCMS\Requests\SettingRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class SettingsController extends Controller

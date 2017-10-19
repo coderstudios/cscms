@@ -17,10 +17,10 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
 use Auth;
-use CoderStudios\Library\Users;
 use App\Http\Controllers\Controller;
-use CoderStudios\Requests\UpdateMemberRequest;
+use CoderStudios\CSCMS\Library\Users;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Requests\UpdateMemberRequest;
 
 class UserController extends Controller
 {

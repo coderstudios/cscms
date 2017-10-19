@@ -14,14 +14,14 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\ArticleType;
-use CoderStudios\Requests\ArticleTypeRequest;
+use CoderStudios\CSCMS\Library\ArticleType;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use CoderStudios\CSCMS\Requests\ArticleTypeRequest;
 
 class ArticleTypeController extends Controller
 {

@@ -14,14 +14,14 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
 use Illuminate\Http\Request;
-use CoderStudios\Library\UserRoles;
 use App\Http\Controllers\Controller;
-use CoderStudios\Library\Capability;
-use CoderStudios\Requests\UserRoleRequest;
+use CoderStudios\CSCMS\Library\UserRoles;
+use CoderStudios\CSCMS\Library\Capability;
+use CoderStudios\CSCMS\Requests\UserRoleRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class UserRolesController extends Controller

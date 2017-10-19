@@ -17,8 +17,8 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Http\Request;
-use CoderStudios\Library\Users;
 use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Library\Users;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller

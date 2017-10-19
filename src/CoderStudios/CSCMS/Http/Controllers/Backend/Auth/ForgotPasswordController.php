@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace CoderStudios\CSCMS\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
