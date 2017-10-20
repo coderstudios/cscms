@@ -87,16 +87,16 @@ class Article extends Model
 
     public function user()
     {
-        return $this->hasOne('CoderStudios\Models\User','id','user_id');
+        return $this->hasOne('CoderStudios\CSCMS\Models\User','id','user_id');
     }
 
     public function type()
     {
-        return $this->hasOne('CoderStudios\Models\ArticleType','id','article_type_id');
+        return $this->hasOne('CoderStudios\CSCMS\Models\ArticleType','id','article_type_id');
     }
 
     public function descriptions(){
-        return $this->hasMany('CoderStudios\Models\ArticleDescription','article_id','id');
+        return $this->hasMany('CoderStudios\CSCMS\Models\ArticleDescription','article_id','id');
     }
 
 }

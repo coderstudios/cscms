@@ -81,12 +81,12 @@ class UserRole extends Model
 
     public function user()
     {
-        return $this->belongsTo('CoderStudios\Models\User','id','user_role_id');
+        return $this->belongsTo('CoderStudios\CSCMS\Models\User','id','user_role_id');
     }
 
     public function capabilities()
     {
-        return $this->belongsToMany('CoderStudios\Models\Capability','capabilities_user_roles','user_role_id','capability_id')->withTimestamps();
+        return $this->belongsToMany('CoderStudios\CSCMS\Models\Capability','capabilities_user_roles','user_role_id','capability_id')->withTimestamps();
     }
 
 }

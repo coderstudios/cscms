@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Setting as Model;
+use CoderStudios\CSCMS\Models\Setting as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Settings extends BaseLibrary {

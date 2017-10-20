@@ -17,7 +17,7 @@
 namespace CoderStudios\CSCMS\Library;
 
 use DB;
-use CoderStudios\Models\Article as Model;
+use CoderStudios\CSCMS\Models\Article as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Article extends BaseLibrary  {

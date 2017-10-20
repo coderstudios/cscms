@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Image as Model;
+use CoderStudios\CSCMS\Models\Image as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Image extends BaseLibrary {

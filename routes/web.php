@@ -83,19 +83,19 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 	Route::get('/import', ['as' => 'import', 'uses' => 'ImportController@index']);
 	Route::post('/import', ['as' => 'import.process', 'uses' => 'ImportController@import']);
 
-	Route::get('/languages', ['as' => 'languages', 'middleware' => 'can:view,CoderStudios\Models\Language', 'uses' => 'LanguageController@index']);
-	Route::get('/languages/create', ['as' => 'languages.language.create', 'middleware' => 'can:create,CoderStudios\Models\Language', 'uses' => 'LanguageController@create']);
-	Route::post('/languages/store', ['as' => 'languages.language.store', 'middleware' => 'can:create,CoderStudios\Models\Language', 'uses' => 'LanguageController@store']);
-	Route::get('/languages/{id}/edit', ['as' => 'languages.language.edit', 'middleware' => 'can:edit,CoderStudios\Models\Language', 'uses' => 'LanguageController@edit']);
-	Route::post('/languages/{id}/edit', ['as' => 'languages.language.update', 'middleware' => 'can:update,CoderStudios\Models\Language', 'uses' => 'LanguageController@update']);
-	Route::post('/languages/{id}/delete', ['as' => 'languages.language.delete', 'middleware' => 'can:delete,CoderStudios\Models\Language', 'uses' => 'LanguageController@delete']);
+	Route::get('/languages', ['as' => 'languages', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@index']);
+	Route::get('/languages/create', ['as' => 'languages.language.create', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@create']);
+	Route::post('/languages/store', ['as' => 'languages.language.store', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@store']);
+	Route::get('/languages/{id}/edit', ['as' => 'languages.language.edit', 'middleware' => 'can:edit,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@edit']);
+	Route::post('/languages/{id}/edit', ['as' => 'languages.language.update', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@update']);
+	Route::post('/languages/{id}/delete', ['as' => 'languages.language.delete', 'middleware' => 'can:delete,CoderStudios\CSCMS\Models\Language', 'uses' => 'LanguageController@delete']);
 
-	Route::get('/settings', ['as' => 'settings', 'middleware' => 'can:view,CoderStudios\Models\Setting', 'uses' => 'SettingsController@index']);
-	Route::get('/settings/create', ['as' => 'settings.setting.create', 'middleware' => 'can:create,CoderStudios\Models\Setting', 'uses' => 'SettingsController@create']);
-	Route::post('/settings/store', ['as' => 'settings.setting.store', 'middleware' => 'can:create,CoderStudios\Models\Setting', 'uses' => 'SettingsController@store']);
-	Route::get('/settings/{id}/edit', ['as' => 'settings.setting.edit', 'middleware' => 'can:edit,CoderStudios\Models\Setting', 'uses' => 'SettingsController@edit']);
-	Route::post('/settings/{id}/edit', ['as' => 'settings.setting.update', 'middleware' => 'can:update,CoderStudios\Models\Setting', 'uses' => 'SettingsController@update']);
-	Route::post('/settings/{id}/delete', ['as' => 'settings.setting.delete', 'middleware' => 'can:delete,CoderStudios\Models\Setting', 'uses' => 'SettingsController@delete']);
+	Route::get('/settings', ['as' => 'settings', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@index']);
+	Route::get('/settings/create', ['as' => 'settings.setting.create', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@create']);
+	Route::post('/settings/store', ['as' => 'settings.setting.store', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@store']);
+	Route::get('/settings/{id}/edit', ['as' => 'settings.setting.edit', 'middleware' => 'can:edit,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@edit']);
+	Route::post('/settings/{id}/edit', ['as' => 'settings.setting.update', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@update']);
+	Route::post('/settings/{id}/delete', ['as' => 'settings.setting.delete', 'middleware' => 'can:delete,CoderStudios\CSCMS\Models\Setting', 'uses' => 'SettingsController@delete']);
 
 	Route::get('/backups', ['as' => 'backups', 'uses' => 'BackupsController@index']);
 	Route::post('/backups/backup', ['as' => 'backups.backup', 'uses' => 'BackupsController@backup']);
@@ -103,30 +103,30 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 
 	Route::get('/download', ['as' => 'download', 'uses' => 'DownloadController@index']);
 
-	Route::get('/user_roles', ['as' => 'user_roles', 'middleware' => 'can:view,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@index']);
-	Route::get('/user_roles/create', ['as' => 'user_roles.create', 'middleware' => 'can:create,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@create']);
-	Route::post('/user_roles/store', ['as' => 'user_roles.store', 'middleware' => 'can:create,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@store']);
-	Route::get('/user_roles/{id}', ['as' => 'user_roles.user_role', 'middleware' => 'can:view,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@view']);
-	Route::get('/user_roles/{id}/edit', ['as' => 'user_roles.user_role.edit', 'middleware' => 'can:edit,CoderStudios\Models\UserTypes','uses' => 'UserRolesController@edit']);
-	Route::post('/user_roles/{id}/edit', ['as' => 'user_roles.user_role.update', 'middleware' => 'can:update,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@update']);
-	Route::post('/user_roles/{id}/delete', ['as' => 'user_roles.user_role.delete', 'middleware' => 'can:delete,CoderStudios\Models\UserTypes', 'uses' => 'UserRolesController@delete']);
+	Route::get('/user_roles', ['as' => 'user_roles', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@index']);
+	Route::get('/user_roles/create', ['as' => 'user_roles.create', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@create']);
+	Route::post('/user_roles/store', ['as' => 'user_roles.store', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@store']);
+	Route::get('/user_roles/{id}', ['as' => 'user_roles.user_role', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@view']);
+	Route::get('/user_roles/{id}/edit', ['as' => 'user_roles.user_role.edit', 'middleware' => 'can:edit,CoderStudios\CSCMS\Models\UserTypes','uses' => 'UserRolesController@edit']);
+	Route::post('/user_roles/{id}/edit', ['as' => 'user_roles.user_role.update', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@update']);
+	Route::post('/user_roles/{id}/delete', ['as' => 'user_roles.user_role.delete', 'middleware' => 'can:delete,CoderStudios\CSCMS\Models\UserTypes', 'uses' => 'UserRolesController@delete']);
 
-	Route::get('/capabilities', ['as' => 'capabilities', 'middleware' => 'can:view,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@index']);
-	Route::get('/capabilities/create', ['as' => 'capabilities.create', 'middleware' => 'can:create,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@create']);
-	Route::post('/capabilities/store', ['as' => 'capabilities.store', 'middleware' => 'can:create,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@store']);
-	Route::get('/capabilities/{id}', ['as' => 'capabilities.capability', 'middleware' => 'can:view,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@view']);
-	Route::get('/capabilities/{id}/edit', ['as' => 'capabilities.capability.edit', 'middleware' => 'can:edit,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@edit']);
-	Route::post('/capabilities/{id}/edit', ['as' => 'capabilities.capability.update', 'middleware' => 'can:update,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@update']);
-	Route::post('/capabilities/{id}/delete', ['as' => 'capabilities.capability.delete', 'middleware' => 'can:delete,CoderStudios\Models\Capability', 'uses' => 'CapabilityController@delete']);
+	Route::get('/capabilities', ['as' => 'capabilities', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@index']);
+	Route::get('/capabilities/create', ['as' => 'capabilities.create', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@create']);
+	Route::post('/capabilities/store', ['as' => 'capabilities.store', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@store']);
+	Route::get('/capabilities/{id}', ['as' => 'capabilities.capability', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@view']);
+	Route::get('/capabilities/{id}/edit', ['as' => 'capabilities.capability.edit', 'middleware' => 'can:edit,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@edit']);
+	Route::post('/capabilities/{id}/edit', ['as' => 'capabilities.capability.update', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@update']);
+	Route::post('/capabilities/{id}/delete', ['as' => 'capabilities.capability.delete', 'middleware' => 'can:delete,CoderStudios\CSCMS\Models\Capability', 'uses' => 'CapabilityController@delete']);
 
-	Route::get('/users', ['as' => 'users', 'middleware' => 'can:view,CoderStudios\Models\User', 'uses' => 'UserController@index']);
-	Route::get('/users/create', ['as' => 'users.create', 'middleware' => 'can:create,CoderStudios\Models\User', 'uses' => 'UserController@create']);
-	Route::post('/users/store', ['as' => 'users.store', 'middleware' => 'can:create,CoderStudios\Models\User', 'uses' => 'UserController@store']);
-	Route::get('/users/{username}', ['as' => 'users.user', 'middleware' => 'can:view,CoderStudios\Models\User', 'uses' => 'UserController@view']);
-	Route::get('/users/{username}/resendVerifyEmail', ['as' => 'users.user.resendverify', 'middleware' => 'can:update,CoderStudios\Models\User', 'uses' => 'UserController@resendVerify']);
-	Route::get('/users/{username}/edit', ['as' => 'users.user.edit', 'middleware' => 'can:edit,CoderStudios\Models\User', 'uses' => 'UserController@edit']);
-	Route::post('/users/{username}/edit', ['as' => 'users.user.update', 'middleware' => 'can:update,CoderStudios\Models\User', 'uses' => 'UserController@update']);
-	Route::post('/users/{username}/delete', ['as' => 'users.user.delete', 'middleware' => 'can:delete,CoderStudios\Models\User', 'uses' => 'UserController@delete']);
+	Route::get('/users', ['as' => 'users', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@index']);
+	Route::get('/users/create', ['as' => 'users.create', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@create']);
+	Route::post('/users/store', ['as' => 'users.store', 'middleware' => 'can:create,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@store']);
+	Route::get('/users/{username}', ['as' => 'users.user', 'middleware' => 'can:view,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@view']);
+	Route::get('/users/{username}/resendVerifyEmail', ['as' => 'users.user.resendverify', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@resendVerify']);
+	Route::get('/users/{username}/edit', ['as' => 'users.user.edit', 'middleware' => 'can:edit,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@edit']);
+	Route::post('/users/{username}/edit', ['as' => 'users.user.update', 'middleware' => 'can:update,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@update']);
+	Route::post('/users/{username}/delete', ['as' => 'users.user.delete', 'middleware' => 'can:delete,CoderStudios\CSCMS\Models\User', 'uses' => 'UserController@delete']);
 
 	Route::get('/cache', ['as' => 'cache', 'uses' => 'CacheController@index']);
 	Route::post('/cache/frontend/clear', ['as' => 'cache.frontend.clear', 'uses' => 'CacheController@clearFrontend']);

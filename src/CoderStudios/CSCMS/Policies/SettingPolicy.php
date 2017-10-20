@@ -16,8 +16,8 @@
 
 namespace App\Policies;
 
-use CoderStudios\Models\Capability;
-use CoderStudios\Models\User;
+use CoderStudios\CSCMS\Models\Capability;
+use CoderStudios\CSCMS\Models\User;
 
 class SettingPolicy
 {

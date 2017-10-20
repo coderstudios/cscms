@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\UserRole as Model;
+use CoderStudios\CSCMS\Models\UserRole as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class UserRoles extends BaseLibrary {

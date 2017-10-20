@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Upload as Model;
+use CoderStudios\CSCMS\Models\Upload as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Upload extends BaseLibrary {

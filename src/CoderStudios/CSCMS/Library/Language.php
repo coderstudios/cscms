@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Language as Model;
+use CoderStudios\CSCMS\Models\Language as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Language extends BaseLibrary {

@@ -45,12 +45,12 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne('CoderStudios\Models\UserRole','id','user_role_id');
+        return $this->hasOne('CoderStudios\CSCMS\Models\UserRole','id','user_role_id');
     }
 
     public function logs()
     {
-        return $this->hasMany('CoderStudios\Models\Audits','id','user_id');
+        return $this->hasMany('CoderStudios\CSCMS\Models\Audits','id','user_id');
     }
 
 }

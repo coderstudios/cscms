@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Audit as Model;
+use CoderStudios\CSCMS\Models\Audit as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Audit extends BaseLibrary {

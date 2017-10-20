@@ -17,7 +17,7 @@
 namespace CoderStudios\CSCMS\Library;
 
 use Illuminate\Contracts\Cache\Factory as Cache;
-use CoderStudios\Models\NotificationsRead as Model;
+use CoderStudios\CSCMS\Models\NotificationsRead as Model;
 
 class NotificationsRead extends BaseLibrary {
 

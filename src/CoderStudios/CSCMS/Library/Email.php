@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\Email as Model;
+use CoderStudios\CSCMS\Models\Email as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Email extends BaseLibrary {

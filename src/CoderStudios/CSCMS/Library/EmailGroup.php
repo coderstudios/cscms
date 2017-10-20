@@ -16,7 +16,7 @@
  
 namespace CoderStudios\CSCMS\Library;
 
-use CoderStudios\Models\EmailGroup as Model;
+use CoderStudios\CSCMS\Models\EmailGroup as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class EmailGroup extends BaseLibrary {
