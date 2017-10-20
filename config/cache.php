@@ -26,20 +26,18 @@ return [
     |
     */
 
-    'stores' => [
-        'frontend_views' => [
-            'driver' => 'file',
-            'path' => storage_path('framework/cache/data/frontend'),
-        ],
+    'frontend_views' => [
+        'driver' => 'file',
+        'path' => storage_path('framework/cache/data/frontend'),
+    ],
 
-        'backend_views' => [
-            'driver' => 'file',
-            'path' => storage_path('framework/cache/data/backend'),
-        ],
+    'backend_views' => [
+        'driver' => 'file',
+        'path' => storage_path('framework/cache/data/backend'),
+    ],
 
-        'models' => [
-            'driver' => 'file',
-            'path' => storage_path('framework/cache/data/models'),
-        ],
+    'models' => [
+        'driver' => 'file',
+        'path' => storage_path('framework/cache/data/models'),
     ],
 ];
