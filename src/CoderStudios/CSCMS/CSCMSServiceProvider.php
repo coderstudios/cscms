@@ -87,5 +87,9 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../../../config/cscms.php', 'cscms'
         );
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../../../config/cache.php', 'cache.stores'
+         );
     }
 }
