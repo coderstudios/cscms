@@ -16,9 +16,9 @@
 
 namespace CoderStudios\CSCMS\Models;
 
-use CoderStudios\Traits\ScopeEnabled;
 use Illuminate\Notifications\Notifiable;
-use CoderStudios\Traits\SetEnabledAttribute;
+use CoderStudios\CSCMS\Traits\ScopeEnabled;
+use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable

@@ -17,12 +17,13 @@
 namespace CoderStudios\CSCMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use CoderStudios\Traits\SetEnabledAttribute;
+use CoderStudios\CSCMS\Traits\ScopeEnabled;
+use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
 
 class NotificationsRead extends Model
 {
-    use SetEnabledAttribute;
-
+    use ScopeEnabled, SetEnabledAttribute;
+    
     /**
     * The database connection used with the model.
     *

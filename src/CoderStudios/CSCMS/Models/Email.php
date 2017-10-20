@@ -17,7 +17,7 @@
 namespace CoderStudios\CSCMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use CoderStudios\Traits\SetEnabledAttribute;
+use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
 
 class Email extends Model
 {

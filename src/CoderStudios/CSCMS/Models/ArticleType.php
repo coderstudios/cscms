@@ -16,9 +16,9 @@
 
 namespace CoderStudios\CSCMS\Models;
 
-use CoderStudios\Traits\ScopeEnabled;
 use Illuminate\Database\Eloquent\Model;
-use CoderStudios\Traits\SetEnabledAttribute;
+use CoderStudios\CSCMS\Traits\ScopeEnabled;
+use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
 
 class ArticleType extends Model
 {

@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
  
-namespace CoderStudios\CSCMS\CoderStudios\Traits;
+namespace CoderStudios\CSCMS\Traits;
 
 trait ScopeEnabled {
 
