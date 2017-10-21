@@ -10,7 +10,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @yield('metas')
-        <link rel="stylesheet" href="{{ mix('/vendor/cscms/css/admin.css') }}">
+        <link rel="stylesheet" href="/vendor/cscms/css/admin.css">
         <style type="text/css">
             body {
                 margin-top:2.5rem;
@@ -140,7 +140,7 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="{{ mix('/vendor/cscms/js/backend/app.js') }}"></script>
+        <script type="text/javascript" src="/vendor/cscms/js/backend/app.js"></script>
         @yield('footer')
     </body>
 </html>
