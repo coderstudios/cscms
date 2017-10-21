@@ -36,7 +36,7 @@ class Audit extends Model
     *
     * @var  string
     */
-    protected $table = 'audits';
+    protected $table = 'cscms_audits';
 
     /**
     * The attributes that should be hidden from arrays.

@@ -36,7 +36,7 @@ class Language extends Model
     *
     * @var  string
     */
-    protected $table = 'languages';
+    protected $table = 'cscms_languages';
 
     /**
     * The attributes that should be hidden from arrays.

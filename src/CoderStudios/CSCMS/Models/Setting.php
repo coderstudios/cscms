@@ -35,7 +35,7 @@ class Setting extends Model
     *
     * @var  string
     */
-    protected $table = 'settings';
+    protected $table = 'cscms_settings';
 
     /**
     * The attributes that should be hidden from arrays.

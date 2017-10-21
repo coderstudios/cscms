@@ -35,7 +35,7 @@ class EmailGroup extends Model
     *
     * @var  string
     */
-    protected $table = 'email_groups';
+    protected $table = 'cscms_email_groups';
 
     /**
     * The attributes that should be hidden from arrays.

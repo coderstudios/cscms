@@ -36,7 +36,7 @@ class Image extends Model
     *
     * @var  string
     */
-    protected $table = 'images';
+    protected $table = 'cscms_images';
 
     /**
     * The attributes that should be hidden from arrays.

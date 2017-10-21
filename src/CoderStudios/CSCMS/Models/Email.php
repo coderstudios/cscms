@@ -35,7 +35,7 @@ class Email extends Model
     *
     * @var  string
     */
-    protected $table = 'emails';
+    protected $table = 'cscms_emails';
 
     /**
     * The attributes that should be hidden from arrays.

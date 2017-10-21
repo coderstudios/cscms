@@ -33,7 +33,7 @@ class ArticleDescription extends Model
     *
     * @var  string
     */
-    protected $table = 'articles_description';
+    protected $table = 'cscms_articles_description';
 
     /**
     * The attributes that should be hidden from arrays.

@@ -36,7 +36,7 @@ class Notification extends Model
     *
     * @var  string
     */
-    protected $table = 'notifications';
+    protected $table = 'cscms_notifications';
 
     /**
     * The attributes that should be hidden from arrays.

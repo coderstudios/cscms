@@ -36,7 +36,7 @@ class Upload extends Model
     *
     * @var  string
     */
-    protected $table = 'uploads';
+    protected $table = 'cscms_uploads';
 
     /**
     * The attributes that should be hidden from arrays.

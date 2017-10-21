@@ -36,7 +36,7 @@ class UserRole extends Model
     *
     * @var  string
     */
-    protected $table = 'user_roles';
+    protected $table = 'cscms_user_roles';
 
     /**
     * The attributes that should be hidden from arrays.

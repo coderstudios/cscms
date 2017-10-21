@@ -36,7 +36,7 @@ class Capability extends Model
     *
     * @var  string
     */
-    protected $table = 'capabilities';
+    protected $table = 'cscms_capabilities';
 
     /**
     * The attributes that should be hidden from arrays.
