@@ -46,7 +46,7 @@ class LanguageController extends Controller
 			$vars = [
 				'languages' => $this->language->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.language', compact('vars'))->render();
+			$view = view('cscms::backend.pages.language', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -63,7 +63,7 @@ class LanguageController extends Controller
 				'action'		=> route('backend.languages.language.store'),
 				'language'		=> $this->language->newInstance(),
 			];
-			$view = view('backend.pages.language-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.language-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -81,7 +81,7 @@ class LanguageController extends Controller
 				'action' => route('backend.languages.language.update', ['id' => $id]),
 				'language' => $language,
 			];
-			$view = view('backend.pages.language-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.language-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

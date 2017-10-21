@@ -31,6 +31,18 @@ To install CSCMS as a Composer package to be used with Laravel 5+, simply add th
 
 php artisan vendor:publish --provider="CoderStudios\CSCMS\CSCMSServiceProvider"
 
+php artisan vendor:publish --tag=public --force
+
+php artisan vendor:publish --tag=resource --force
+
+php artisan vendor:publish --tag=config --force
+
+php artisan vendor:publish --tag=views --force
+
+php artisan vendor:publish --tag=migrations --force
+
+php artisan vendor:publish --tag=lang --force
+
 ## Copyright and Licence
 
 CSCMS has been written by Coder Studios and is released under the MIT License.

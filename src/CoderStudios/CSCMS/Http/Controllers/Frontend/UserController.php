@@ -42,7 +42,7 @@ class UserController extends Controller
                 'action' => route('frontend.profile.update'),
                 'user' => $current_user,
             ];
-            $view = view('frontend.default.pages.profile', compact('vars'))->render();
+            $view = view('cscms::frontend.default.pages.profile', compact('vars'))->render();
             $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
         }
         return $view;

@@ -51,7 +51,7 @@ class UploadController extends Controller
 			$vars = [
 				'uploads' => $this->upload->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.uploads', compact('vars'))->render();
+			$view = view('cscms::backend.pages.uploads', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -68,7 +68,7 @@ class UploadController extends Controller
 				'form_type'		=> 'create',
 				'action'		=> route('backend.uploads.upload.store'),
 			];
-			$view = view('backend.pages.upload-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.upload-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -86,7 +86,7 @@ class UploadController extends Controller
 				'form_type' 	=> 'edit',
 				'action' 		=> route('backend.uploads.upload.update', ['id' => $id]),
 			];
-			$view = view('backend.pages.upload-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.upload-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

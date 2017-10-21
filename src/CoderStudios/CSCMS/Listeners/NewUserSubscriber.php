@@ -46,7 +46,7 @@ class NewUserSubscriber
                 'from_email'    => $config['mail_from_address'],
                 'sender'        => $config['mail_from_name'],
                 'subject'       => sprintf('Verify your account on %s',config('app.name')),
-                'body_html'     => view('frontend.default.emails.verify_account',compact('vars'))->render(),
+                'body_html'     => view('cscms::frontend.default.emails.verify_account',compact('vars'))->render(),
                 'body_text'     => sprintf("Hi,\n\nPlease verify your account by following this link: %s \n\n\Thanks", route('frontend.verify', ['token' => $vars['token'] ])),
             ];
             $this->mail->create($email);
@@ -61,7 +61,7 @@ class NewUserSubscriber
             'from_email'    => $config['mail_from_address'],
             'sender'        => $config['mail_from_name'],
             'subject'       => sprintf('New user account on %s',config('app.name')),
-            'body_html'     => view('backend.emails.new_user',compact('vars'))->render(),
+            'body_html'     => view('cscms::backend.emails.new_user',compact('vars'))->render(),
             'body_text'     => sprintf("Hi,\n\nThere is a new user, %s \n\nEmail: %s \n\nIP: %s\n\nThanks",$event->user->name, $event->user->email, $_SERVER['REMOTE_ADDR']),
         ];
         $this->mail->create($email);

@@ -61,7 +61,7 @@ class CacheController extends Controller
             'image' => $this->utils->convertBytes($image_size),
             'all' => $this->utils->convertBytes(($all_size + $image_size)),
         ];
-		return view('backend.pages.cache', compact('vars'))->render();
+		return view('cscms::backend.pages.cache', compact('vars'))->render();
 	}
 
     public function optimiseClasses()

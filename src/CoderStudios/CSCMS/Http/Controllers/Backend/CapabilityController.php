@@ -89,7 +89,7 @@ class CapabilityController extends Controller
 			$vars = [
 				'capabilities' => $this->capability->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.capabilities', compact('vars'))->render();
+			$view = view('cscms::backend.pages.capabilities', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -107,7 +107,7 @@ class CapabilityController extends Controller
 				'action' 	=> route('backend.capabilities.store'),
 				'capability' => $this->capability->newInstance(),
 			];
-			$view = view('backend.pages.capabilities-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.capabilities-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -125,7 +125,7 @@ class CapabilityController extends Controller
 				'action' 	=> route('backend.capabilities.capability.update',['id' => $id]),
 				'capability' => $this->capability->get($id),
 			];
-			$view = view('backend.pages.capabilities-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.capabilities-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

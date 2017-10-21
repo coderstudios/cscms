@@ -54,7 +54,11 @@ class CSCMSServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/resources/assets' => public_path('vendor/cscms'),
+            __DIR__.'/../../../resources/assets' => public_path('vendor/cscms'),
+        ], 'resources');
+
+        $this->publishes([
+            __DIR__.'/../../../public' => public_path('vendor/cscms'),
         ], 'public');
 
         $this->app->make('view')->composer('vendor.cscms.frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');

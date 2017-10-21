@@ -53,7 +53,7 @@ class ImageController extends Controller
 			$vars = [
 				'images' => $this->image->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.images', compact('vars'))->render();
+			$view = view('cscms::backend.pages.images', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -70,7 +70,7 @@ class ImageController extends Controller
 				'form_type'		=> 'create',
 				'action'		=> route('backend.images.image.store'),
 			];
-			$view = view('backend.pages.images-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.images-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -88,7 +88,7 @@ class ImageController extends Controller
 				'form_type' 	=> 'edit',
 				'action' 		=> route('backend.images.image.update', ['id' => $id]),
 			];
-			$view = view('backend.pages.images-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.images-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

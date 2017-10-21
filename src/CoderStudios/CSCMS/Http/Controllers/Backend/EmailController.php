@@ -48,7 +48,7 @@ class EmailController extends Controller
 			$vars = [
 				'emails' => $this->email->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.emails', compact('vars'))->render();
+			$view = view('cscms::backend.pages.emails', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -66,7 +66,7 @@ class EmailController extends Controller
 				'email'		=> $this->email->newInstance(),
 				'groups'	=> $this->email_groups->getAll(0),
 			];
-			$view = view('backend.pages.emails-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.emails-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -85,7 +85,7 @@ class EmailController extends Controller
 				'email' => $email,
 				'groups'	=> $this->email_groups->getAll(0),
 			];
-			$view = view('backend.pages.emails-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.emails-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

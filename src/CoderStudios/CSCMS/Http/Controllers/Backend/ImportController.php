@@ -49,7 +49,7 @@ class ImportController extends Controller
 				'type' => $this->request->get('type'),
 				'replace' => '',
 			];
-			$view = view('backend.pages.import', compact('vars'))->render();
+			$view = view('cscms::backend.pages.import', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

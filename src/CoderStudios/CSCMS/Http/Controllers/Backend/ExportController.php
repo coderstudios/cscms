@@ -52,7 +52,7 @@ class ExportController extends Controller
 			$vars = [
 
 			];
-			$view = view('backend.pages.export', compact('vars'))->render();
+			$view = view('cscms::backend.pages.export', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

@@ -51,7 +51,7 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('frontend.default.auth.passwords.email');
+        return view('cscms::frontend.default.auth.passwords.email');
     }
 
 }

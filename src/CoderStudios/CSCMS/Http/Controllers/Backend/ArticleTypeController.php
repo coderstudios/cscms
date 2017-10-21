@@ -46,7 +46,7 @@ class ArticleTypeController extends Controller
 			$vars = [
 				'article_types' => $this->article_type->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.article_type', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article_type', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -64,7 +64,7 @@ class ArticleTypeController extends Controller
 				'action'		=> route('backend.article_types.article_type.store'),
 				'article_type'	=> $this->article_type->newInstance(),
 			];
-			$view = view('backend.pages.article_type-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article_type-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -83,7 +83,7 @@ class ArticleTypeController extends Controller
 				'action' 		=> route('backend.article_types.article_type.update', ['id' => $id]),
 				'article_type'	=> $article_type,
 			];
-			$view = view('backend.pages.article_type-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article_type-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

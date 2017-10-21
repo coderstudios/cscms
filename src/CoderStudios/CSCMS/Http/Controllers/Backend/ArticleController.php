@@ -58,7 +58,7 @@ class ArticleController extends Controller
 			$vars = [
 				'articles' => $articles,
 			];
-			$view = view('backend.pages.article', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -78,7 +78,7 @@ class ArticleController extends Controller
 				'article_types' => $this->article_type->getAll(),
 				'languages' 	=> $this->language->getAll(),
 			];
-			$view = view('backend.pages.article-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -100,7 +100,7 @@ class ArticleController extends Controller
 				'languages' 	=> $this->language->getAll(),
 				'revisions'		=> $this->article->getRevisions($id)->sortByDesc('id'),
 			];
-			$view = view('backend.pages.article-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.article-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

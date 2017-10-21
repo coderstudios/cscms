@@ -50,7 +50,7 @@ class BackupsController extends Controller
 			$vars = [
 				'backups' => $backups,
 			];
-			$view = view('backend.pages.backups', compact('vars'))->render();
+			$view = view('cscms::backend.pages.backups', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

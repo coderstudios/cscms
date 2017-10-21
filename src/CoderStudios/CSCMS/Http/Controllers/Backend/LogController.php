@@ -35,7 +35,7 @@ class LogController extends Controller
 			$vars = [
 				'log' => file_get_contents(storage_path().'/logs/laravel.log'),
 			];
-			$view = view('backend.pages.log', compact('vars'))->render();
+			$view = view('cscms::backend.pages.log', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

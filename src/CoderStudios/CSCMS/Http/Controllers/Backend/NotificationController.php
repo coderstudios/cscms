@@ -49,7 +49,7 @@ class NotificationController extends Controller
 			$vars = [
 				'notifications' => $this->notifications->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.notifications', compact('vars'))->render();
+			$view = view('cscms::backend.pages.notifications', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -66,7 +66,7 @@ class NotificationController extends Controller
 				'action'		=> route('backend.notifications.store'),
 				'notification'	=> $this->notifications->newInstance(),
 			];
-			$view = view('backend.pages.notifications-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.notifications-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -84,7 +84,7 @@ class NotificationController extends Controller
 				'action' => route('backend.notifications.notification.update', ['id' => $id]),
 				'notification' => $notification,
 			];
-			$view = view('backend.pages.notifications-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.notifications-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

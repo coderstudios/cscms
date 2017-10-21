@@ -45,7 +45,7 @@ class SettingsController extends Controller
 			$vars = [
 				'settings' => $this->setting->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
-			$view = view('backend.pages.settings', compact('vars'))->render();
+			$view = view('cscms::backend.pages.settings', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -62,7 +62,7 @@ class SettingsController extends Controller
 				'action' => route('backend.settings.setting.store'),
 				'setting' => $this->setting->newInstance(),
 			];
-			$view = view('backend.pages.settings-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.settings-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;
@@ -83,7 +83,7 @@ class SettingsController extends Controller
 				'action' => route('backend.settings.setting.update', ['id' => $id]),
 				'setting' => $setting,
 			];
-			$view = view('backend.pages.settings-form', compact('vars'))->render();
+			$view = view('cscms::backend.pages.settings-form', compact('vars'))->render();
 			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
 		}
 		return $view;

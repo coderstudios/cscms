@@ -62,7 +62,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('frontend.default.auth.login');
+        return view('cscms::frontend.default.auth.login');
     }
 
     /**
