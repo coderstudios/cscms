@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Middleware;
 
 use Closure;
+use Session;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 class ClearCache
@@ -46,9 +47,9 @@ class ClearCache
             $this->cache->flush();
         }
 
-        if ($request->session()->get('clear_cache')) {
+        if (Session()->get('clear_cache')) {
             $this->cache->flush();
-            $request->session()->remove('clear_cache');
+            Session()->remove('clear_cache');
         }
 
         return $next($request);
