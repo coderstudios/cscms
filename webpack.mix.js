@@ -19,18 +19,16 @@ mix
     .copy('resources/assets/backend/img', 'public/img/backend')
     .extract(['dropzone'])
     .sourceMaps()
-    .copy('public', '../../coderstudioscscms/public/vendor/cscms')
+    .copy('public', '../../coderstudioscscms/public/vendor/cscms');
     // .copy('public', '../app/public/vendor/cscms')
-    .version();
 
 mix
     .setPublicPath('public')
     .js('resources/assets/frontend/js/app.js', 'public/js/frontend')
     .sass('resources/assets/frontend/sass/app.scss', 'public/css/frontend')
     .copy('resources/assets/frontend/img', 'public/img/frontend')
-    .sourceMaps()
+    .sourceMaps();
     // .copy('public', '../app/public/vendor/cscms')
-    .version();
 
 mix.webpackConfig({
     plugins: [
