@@ -46,7 +46,7 @@ class CSCMSServiceProvider extends ServiceProvider
         ], 'lang');
 
         $this->publishes([
-            __DIR__.'/resources/views' => resource_path('views/vendor/cscms'),
+            __DIR__.'/../../../resources/views' => resource_path('views/vendor/cscms'),
         ], 'views');
 
         $this->publishes([
