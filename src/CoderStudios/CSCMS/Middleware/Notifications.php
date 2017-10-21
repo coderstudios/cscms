@@ -18,8 +18,8 @@ namespace CoderStudios\CSCMS\Middleware;
 
 use Auth;
 use Closure;
-use CoderStudios\Library\Notifications as NotificationsLibrary;
-use CoderStudios\Library\NotificationsRead;
+use CoderStudios\CSCMS\Library\Notifications as NotificationsLibrary;
+use CoderStudios\CSCMS\Library\NotificationsRead;
 
 class Notifications
 {

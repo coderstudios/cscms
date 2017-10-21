@@ -17,7 +17,7 @@
 namespace CoderStudios\CSCMS\Middleware;
 
 use Closure;
-use CoderStudios\Library\Settings as SettingsLibrary;
+use CoderStudios\CSCMS\Library\Settings as SettingsLibrary;
 
 class Settings
 {

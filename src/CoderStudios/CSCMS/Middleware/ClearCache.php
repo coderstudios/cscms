@@ -16,7 +16,6 @@
  
 namespace CoderStudios\CSCMS\Middleware;
 
-use Log;
 use Closure;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
@@ -44,11 +43,10 @@ class ClearCache
     public function handle($request, Closure $next)
     {
         if (!config('app.coderstudios.cache_enabled')) {
-            Log::info('Cache cleared');
             $this->cache->flush();
         }
+
         if ($request->session()->get('clear_cache')) {
-            Log::info('Cache cleared');
             $this->cache->flush();
             $request->session()->remove('clear_cache');
         }
