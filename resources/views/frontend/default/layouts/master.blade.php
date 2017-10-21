@@ -84,6 +84,6 @@
 
             </div>
         </footer>
-        <script type="text/javascript" src="{{ mix('/vendor/cscms/js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('/vendor/cscms/js/frontend/app.js') }}"></script>
     </body>
 </html>

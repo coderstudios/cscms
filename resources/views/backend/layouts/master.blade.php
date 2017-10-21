@@ -140,9 +140,7 @@
             </div>
         </div>
 
-        <script src="{{ mix('/vendor/cscms/js/manifest.js') }}"></script>
-        <script src="{{ mix('/vendor/cscms/js/vendor.js') }}"></script>
-        <script type="text/javascript" src="{{ mix('/vendor/cscms/js/admin.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('/vendor/cscms/js/backend/app.js') }}"></script>
         @yield('footer')
     </body>
 </html>
