@@ -31,7 +31,7 @@ class Install extends Command
      *
      * @var string
      */
-    protected $signature = 'codey:install';
+    protected $signature = 'cscms:install';
 
     /**
      * The console command description.

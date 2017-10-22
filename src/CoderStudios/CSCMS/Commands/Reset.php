@@ -31,7 +31,7 @@ class Reset extends Command
      *
      * @var string
      */
-    protected $signature = 'codey:reset';
+    protected $signature = 'cscms:reset';
 
     /**
      * The console command description.
