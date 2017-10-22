@@ -204,6 +204,13 @@ class CreateCSCMSTables extends Migration
             $table->string('filename',255)->nullable();
             $table->string('generated_filename',255)->nullable();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->boolean('enabled')->default(0)->index()->after('id');
+            $table->boolean('verified')->default(0)->index()->after('enabled');
+            $table->integer('user_role_id')->index()->default(1)->after('verified');
+            $table->string('username',191)->unique()->after('updated_at');
+        });
     }
 
     /**
@@ -232,5 +239,13 @@ class CreateCSCMSTables extends Migration
         Schema::dropIfExists('cscms_user_user_roles');
         Schema::dropIfExists('cscms_users_user_roles');
         Schema::dropIfExists('cscms_uploads');
+
+        Schema::table('users', function($table)
+        {
+            $table->dropColumn('enabled');
+            $table->dropColumn('verified');
+            $table->dropColumn('user_role_id');
+            $table->dropColumn('username');
+        });
     }
 }
