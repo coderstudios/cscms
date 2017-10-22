@@ -140,7 +140,7 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 
 });
 
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.'] , function() {
+Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['web']] , function() {
 
 	Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 	Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
