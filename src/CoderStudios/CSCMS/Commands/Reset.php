@@ -69,7 +69,7 @@ class Reset extends Command
         $this->email_group->truncate();
         $this->capabilities->truncate();
         $this->language->truncate();
-        $this->call('codey:install');
+        $this->call('cscms:install');
     }
 
 }
