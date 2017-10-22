@@ -55,6 +55,21 @@ and override the unauthenticated default function with the following
 
 
 ```
+
+Update auth.php replace providers array with config:
+
+```
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => CoderStudios\Models\User::class,
+        ],
+
+```
+
+Run: php artisan cscms:install
+
+
 ## Documentation
 
 ## Updating

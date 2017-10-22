@@ -12,6 +12,8 @@ const webpack = require('webpack');
  |
  */
 
+mix.copy('node_modules/font-awesome/fonts','public/fonts')
+
 mix
     .setPublicPath('public')
     .js('resources/assets/backend/js/app.js', 'public/js/backend')
