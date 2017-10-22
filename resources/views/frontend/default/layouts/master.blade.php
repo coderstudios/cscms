@@ -10,7 +10,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         @yield('metas')
-        <link rel="stylesheet" href="/vendor/cscms/css/app.css">
+        <link rel="stylesheet" href="/vendor/cscms/css/frontend/app.css">
         <style type="text/css">
             body {
                 margin-top:5rem;
