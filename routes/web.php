@@ -18,7 +18,7 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 	Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
 });
 
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth','cache','web']] , function() {
+Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['web','auth','cache']] , function() {
 
 	Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 	Route::get('/phpinfo', ['as' => 'phpinfo', 'uses' => 'HomeController@phpinfo']);

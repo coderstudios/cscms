@@ -12,16 +12,13 @@ const webpack = require('webpack');
  |
  */
 
-mix.copy('node_modules/font-awesome/fonts','public/fonts')
-
 mix
     .setPublicPath('public')
     .js('resources/assets/backend/js/app.js', 'public/js/backend')
     .sass('resources/assets/backend/sass/app.scss', 'public/css/backend')
     .copy('resources/assets/backend/img', 'public/img/backend')
     .extract(['dropzone'])
-    .sourceMaps()
-    .copy('public', '../../coderstudioscscms/public/vendor/cscms');
+    .sourceMaps();
     // .copy('public', '../app/public/vendor/cscms')
 
 mix
@@ -32,6 +29,8 @@ mix
     .sourceMaps();
     // .copy('public', '../app/public/vendor/cscms')
 
+mix.copy('public', '../../coderstudioscscms/public/vendor/cscms');
+    
 mix.webpackConfig({
     plugins: [
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)

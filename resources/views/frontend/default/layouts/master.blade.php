@@ -84,6 +84,8 @@
 
             </div>
         </footer>
+        <script type="text/javascript" src="/vendor/cscms/js/frontend/manifest.js"></script>
+        <script type="text/javascript" src="/vendor/cscms/js/frontend/vendor.js"></script>
         <script type="text/javascript" src="/vendor/cscms/js/frontend/app.js"></script>
     </body>
 </html>
