@@ -19,7 +19,7 @@ Capability
             <h1>Edit capability</h1>
             @endif
 
-            @include('backend.partials.errors')
+            @include('cscms::backend.partials.errors')
 
             <form method="post" action="{{ $vars['action'] }}">
                 {!! csrf_field() !!}

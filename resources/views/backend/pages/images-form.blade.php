@@ -19,7 +19,7 @@ Image
             <h1>Edit image</h1>
             @endif
 
-            @include('backend.partials.errors')
+            @include('cscms::backend.partials.errors')
 
             <div id="uploader">
 

@@ -19,7 +19,7 @@ User Role
             <h1>Edit user role</h1>
             @endif
 
-            @include('backend.partials.errors')
+            @include('cscms::backend.partials.errors')
 
             <form method="post" action="{{ $vars['action'] }}">
                 {!! csrf_field() !!}

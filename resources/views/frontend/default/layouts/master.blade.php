@@ -62,7 +62,7 @@
             </div>
         </nav>
 
-        @include('frontend.default.partials.banner',[
+        @include('cscms::frontend.default.partials.banner',[
             'success_message' => $success_message,
             'error_message' => $error_message,
             'csrf_error' => $csrf_error,

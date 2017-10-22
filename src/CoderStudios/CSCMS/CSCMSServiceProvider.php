@@ -61,8 +61,8 @@ class CSCMSServiceProvider extends ServiceProvider
             __DIR__.'/../../../public' => public_path('vendor/cscms'),
         ], 'public');
 
-        $this->app->make('view')->composer('vendor.cscms.frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
-        $this->app->make('view')->composer('vendor.cscms.backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
+        $this->app->make('view')->composer('cscms::frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
+        $this->app->make('view')->composer('cscms::backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
 	}
 
     /**
