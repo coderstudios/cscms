@@ -38,6 +38,10 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cscms');
 
         $this->publishes([
+            __DIR__.'/Policies' => app_path('/Policies'),
+        ], 'policies');
+
+        $this->publishes([
             __DIR__.'/database/migrations' => database_path('/migrations'),
         ], 'migrations');
 
