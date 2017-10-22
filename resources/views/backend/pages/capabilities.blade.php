@@ -1,4 +1,4 @@
-@extends('backend.layouts.master')
+@extends('cscms::backend.layouts.master')
 
 @section('page_title')
 Capabilities

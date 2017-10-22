@@ -1,4 +1,4 @@
-@extends('frontend.default.layouts.master')
+@extends('cscms::frontend.default.layouts.master')
 
 @section('content')
 <div class="container">

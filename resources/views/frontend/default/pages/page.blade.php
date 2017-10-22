@@ -1,4 +1,4 @@
-@extends('frontend.default.layouts.master')
+@extends('cscms::frontend.default.layouts.master')
 
 @section('page_title')
 {{ $vars['article']->title or '' }}

@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\CoderStudios\CSCMS\Models;
+namespace CoderStudios\CSCMS\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use CoderStudios\CSCMS\Traits\ScopeEnabled;
