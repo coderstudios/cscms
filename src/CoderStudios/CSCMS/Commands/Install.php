@@ -17,12 +17,12 @@
 namespace CoderStudios\CSCMS\Commands;
 
 use Illuminate\Console\Command;
-use CoderStudios\Library\Users;
-use CoderStudios\Library\Language;
-use CoderStudios\Library\Settings;
-use CoderStudios\Library\UserRoles;
-use CoderStudios\Library\EmailGroup;
-use CoderStudios\Library\Capability;
+use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CSCMS\Library\Language;
+use CoderStudios\CSCMS\Library\Settings;
+use CoderStudios\CSCMS\Library\UserRoles;
+use CoderStudios\CSCMS\Library\EmailGroup;
+use CoderStudios\CSCMS\Library\Capability;
 
 class Install extends Command
 {

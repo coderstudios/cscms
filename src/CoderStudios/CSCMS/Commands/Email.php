@@ -19,8 +19,8 @@ namespace CoderStudios\Commands;
 use Mail;
 use Config;
 use Illuminate\Console\Command;
-use CoderStudios\Library\Settings;
-use CoderStudios\Library\Mail as MailLibrary;
+use CoderStudios\CSCMS\Library\Settings;
+use CoderStudios\CSCMS\Library\Mail as MailLibrary;
 
 class Email extends Command
 {

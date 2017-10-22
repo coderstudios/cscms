@@ -16,8 +16,8 @@
  
 namespace CoderStudios\CSCMS\Helpers;
 
-use CoderStudios\Helpers\Utf8;
-use CoderStudios\Helpers\Image;
+use CoderStudios\CSCMS\Helpers\Utf8;
+use CoderStudios\CSCMS\Helpers\Image;
 
 class ImageHelper {
 

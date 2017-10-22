@@ -16,7 +16,7 @@
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
-use CoderStudios\Library\Article;
+use CoderStudios\CSCMS\Library\Article;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Cache\Factory as Cache;
 

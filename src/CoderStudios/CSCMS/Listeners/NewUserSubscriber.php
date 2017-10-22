@@ -17,8 +17,8 @@
 namespace CoderStudios\CSCMS\Listeners;
 
 use Log;
-use CoderStudios\Library\Mail;
-use CoderStudios\Library\Settings as SettingsLibrary;
+use CoderStudios\CSCMS\Library\Mail;
+use CoderStudios\CSCMS\Library\Settings as SettingsLibrary;
 
 class NewUserSubscriber
 {
