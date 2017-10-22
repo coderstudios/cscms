@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace CoderStudios\Commands;
+namespace CoderStudios\CSCMS\Commands;
 
 use Mail;
 use Config;
