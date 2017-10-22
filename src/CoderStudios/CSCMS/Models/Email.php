@@ -79,6 +79,6 @@ class Email extends Model
 
     public function groups()
     {
-        return $this->belongsToMany('CoderStudios\CSCMS\Models\EmailGroup','emails_email_groups','email_group_id','email_id');
+        return $this->belongsToMany('CoderStudios\CSCMS\Models\EmailGroup','cscms_emails_email_groups','email_group_id','email_id');
     }
 }
