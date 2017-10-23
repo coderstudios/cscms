@@ -14,7 +14,7 @@
  * @link       https://www.coderstudios.com
  */
 
-namespace App\Policies;
+namespace CoderStudios\CSCMS\Policies;
 
 use CoderStudios\CSCMS\Models\Capability;
 use CoderStudios\CSCMS\Models\User;
