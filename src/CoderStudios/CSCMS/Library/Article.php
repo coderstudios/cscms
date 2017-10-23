@@ -126,7 +126,7 @@ class Article extends BaseLibrary  {
 			$article = $this->cache->get($key);
 		} else {
 			$article = DB::table('cscms_articles as a')
-				->leftJoin('articles as b','a.id','=',DB::raw('(select b.parent_id from articles b where b.parent_id = a.id order by b.id desc)'))
+				->leftJoin('cscms_articles as b','a.id','=',DB::raw('(select b.parent_id from cscms_articles b where b.parent_id = a.id order by b.id desc)'))
 				->select(DB::raw('a.*, max(b.id) as latest_revision_id'))
 				->whereNull('a.parent_id')
 				->groupBy('a.id','a.enabled','a.parent_id','a.user_id','a.sort_order','a.article_type_id','a.created_at','a.updated_at','a.publish_at','a.slug','a.title','a.meta_description');
