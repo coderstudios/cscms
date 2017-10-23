@@ -72,14 +72,12 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->app->make('view')->composer('cscms::frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
         $this->app->make('view')->composer('cscms::backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                Commands\Install::class,
-                Commands\Reset::class,
-                Commands\Email::class,
-                Commands\DBBackup::class,
-            ]);
-        }
+        $this->commands([
+            Commands\Install::class,
+            Commands\Reset::class,
+            Commands\Email::class,
+            Commands\DBBackup::class,
+        ]);
     }
 
     /**
