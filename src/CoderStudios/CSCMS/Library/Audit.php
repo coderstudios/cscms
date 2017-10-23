@@ -34,7 +34,7 @@ class Audit extends BaseLibrary {
 			$audit = $this->cache->get($key);
 		} else {
 			$audit = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $audit, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $audit, config('cscms.coderstudios.cache_duration'));
 		}
 		return $audit;
 	}
@@ -51,7 +51,7 @@ class Audit extends BaseLibrary {
 			} else {
 				$audit = $audit->paginate($limit);
 			}
-			$this->cache->add($key, $audit, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $audit, config('cscms.coderstudios.cache_duration'));
 		}
 		return $audit;
 	}
@@ -68,7 +68,7 @@ class Audit extends BaseLibrary {
 			} else {
 				$audit = $audit->paginate($limit);
 			}
-			$this->cache->add($key, $audit, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $audit, config('cscms.coderstudios.cache_duration'));
 		}
 		return $audit;
 	}

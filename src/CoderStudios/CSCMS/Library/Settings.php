@@ -44,7 +44,7 @@ class Settings extends BaseLibrary {
 			$setting = $this->cache->get($key);
 		} else {
 			$setting = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $setting, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $setting, config('cscms.coderstudios.cache_duration'));
 		}
 		return $setting;
 	}
@@ -61,7 +61,7 @@ class Settings extends BaseLibrary {
 			} else {
 				$setting = $setting->paginate($limit);
 			}
-			$this->cache->add($key, $setting, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $setting, config('cscms.coderstudios.cache_duration'));
 		}
 		return $setting;
 	}

@@ -43,7 +43,7 @@ class ClearCache
      */
     public function handle($request, Closure $next)
     {
-        if (!config('app.coderstudios.cache_enabled')) {
+        if (!config('cscms.coderstudios.cache_enabled')) {
             $this->cache->flush();
         }
 

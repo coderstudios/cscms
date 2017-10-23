@@ -34,7 +34,7 @@ class Users extends BaseLibrary {
 			$user = $this->cache->get($key);
 		} else {
 			$user = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $user, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user;
 	}
@@ -49,7 +49,7 @@ class Users extends BaseLibrary {
 			if (!$user && is_numeric($username)) {
 				$user = $this->model->where('id',$username)->first();
 			}
-			$this->cache->add($key, $user, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user;
 	}
@@ -61,7 +61,7 @@ class Users extends BaseLibrary {
 			$user = $this->cache->get($key);
 		} else {
 			$user = $this->model->where('email',$email)->first();
-			$this->cache->add($key, $user, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user;
 	}
@@ -78,7 +78,7 @@ class Users extends BaseLibrary {
 			} else {
 				$user = $user->paginate($limit);
 			}
-			$this->cache->add($key, $user, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user;
 	}
@@ -95,7 +95,7 @@ class Users extends BaseLibrary {
 			} else {
 				$user = $user->paginate($limit);
 			}
-			$this->cache->add($key, $user, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user;
 	}

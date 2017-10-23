@@ -34,7 +34,7 @@ class Image extends BaseLibrary {
 			$image = $this->cache->get($key);
 		} else {
 			$image = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $image, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $image, config('cscms.coderstudios.cache_duration'));
 		}
 		return $image;
 	}
@@ -51,7 +51,7 @@ class Image extends BaseLibrary {
 			} else {
 				$image = $image->paginate($limit);
 			}
-			$this->cache->add($key, $image, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $image, config('cscms.coderstudios.cache_duration'));
 		}
 		return $image;
 	}

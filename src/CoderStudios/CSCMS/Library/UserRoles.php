@@ -34,7 +34,7 @@ class UserRoles extends BaseLibrary {
 			$user_role = $this->cache->get($key);
 		} else {
 			$user_role = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $user_role, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user_role, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user_role;
 	}
@@ -51,7 +51,7 @@ class UserRoles extends BaseLibrary {
 			} else {
 				$user_role = $user_role->paginate($limit);
 			}
-			$this->cache->add($key, $user_role, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user_role, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user_role;
 	}
@@ -68,7 +68,7 @@ class UserRoles extends BaseLibrary {
 			} else {
 				$user_role = $user_role->paginate($limit);
 			}
-			$this->cache->add($key, $user_role, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $user_role, config('cscms.coderstudios.cache_duration'));
 		}
 		return $user_role;
 	}

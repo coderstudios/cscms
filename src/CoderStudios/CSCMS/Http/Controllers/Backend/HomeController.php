@@ -36,7 +36,7 @@ class HomeController extends Controller
 		} else {
     		$vars = [];
             $view = view('cscms::backend.pages.index', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
 		return $view;
 	}
@@ -49,7 +49,7 @@ class HomeController extends Controller
         } else {
             $vars = [];
             $view = view('cscms::backend.pages.index', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
     }
@@ -62,7 +62,7 @@ class HomeController extends Controller
         } else {
             $vars = [];
             $view = view('cscms::backend.pages.access_denied', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
     }
@@ -94,7 +94,7 @@ class HomeController extends Controller
                 'phpinfo' => $phpinfo,
             ];
             $view = view('cscms::backend.pages.phpinfo', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
     }

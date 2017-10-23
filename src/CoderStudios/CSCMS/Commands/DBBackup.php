@@ -55,10 +55,10 @@ class DBBackup extends Command
         $process = new Process('');
         $default_config = sprintf('database.connections.%s',config('database.default'));
         $db = config($default_config);
-        if (!is_dir(config('app.coderstudios.backup_dir'))) {
-            mkdir(config('app.coderstudios.backup_dir'));
+        if (!is_dir(config('cscms.coderstudios.backup_dir'))) {
+            mkdir(config('cscms.coderstudios.backup_dir'));
         }
-        $path = config('app.coderstudios.backup_dir') . '/' . $db['database'] . '-' . date('Y-m-d-h-i') . '.gz';
+        $path = config('cscms.coderstudios.backup_dir') . '/' . $db['database'] . '-' . date('Y-m-d-h-i') . '.gz';
 
         $command = sprintf('mysqldump --host=%s --port=%s --user=%s --password=%s --opt %s | gzip -c | cat > %s',
             $db['host'],

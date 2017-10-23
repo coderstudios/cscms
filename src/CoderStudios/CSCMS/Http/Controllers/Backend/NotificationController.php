@@ -50,7 +50,7 @@ class NotificationController extends Controller
 				'notifications' => $this->notifications->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.notifications', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -67,7 +67,7 @@ class NotificationController extends Controller
 				'notification'	=> $this->notifications->newInstance(),
 			];
 			$view = view('cscms::backend.pages.notifications-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -85,7 +85,7 @@ class NotificationController extends Controller
 				'notification' => $notification,
 			];
 			$view = view('cscms::backend.pages.notifications-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

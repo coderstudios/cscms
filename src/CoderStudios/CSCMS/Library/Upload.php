@@ -34,7 +34,7 @@ class Upload extends BaseLibrary {
 			$upload = $this->cache->get($key);
 		} else {
 			$upload = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $upload, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $upload, config('cscms.coderstudios.cache_duration'));
 		}
 		return $upload;
 	}
@@ -51,7 +51,7 @@ class Upload extends BaseLibrary {
 			} else {
 				$upoad = $upoad->paginate($limit);
 			}
-			$this->cache->add($key, $upoad, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $upoad, config('cscms.coderstudios.cache_duration'));
 		}
 		return $upoad;
 	}

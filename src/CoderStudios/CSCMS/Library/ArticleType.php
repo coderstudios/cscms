@@ -34,7 +34,7 @@ class ArticleType extends BaseLibrary {
 			$article = $this->cache->get($key);
 		} else {
 			$article = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -50,7 +50,7 @@ class ArticleType extends BaseLibrary {
 			} else {
 				$article = $article->paginate($limit);
 			}
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -67,7 +67,7 @@ class ArticleType extends BaseLibrary {
 			} else {
 				$article = $article->paginate($limit);
 			}
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}

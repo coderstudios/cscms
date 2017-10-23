@@ -43,7 +43,7 @@ class UserController extends Controller
                 'user' => $current_user,
             ];
             $view = view('cscms::frontend.default.pages.profile', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
 

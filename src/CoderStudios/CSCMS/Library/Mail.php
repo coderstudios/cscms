@@ -34,7 +34,7 @@ class Mail extends BaseLibrary {
 			$email = $this->cache->get($key);
 		} else {
 			$email = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $email, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $email, config('cscms.coderstudios.cache_duration'));
 		}
 		return $email;
 	}

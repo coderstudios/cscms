@@ -34,7 +34,7 @@ class Notifications extends BaseLibrary {
 			$notification = $this->cache->get($key);
 		} else {
 			$notification = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $notification, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
 		}
 		return $notification;
 	}
@@ -51,7 +51,7 @@ class Notifications extends BaseLibrary {
 			} else {
 				$notification = $notification->paginate($limit);
 			}
-			$this->cache->add($key, $notification, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
 		}
 		return $notification;
 	}
@@ -68,7 +68,7 @@ class Notifications extends BaseLibrary {
 			} else {
 				$notification = $notification->paginate($limit);
 			}
-			$this->cache->add($key, $notification, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
 		}
 		return $notification;
 	}

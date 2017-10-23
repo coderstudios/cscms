@@ -35,7 +35,7 @@ class Article extends BaseLibrary  {
 			$article = $this->cache->get($key);
 		} else {
 			$article = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -47,7 +47,7 @@ class Article extends BaseLibrary  {
 			$article = $this->cache->get($key);
 		} else {
 			$article = $this->model->where('parent_id',$id)->first();
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -64,7 +64,7 @@ class Article extends BaseLibrary  {
 			} else {
 				$article = $article->paginate($limit);
 			}
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -114,7 +114,7 @@ class Article extends BaseLibrary  {
 			$parents = $this->getArticleIdsToParent($post_id);
 			$ids = array_filter(array_unique(array_merge($children,$parents)));
 			$article = $this->model->whereIn('id',$ids)->get();
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -135,7 +135,7 @@ class Article extends BaseLibrary  {
 			} else {
 				$article = $article->paginate($limit);
 			}
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}
@@ -152,7 +152,7 @@ class Article extends BaseLibrary  {
 			} else {
 				$article = $article->paginate($limit);
 			}
-			$this->cache->add($key, $article, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
 		return $article;
 	}

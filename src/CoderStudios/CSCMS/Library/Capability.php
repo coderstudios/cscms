@@ -34,7 +34,7 @@ class Capability extends BaseLibrary {
 			$capability = $this->cache->get($key);
 		} else {
 			$capability = $this->capability->where('id',$id)->first();
-			$this->cache->add($key, $capability, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $capability, config('cscms.coderstudios.cache_duration'));
 		}
 		return $capability;
 	}
@@ -51,7 +51,7 @@ class Capability extends BaseLibrary {
 			} else {
 				$capability = $capability->orderBy($order_by,$direction)->paginate($limit);
 			}
-			$this->cache->add($key, $capability, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $capability, config('cscms.coderstudios.cache_duration'));
 		}
 		return $capability;
 	}
@@ -68,7 +68,7 @@ class Capability extends BaseLibrary {
 			} else {
 				$capability = $capability->orderBy($order_by,$direction)->paginate($limit);
 			}
-			$this->cache->add($key, $capability, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $capability, config('cscms.coderstudios.cache_duration'));
 		}
 		return $capability;
 	}

@@ -54,8 +54,8 @@ class Utils {
     {
         $backups = [];
         $files = new Filesystem();
-        if (is_dir(config('app.coderstudios.backup_dir'))) {
-            foreach($files->allFiles(config('app.coderstudios.backup_dir')) as $file) {
+        if (is_dir(config('cscms.coderstudios.backup_dir'))) {
+            foreach($files->allFiles(config('cscms.coderstudios.backup_dir')) as $file) {
                 $backups[] = [
                     'name'      => $file->getFilename(),
                     'size'      => $this->convertBytes($file->getSize()),

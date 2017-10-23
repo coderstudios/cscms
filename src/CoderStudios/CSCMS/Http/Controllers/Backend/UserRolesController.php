@@ -51,7 +51,7 @@ class UserRolesController extends Controller
 				'user_roles' => $this->user_roles->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.user_roles', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -70,7 +70,7 @@ class UserRolesController extends Controller
 				'capabilities' => $this->capabilities->getEnabled(1,0),
 			];
 			$view = view('cscms::backend.pages.user_roles-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -89,7 +89,7 @@ class UserRolesController extends Controller
 				'capabilities' => $this->capabilities->getEnabled(1,0),
 			];
 			$view = view('cscms::backend.pages.user_roles-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

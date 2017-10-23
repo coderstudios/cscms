@@ -34,7 +34,7 @@ class EmailGroup extends BaseLibrary {
 			$email_group = $this->cache->get($key);
 		} else {
 			$email_group = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $email_group, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $email_group, config('cscms.coderstudios.cache_duration'));
 		}
 		return $email_group;
 	}
@@ -51,7 +51,7 @@ class EmailGroup extends BaseLibrary {
 			} else {
 				$email_group = $email_group->paginate($limit);
 			}
-			$this->cache->add($key, $email_group, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $email_group, config('cscms.coderstudios.cache_duration'));
 		}
 		return $email_group;
 	}
@@ -68,7 +68,7 @@ class EmailGroup extends BaseLibrary {
 			} else {
 				$email_group = $email_group->paginate($limit);
 			}
-			$this->cache->add($key, $email_group, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $email_group, config('cscms.coderstudios.cache_duration'));
 		}
 		return $email_group;
 	}

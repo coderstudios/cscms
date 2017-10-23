@@ -52,7 +52,7 @@ class UploadController extends Controller
 				'uploads' => $this->upload->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.uploads', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -69,7 +69,7 @@ class UploadController extends Controller
 				'action'		=> route('backend.uploads.upload.store'),
 			];
 			$view = view('cscms::backend.pages.upload-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -87,7 +87,7 @@ class UploadController extends Controller
 				'action' 		=> route('backend.uploads.upload.update', ['id' => $id]),
 			];
 			$view = view('cscms::backend.pages.upload-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

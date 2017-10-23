@@ -59,7 +59,7 @@ class ArticleController extends Controller
 				'articles' => $articles,
 			];
 			$view = view('cscms::backend.pages.article', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -79,7 +79,7 @@ class ArticleController extends Controller
 				'languages' 	=> $this->language->getAll(),
 			];
 			$view = view('cscms::backend.pages.article-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -101,7 +101,7 @@ class ArticleController extends Controller
 				'revisions'		=> $this->article->getRevisions($id)->sortByDesc('id'),
 			];
 			$view = view('cscms::backend.pages.article-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

@@ -53,7 +53,7 @@ class UserController extends Controller
 				'users' => $this->users->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.users', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -72,7 +72,7 @@ class UserController extends Controller
 				'user_roles' => $this->user_roles->getEnabled(1,0),
 			];
 			$view = view('cscms::backend.pages.users-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -91,7 +91,7 @@ class UserController extends Controller
 				'user_roles' => $this->user_roles->getEnabled(1,0),
 			];
 			$view = view('cscms::backend.pages.users-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

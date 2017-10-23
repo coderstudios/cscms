@@ -36,7 +36,7 @@ class HomeController extends Controller
 		} else {
             $vars = [];
             $view = view('cscms::frontend.default.pages.index', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
 	}
@@ -49,7 +49,7 @@ class HomeController extends Controller
         } else {
             $vars = [];
             $view = view('cscms::frontend.default.pages.index', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
     }
@@ -73,7 +73,7 @@ class HomeController extends Controller
                 'description' => $article->descriptions()->where('language_id',$language_id)->first(),
             ];
             $view = view('cscms::frontend.default.pages.page', compact('vars'))->render();
-            $this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
     }

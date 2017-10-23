@@ -46,7 +46,7 @@ class EmailGroupsController extends Controller
 				'email_groups' => $this->email_group->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.email_groups', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -63,7 +63,7 @@ class EmailGroupsController extends Controller
 				'email_group'	=> $this->email_group->newInstance(),
 			];
 			$view = view('cscms::backend.pages.email_groups-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -81,7 +81,7 @@ class EmailGroupsController extends Controller
 				'email_group'	=> $email_group,
 			];
 			$view = view('cscms::backend.pages.email_groups-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

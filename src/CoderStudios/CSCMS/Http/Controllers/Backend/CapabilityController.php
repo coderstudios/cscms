@@ -90,7 +90,7 @@ class CapabilityController extends Controller
 				'capabilities' => $this->capability->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.capabilities', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -108,7 +108,7 @@ class CapabilityController extends Controller
 				'capability' => $this->capability->newInstance(),
 			];
 			$view = view('cscms::backend.pages.capabilities-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}
@@ -126,7 +126,7 @@ class CapabilityController extends Controller
 				'capability' => $this->capability->get($id),
 			];
 			$view = view('cscms::backend.pages.capabilities-form', compact('vars'))->render();
-			$this->cache->add($key, $view, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 		}
 		return $view;
 	}

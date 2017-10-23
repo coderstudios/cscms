@@ -34,7 +34,7 @@ class Language extends BaseLibrary {
 			$language = $this->cache->get($key);
 		} else {
 			$language = $this->model->where('id',$id)->first();
-			$this->cache->add($key, $language, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $language, config('cscms.coderstudios.cache_duration'));
 		}
 		return $language;
 	}
@@ -51,7 +51,7 @@ class Language extends BaseLibrary {
 			} else {
 				$language = $language->paginate($limit);
 			}
-			$this->cache->add($key, $language, config('app.coderstudios.cache_duration'));
+			$this->cache->add($key, $language, config('cscms.coderstudios.cache_duration'));
 		}
 		return $language;
 	}
