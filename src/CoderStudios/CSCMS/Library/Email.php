@@ -47,7 +47,7 @@ class Email extends BaseLibrary {
 		} else {
 			$email = $this->model;
 			if (!$limit) {
-				$email = $email->get();
+				$email = $email->paginate($email->count());
 			} else {
 				$email = $email->paginate($limit);
 			}
@@ -64,7 +64,7 @@ class Email extends BaseLibrary {
 		} else {
 			$email = $this->email->enabled($enabled);
 			if (!$limit) {
-				$email = $email->get();
+				$email = $email->paginate($email->count());
 			} else {
 				$email = $email->paginate($limit);
 			}

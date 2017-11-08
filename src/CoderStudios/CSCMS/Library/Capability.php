@@ -47,7 +47,7 @@ class Capability extends BaseLibrary {
 		} else {
 			$capability = $this->model;
 			if (!$limit) {
-				$capability = $capability->orderBy($order_by,$direction)->get();
+				$capability = $capability->orderBy($order_by,$direction)->paginate($capability->count());
 			} else {
 				$capability = $capability->orderBy($order_by,$direction)->paginate($limit);
 			}
@@ -64,7 +64,7 @@ class Capability extends BaseLibrary {
 		} else {
 			$capability = $this->capability->enabled($enabled);
 			if (!$limit) {
-				$capability = $capability->orderBy($order_by,$direction)->get();
+				$capability = $capability->orderBy($order_by,$direction)->paginate($capability->count());
 			} else {
 				$capability = $capability->orderBy($order_by,$direction)->paginate($limit);
 			}

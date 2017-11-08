@@ -47,7 +47,7 @@ class EmailGroup extends BaseLibrary {
 		} else {
 			$email_group = $this->model;
 			if (!$limit) {
-				$email_group = $email_group->get();
+				$email_group = $email_group->paginate($email_group->count());
 			} else {
 				$email_group = $email_group->paginate($limit);
 			}
@@ -64,7 +64,7 @@ class EmailGroup extends BaseLibrary {
 		} else {
 			$email_group = $this->model->enabled($enabled);
 			if (!$limit) {
-				$email_group = $email_group->get();
+				$email_group = $email_group->paginate($email_group->count());
 			} else {
 				$email_group = $email_group->paginate($limit);
 			}

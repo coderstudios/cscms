@@ -47,7 +47,7 @@ class Audit extends BaseLibrary {
 		} else {
 			$audit = $this->model;
 			if (!$limit) {
-				$audit = $audit->get();
+				$audit = $audit->paginate($audit->count());
 			} else {
 				$audit = $audit->paginate($limit);
 			}
@@ -64,7 +64,7 @@ class Audit extends BaseLibrary {
 		} else {
 			$audit = $this->model->enabled($enabled);
 			if (!$limit) {
-				$audit = $audit->get();
+				$audit = $audit->paginate($audit->count());
 			} else {
 				$audit = $audit->paginate($limit);
 			}

@@ -47,7 +47,7 @@ class Image extends BaseLibrary {
 		} else {
 			$image = $this->model;
 			if (!$limit) {
-				$image = $image->get();
+				$image = $image->paginate($image->count());
 			} else {
 				$image = $image->paginate($limit);
 			}

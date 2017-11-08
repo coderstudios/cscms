@@ -47,7 +47,7 @@ class UserRoles extends BaseLibrary {
 		} else {
 			$user_role = $this->model;
 			if (!$limit) {
-				$user_role = $user_role->get();
+				$user_role = $user_role->paginate($user_role->count());
 			} else {
 				$user_role = $user_role->paginate($limit);
 			}

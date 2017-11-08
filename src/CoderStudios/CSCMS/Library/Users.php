@@ -74,7 +74,7 @@ class Users extends BaseLibrary {
 		} else {
 			$user = $this->model;
 			if (!$limit) {
-				$user = $user->get();
+				$user = $user->paginate($user->count());
 			} else {
 				$user = $user->paginate($limit);
 			}

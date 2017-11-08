@@ -46,7 +46,7 @@ class ArticleType extends BaseLibrary {
 		} else {
 			$article = $this->model;
 			if (!$limit) {
-				$article = $article->get();
+				$article = $article->paginate($article->count());
 			} else {
 				$article = $article->paginate($limit);
 			}
