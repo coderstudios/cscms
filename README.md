@@ -67,8 +67,21 @@ Update auth.php replace providers array with config:
 
 ```
 
-Run: php artisan cscms:install
+On a fresh install of laravel run:
 
+1. php artisan vendor:publish --provider="CoderStudios\CSCMS\CSCMSServiceProvider"
+2. php artisan migrate
+3. php artisan cscms:install
+
+If the route 
+
+```
+Route::get('/', function () {
+    return view('welcome');
+});
+```
+
+exists, remove it as the package provides a route to replace the Laravel default
 
 ## Documentation
 
