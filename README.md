@@ -62,10 +62,48 @@ Update auth.php replace providers array with config:
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => CoderStudios\Models\User::class,
+            'model' => CoderStudios\CSCMS\Models\User::class,
         ],
 
 ```
+
+Update Kernel.php (app/Http/Kernel.php) and add the following middleware:
+
+```
+
+        'cache' => \CoderStudios\CSCMS\Middleware\ClearCache::class,
+        'notifications' => \CoderStudios\CSCMS\Middleware\Notifications::class,
+        'settings' => \CoderStudios\CSCMS\Middleware\Settings::class,
+
+```
+
+So it would similar too:
+
+```
+    /**
+     * The application's route middleware.
+     *
+     * These middleware may be assigned to groups or used individually.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+
+        'cache' => \CoderStudios\CSCMS\Middleware\ClearCache::class,
+        'notifications' => \CoderStudios\CSCMS\Middleware\Notifications::class,
+        'settings' => \CoderStudios\CSCMS\Middleware\Settings::class,
+
+    ];
+
+
+```
+
 
 On a fresh install of laravel run:
 

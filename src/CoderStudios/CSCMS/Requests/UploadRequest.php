@@ -16,7 +16,7 @@
 
 namespace CoderStudios\CSCMS\Requests;
 
-use App\Http\Requests\Request;
+use CoderStudios\CSCMS\Requests;
 
 class UploadRequest extends Request {
 
