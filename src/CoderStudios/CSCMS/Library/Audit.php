@@ -47,7 +47,8 @@ class Audit extends BaseLibrary {
 		} else {
 			$audit = $this->model;
 			if (!$limit) {
-				$audit = $audit->paginate($audit->count());
+				$audit_count = $audit->count() > 0 ? $audit->count() : 1;
+				$audit = $audit->paginate($audit_count);
 			} else {
 				$audit = $audit->paginate($limit);
 			}
@@ -64,7 +65,8 @@ class Audit extends BaseLibrary {
 		} else {
 			$audit = $this->model->enabled($enabled);
 			if (!$limit) {
-				$audit = $audit->paginate($audit->count());
+				$audit_count = $audit->count() > 0 ? $audit->count() : 1;
+				$audit = $audit->paginate($audit_count);
 			} else {
 				$audit = $audit->paginate($limit);
 			}

@@ -47,7 +47,8 @@ class Language extends BaseLibrary {
 		} else {
 			$language = $this->model;
 			if (!$limit) {
-				$language = $language->paginate($language->count());
+				$language_count = $language->count() > 0 ? $language->count() : 1;
+				$language = $language->paginate($language_count);
 			} else {
 				$language = $language->paginate($limit);
 			}

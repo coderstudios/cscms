@@ -60,7 +60,8 @@ class Article extends BaseLibrary  {
 		} else {
 			$article = $this->model;
 			if (!$limit) {
-				$article = $article->get();
+				$article_count = $article->count() > 0 ? $article->count() : 1;
+				$article = $article->paginate($article_count);
 			} else {
 				$article = $article->paginate($limit);
 			}
@@ -131,7 +132,8 @@ class Article extends BaseLibrary  {
 				->whereNull('a.parent_id')
 				->groupBy('a.id','a.enabled','a.parent_id','a.user_id','a.sort_order','a.article_type_id','a.created_at','a.updated_at','a.publish_at','a.slug','a.title','a.meta_description');
 			if (!$limit) {
-				$article = $article->paginate($article->count());
+				$article_count = $article->count() > 0 ? $article->count() : 1;
+				$article = $article->paginate($article_count);
 			} else {
 				$article = $article->paginate($limit);
 			}
@@ -148,7 +150,8 @@ class Article extends BaseLibrary  {
 		} else {
 			$article = $this->model->enabled($enabled);
 			if (!$limit) {
-				$article = $article->paginate($article->count());
+				$article_count = $article->count() > 0 ? $article->count() : 1;
+				$article = $article->paginate($article_count);
 			} else {
 				$article = $article->paginate($limit);
 			}

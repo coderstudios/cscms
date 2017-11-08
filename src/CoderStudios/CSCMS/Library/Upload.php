@@ -47,7 +47,8 @@ class Upload extends BaseLibrary {
 		} else {
 			$upoad = $this->model;
 			if (!$limit) {
-				$upoad = $upoad->paginate($upload->count());
+				$upload_count = $upload->count() > 0 ? $upload->count() : 1;
+				$upoad = $upoad->paginate($upload_count);
 			} else {
 				$upoad = $upoad->paginate($limit);
 			}

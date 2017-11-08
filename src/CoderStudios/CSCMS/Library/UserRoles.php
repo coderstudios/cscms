@@ -47,7 +47,8 @@ class UserRoles extends BaseLibrary {
 		} else {
 			$user_role = $this->model;
 			if (!$limit) {
-				$user_role = $user_role->paginate($user_role->count());
+				$user_role_count = $user_role->count() > 0 ? $user_role->count() : 1;
+				$user_role = $user_role->paginate($user_role_count);
 			} else {
 				$user_role = $user_role->paginate($limit);
 			}
@@ -64,7 +65,8 @@ class UserRoles extends BaseLibrary {
 		} else {
 			$user_role = $this->model->enabled($enabled);
 			if (!$limit) {
-				$user_role = $user_role->get();
+				$user_role_count = $user_role->count() > 0 ? $user_role->count() : 1;
+				$user_role = $user_role->paginate($user_role_count);
 			} else {
 				$user_role = $user_role->paginate($limit);
 			}

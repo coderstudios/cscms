@@ -57,7 +57,8 @@ class Settings extends BaseLibrary {
 		} else {
 			$setting = $this->model;
 			if (!$limit) {
-				$setting = $setting->paginate($setting->count());
+				$setting_count = $setting->count() > 0 ? $setting->count() : 1;
+				$setting = $setting->paginate($setting_count);
 			} else {
 				$setting = $setting->paginate($limit);
 			}

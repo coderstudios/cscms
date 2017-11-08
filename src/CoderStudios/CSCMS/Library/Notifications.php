@@ -47,7 +47,8 @@ class Notifications extends BaseLibrary {
 		} else {
 			$notification = $this->model;
 			if (!$limit) {
-				$notification = $notification->paginate($notification->count());
+				$notification_count = $notification->count() > 0 ? $notification->count() : 1;
+				$notification = $notification->paginate($notification_count);
 			} else {
 				$notification = $notification->paginate($limit);
 			}
@@ -64,7 +65,8 @@ class Notifications extends BaseLibrary {
 		} else {
 			$notification = $this->model->enabled($enabled);
 			if (!$limit) {
-				$notification = $notification->get();
+				$notification_count = $notification->count() > 0 ? $notification->count() : 1;
+				$notification = $notification->paginate($notification_count);
 			} else {
 				$notification = $notification->paginate($limit);
 			}

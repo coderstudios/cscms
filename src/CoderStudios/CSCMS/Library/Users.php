@@ -74,7 +74,8 @@ class Users extends BaseLibrary {
 		} else {
 			$user = $this->model;
 			if (!$limit) {
-				$user = $user->paginate($user->count());
+				$user_count = $user->count() > 0 ? $user->count() : 1;
+				$user = $user->paginate($user_count);
 			} else {
 				$user = $user->paginate($limit);
 			}
@@ -91,7 +92,8 @@ class Users extends BaseLibrary {
 		} else {
 			$user = $this->model->enabled($enabled);
 			if (!$limit) {
-				$user = $user->get();
+				$user_count = $user->count() > 0 ? $user->count() : 1;
+				$user = $user->paginate($user_count);
 			} else {
 				$user = $user->paginate($limit);
 			}
