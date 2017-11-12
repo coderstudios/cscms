@@ -16,8 +16,9 @@
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
-use CoderStudios\CSCMS\Library\Article;
+use View;
 use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Library\Article;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class HomeController extends Controller
@@ -34,8 +35,15 @@ class HomeController extends Controller
 		if ($this->cache->has($key)) {
 			$view = $this->cache->get($key);
 		} else {
-            $vars = [];
-            $view = view('cscms::frontend.default.pages.index', compact('vars'))->render();
+            $theme = config('cscms.coderstudios.theme');
+            $vars = [ 
+                'theme' => $theme,
+            ];
+            $view_file = 'cscms::frontend.default.pages.index';
+            if (View::exists('cscms::frontend.'.$theme.'.pages.index')) {
+                $view_file = 'cscms::frontend.'.$theme.'.pages.index';
+            }
+            $view = view($view_file, compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
@@ -47,8 +55,15 @@ class HomeController extends Controller
         if ($this->cache->has($key)) {
             $view = $this->cache->get($key);
         } else {
-            $vars = [];
-            $view = view('cscms::frontend.default.pages.index', compact('vars'))->render();
+            $theme = config('cscms.coderstudios.theme');
+            $vars = [
+                'theme' => $theme,
+            ];
+            $view_file = 'cscms::frontend.default.pages.index';
+            if (View::exists('cscms::frontend.'.$theme.'.pages.index')) {
+                $view_file = 'cscms::frontend.'.$theme.'.pages.index';
+            }
+            $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
@@ -68,11 +83,18 @@ class HomeController extends Controller
             $view = $this->cache->get($key);
         } else {
             $language_id = 1;
+            $theme = config('cscms.coderstudios.theme');
             $vars = [
+                'theme' => $theme,
                 'article' => $article,
                 'description' => $article->descriptions()->where('language_id',$language_id)->first(),
             ];
-            $view = view('cscms::frontend.default.pages.page', compact('vars'))->render();
+            $theme = config('cscms.coderstudios.theme');
+            $view_file = 'cscms::frontend.default.pages.page';
+            if (View::exists('cscms::frontend.'.$theme.'.pages.page')) {
+                $view_file = 'cscms::frontend.'.$theme.'.pages.page';
+            }
+            $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;

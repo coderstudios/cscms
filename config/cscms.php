@@ -34,5 +34,7 @@ return [
 
         'backup_dir'    => env('APP_BACKUP_DIR', storage_path() . '/app/dumps'),
 
+        'theme' => env('APP_THEME','default'),
+
     ],
 ];

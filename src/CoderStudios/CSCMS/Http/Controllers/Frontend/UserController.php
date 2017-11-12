@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
 use Auth;
+use View;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\Users;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -38,11 +39,17 @@ class UserController extends Controller
         if ($this->cache->has($key)) {
             $view = $this->cache->get($key);
         } else {
+            $theme = config('cscms.coderstudios.theme');
             $vars = [
                 'action' => route('frontend.profile.update'),
                 'user' => $current_user,
+                'theme' => $theme,
             ];
-            $view = view('cscms::frontend.default.pages.profile', compact('vars'))->render();
+            $view_file = 'cscms::frontend.default.pages.profile';
+            if (View::exists('cscms::frontend.'.$theme.'.pages.profile')) {
+                $view_file = 'cscms::frontend.'.$theme.'.pages.profile';
+            }
+            $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
         return $view;
