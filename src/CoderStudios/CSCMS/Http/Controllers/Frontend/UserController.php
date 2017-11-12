@@ -46,8 +46,8 @@ class UserController extends Controller
                 'theme' => $theme,
             ];
             $view_file = 'cscms::frontend.default.pages.profile';
-            if (View::exists('cscms::frontend.'.$theme.'.pages.profile')) {
-                $view_file = 'cscms::frontend.'.$theme.'.pages.profile';
+            if (View::exists($theme.'.pages.profile')) {
+                $view_file = $theme.'.pages.profile';
             }
             $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

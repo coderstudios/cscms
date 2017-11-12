@@ -40,8 +40,8 @@ class HomeController extends Controller
                 'theme' => $theme,
             ];
             $view_file = 'cscms::frontend.default.pages.index';
-            if (View::exists('cscms::frontend.'.$theme.'.pages.index')) {
-                $view_file = 'cscms::frontend.'.$theme.'.pages.index';
+            if (View::exists($theme.'.pages.index')) {
+                $view_file = $theme.'.pages.index';
             }
             $view = view($view_file, compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
@@ -60,8 +60,8 @@ class HomeController extends Controller
                 'theme' => $theme,
             ];
             $view_file = 'cscms::frontend.default.pages.index';
-            if (View::exists('cscms::frontend.'.$theme.'.pages.index')) {
-                $view_file = 'cscms::frontend.'.$theme.'.pages.index';
+            if (View::exists($theme.'.pages.index')) {
+                $view_file = $theme.'.pages.index';
             }
             $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
@@ -91,8 +91,8 @@ class HomeController extends Controller
             ];
             $theme = config('cscms.coderstudios.theme');
             $view_file = 'cscms::frontend.default.pages.page';
-            if (View::exists('cscms::frontend.'.$theme.'.pages.page')) {
-                $view_file = 'cscms::frontend.'.$theme.'.pages.page';
+            if (View::exists($theme.'.pages.page')) {
+                $view_file = $theme.'.pages.page';
             }
             $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
