@@ -112,7 +112,7 @@
                                         {{ csrf_field() }}
                                     </form></li>
                                 @endif
-                                <li class="nav-item"><a class="nav-link" href="{{ route('frontend.index') }}" target="_blank">Site homepage</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/" target="_blank">Site homepage</a></li>
                             </ul>
                         </div>
                     <hr />
