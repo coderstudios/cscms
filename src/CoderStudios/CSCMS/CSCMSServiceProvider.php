@@ -29,7 +29,7 @@ class CSCMSServiceProvider extends ServiceProvider
 	public function boot()
 	{
 
-        $this->registerRoutes();
+        //$this->registerRoutes();
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
@@ -40,6 +40,10 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/Policies' => app_path('/Policies'),
         ], 'policies');
+
+        $this->publishes([
+            __DIR__.'/../../../routes/web.php' => base_path('/routes'),
+        ], 'cscms');
 
         $this->publishes([
             __DIR__.'/database/migrations' => database_path('/migrations'),

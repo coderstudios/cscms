@@ -122,6 +122,12 @@ Route::get('/', function () {
 
 exists, remove it as the package provides a route to replace the Laravel default
 
+If you are developing your own theme, ensure you add the view composer relevant to your theme in the AppServiceProvider.php boot method
+
+```
+    view()->composer(config('cscms.coderstudios.theme').'.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
+```
+
 ## Documentation
 
 ## Updating
