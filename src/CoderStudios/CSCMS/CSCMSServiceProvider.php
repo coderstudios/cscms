@@ -42,8 +42,8 @@ class CSCMSServiceProvider extends ServiceProvider
         ], 'policies');
 
         $this->publishes([
-            __DIR__.'/../../../routes/web.php' => base_path('/routes'),
-        ], 'cscms');
+            __DIR__.'/../../../routes/web.php' => base_path('/routes/cscms.php'),
+        ], 'routes');
 
         $this->publishes([
             __DIR__.'/database/migrations' => database_path('/migrations'),
