@@ -29,7 +29,7 @@ class CSCMSServiceProvider extends ServiceProvider
 	public function boot()
 	{
 
-        //$this->registerRoutes();
+        $this->registerRoutes();
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
@@ -89,13 +89,17 @@ class CSCMSServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the Horizon routes.
+     * Register the package routes.
      *
      * @return void
      */
     protected function registerRoutes()
     {
-        $this->loadRoutesFrom(__DIR__.'/../../../routes/web.php');
+        Route::middleware('web')
+             ->group(base_path('routes/cscms_frontend.php'));
+
+        Route::middleware('web')
+             ->group(base_path('routes/cscms_backend.php'));
     }
 
     /**
