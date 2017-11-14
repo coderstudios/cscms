@@ -128,6 +128,18 @@ If you are developing your own theme, ensure you add the view composer relevant 
     view()->composer(config('cscms.coderstudios.theme').'.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
 ```
 
+Add the backend and frontend routes to the RouteServiceProvider.php
+
+```
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/cscms_frontend.php'));
+
+        Route::middleware('web')
+             ->namespace($this->namespace)
+             ->group(base_path('routes/cscms_backend.php'));
+```
+
 ## Documentation
 
 ## Updating

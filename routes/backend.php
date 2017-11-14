@@ -153,25 +153,3 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 	Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 
 });
-
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Frontend', 'as' => 'frontend.', 'middleware' => ['cache','web'] ] , function() {
-
-	Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
-	Route::get('/home', ['as' => 'home', 'middleware' => 'auth', 'uses' => 'HomeController@home']);
-
-	Route::get('/verify/{token}', ['as' => 'verify', 'uses' => 'UserController@verifyAccount']);
-
-	Route::get('/profile', ['as' => 'profile', 'uses' => 'UserController@profile']);
-	Route::post('/profile', ['as' => 'profile.update', 'uses' => 'UserController@updateProfile']);
-	Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
-	Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
-	Route::post('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
-	Route::post('/password/email', ['as' => 'password.email', 'uses' => 'Auth\ForgotPasswordController@sendResetLinkEmail']);
-	Route::post('/password/reset', ['as' => 'password.reset', 'uses' => 'Auth\ResetPasswordController@reset']);
-	Route::get('/password/reset', ['as' => 'password.request', 'uses' => 'Auth\ForgotPasswordController@showLinkRequestForm']);
-	Route::get('/password/reset/{token}', ['as' => 'password.reset.form', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
-	Route::get('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
-	Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
-
-	Route::get('{all}', ['as' => 'wildcard', 'uses' => 'HomeController@wildcard'])->where('all', '.*');
-});

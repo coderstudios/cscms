@@ -42,7 +42,11 @@ class CSCMSServiceProvider extends ServiceProvider
         ], 'policies');
 
         $this->publishes([
-            __DIR__.'/../../../routes/web.php' => base_path('/routes/cscms.php'),
+            __DIR__.'/../../../routes/backend.php' => base_path('/routes/cscms_backend.php'),
+        ], 'routes');
+
+        $this->publishes([
+            __DIR__.'/../../../routes/frontend.php' => base_path('/routes/cscms_frontend.php'),
         ], 'routes');
 
         $this->publishes([
