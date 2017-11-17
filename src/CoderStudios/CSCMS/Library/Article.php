@@ -126,16 +126,25 @@ class Article extends BaseLibrary  {
 		if ($this->cache->has($key)) {
 			$article = $this->cache->get($key);
 		} else {
-			$article = DB::table('cscms_articles as a')
-				->leftJoin('cscms_articles as b','a.id','=',DB::raw('(select b.parent_id from cscms_articles b where b.parent_id = a.id order by b.id desc)'))
-				->select(DB::raw('a.*, max(b.id) as latest_revision_id'))
-				->whereNull('a.parent_id')
-				->groupBy('a.id','a.enabled','a.parent_id','a.user_id','a.sort_order','a.article_type_id','a.created_at','a.updated_at','a.publish_at','a.slug','a.title','a.meta_description');
-			if (!$limit) {
-				$article_count = $article->count() > 0 ? $article->count() : 1;
-				$article = $article->paginate($article_count);
+
+			$article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,article_type_id From cscms_articles group by article_type_id) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));
+			$ids = [];
+
+			if (count($article)) {
+				foreach($article as $a) {
+					$ids[] = $a->id;
+				}
 			} else {
-				$article = $article->paginate($limit);
+				$article = null;
+			}
+			if (count($ids)) {
+				$article = $this->model->whereIn('id', $ids);
+				if (!$limit) {
+					$article_count = $article->count() > 0 ? $article->count() : 1;
+					$article = $article->paginate($article_count);
+				} else {
+					$article = $article->paginate($limit);
+				}
 			}
 			$this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
 		}
