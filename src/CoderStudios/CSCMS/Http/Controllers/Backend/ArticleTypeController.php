@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
+use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\ArticleType;
@@ -94,6 +95,7 @@ class ArticleTypeController extends Controller
 		$data = $request->only($this->attributes);
 		$data['user_id'] = Auth::user()->id;
 		$this->article_type->create($data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.article_types')->with('success_message','Article type created');
 	}
 
@@ -102,6 +104,7 @@ class ArticleTypeController extends Controller
 		$data = $request->only($this->attributes);
 		$data['user_id'] = Auth::user()->id;
 		$this->article_type->update($id,$data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.article_types')->with('success_message','Article type updated');
 	}
 

@@ -16,6 +16,7 @@
 
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
+use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\Settings;
@@ -94,6 +95,7 @@ class SettingsController extends Controller
 		$data = $request->only($this->attributes);
 		$data = $this->setSerialized($data);
 		$this->setting->create($data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.settings')->with('success_message','Setting created');
 	}
 
@@ -102,12 +104,14 @@ class SettingsController extends Controller
 		$data = $request->only($this->attributes);
 		$data = $this->setSerialized($data);
 		$this->setting->update($id,$data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.settings')->with('success_message','Setting updated');
 	}
 
 	public function delete($id)
 	{
 		$this->setting->delete($id);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.settings')->with('success_message','Setting deleted');
 	}
 

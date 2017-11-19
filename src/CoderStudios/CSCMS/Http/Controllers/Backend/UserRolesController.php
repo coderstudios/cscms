@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
+use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\UserRoles;
@@ -101,6 +102,7 @@ class UserRolesController extends Controller
 		if (count($this->request->request->get('capabilities'))) {
 			$role->capabilities()->sync($this->request->request->get('capabilities'));
 		}
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.user_roles')->with('success_message','User role created');
 	}
 
@@ -115,12 +117,14 @@ class UserRolesController extends Controller
 		if (count($this->request->request->get('capabilities'))) {
 			$role->capabilities()->sync($this->request->request->get('capabilities'));
 		}
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.user_roles')->with('success_message','User role updated');
 	}
 
 	public function delete($id)
 	{
 		$this->user_roles->delete($id);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.user_roles')->with('success_message','User role deleted');
 	}
 }

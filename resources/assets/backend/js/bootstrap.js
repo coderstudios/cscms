@@ -11,6 +11,9 @@ window.$ = window.jQuery = require('jquery');
 
 require('bootstrap');
 
+window.CKEDITOR_BASEPATH = 'node_modules/ckeditor/'
+require('ckeditor')
+
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces
  * using reactive data binding and reusable components. Vue's API is clean

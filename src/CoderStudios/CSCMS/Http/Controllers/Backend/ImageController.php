@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
+use Artisan;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
@@ -128,7 +129,7 @@ class ImageController extends Controller
             $this->request->session()->put('success_message',$message);
             return response()->json(['result' => true, 'path' => route('backend.images') ]);
         }
-
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.images')->with('success_message',$message);
 	}
 
@@ -150,6 +151,7 @@ class ImageController extends Controller
 			}
 			$image->delete();
 		}
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.images')->with('success_message','Image deleted');
 	}
 

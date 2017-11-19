@@ -95,6 +95,7 @@ class NotificationController extends Controller
 		$data = $request->only($this->attributes);
 		$data['user_id'] = Auth::user()->id;
 		$notification = $this->notifications->create($data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.notifications')->with('success_message','Notification created');
 	}
 
@@ -103,6 +104,7 @@ class NotificationController extends Controller
 		$data = $request->only($this->attributes);
 		$data['user_id'] = Auth::user()->id;
 		$this->notifications->update($id,$data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.notifications')->with('success_message','Notification updated');
 	}
 

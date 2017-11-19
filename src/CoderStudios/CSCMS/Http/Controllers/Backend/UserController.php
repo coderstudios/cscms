@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
+use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\Mail;
@@ -101,6 +102,7 @@ class UserController extends Controller
 		$data = $request->only('name','email','enabled','password','username','user_role_id');
 		$data['password'] = bcrypt($data['password']);
 		$this->users->create($data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.users')->with('success_message','User created');
 	}
 
@@ -116,6 +118,7 @@ class UserController extends Controller
 			$data['enabled'] = 0;
 		}
 		$this->users->update($id,$data);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.users')->with('success_message','User updated');
 	}
 
@@ -127,6 +130,7 @@ class UserController extends Controller
 	public function delete($id)
 	{
 		$this->users->delete($id);
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.users')->with('success_message','User deleted');
 	}
 

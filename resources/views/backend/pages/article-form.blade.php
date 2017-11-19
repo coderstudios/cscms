@@ -124,7 +124,7 @@ Article
                                 @else
                                 <div class="tab-pane" id="description-{{ $item->id }}" role="tabpanel">
                                 @endif
-                                    <textarea name="description[{{ $item->id }}]" class="form-control" rows="10" placeholder="{{ $item->name }} description">{{ old('description['.$item->id.']',$vars['article']->descriptions()->where('language_id',$item->id)->pluck('content')->first()) }}</textarea>
+                                    <textarea name="description[{{ $item->id }}]" class="form-control editor" rows="10" placeholder="{{ $item->name }} description">{{ old('description['.$item->id.']',$vars['article']->descriptions()->where('language_id',$item->id)->pluck('content')->first()) }}</textarea>
                                 </div>
                             @endforeach
                         </div>
@@ -159,4 +159,14 @@ Article
 
 </div>
 
+@endsection
+
+@section('footer')
+<script>
+    ClassicEditor
+        .create( document.querySelector( '.editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 @endsection

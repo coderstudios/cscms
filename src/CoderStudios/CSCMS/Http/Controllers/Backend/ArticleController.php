@@ -17,6 +17,7 @@
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
 use Auth;
+use Artisan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\Article;
@@ -133,6 +134,7 @@ class ArticleController extends Controller
 			}
 
 		}
+        Artisan::call('cache:clear');
 		return redirect()->route('backend.articles')->with('success_message','article created');
 	}
 
