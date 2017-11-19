@@ -124,7 +124,7 @@ Article
                                 @else
                                 <div class="tab-pane" id="description-{{ $item->id }}" role="tabpanel">
                                 @endif
-                                    <textarea name="description[{{ $item->id }}]" class="form-control editor" rows="10" placeholder="{{ $item->name }} description">{{ old('description['.$item->id.']',$vars['article']->descriptions()->where('language_id',$item->id)->pluck('content')->first()) }}</textarea>
+                                    <textarea name="description[{{ $item->id }}]" id="description[{{ $item->id }}]" class="form-control editor" rows="10" placeholder="{{ $item->name }} description">{{ old('description['.$item->id.']',$vars['article']->descriptions()->where('language_id',$item->id)->pluck('content')->first()) }}</textarea>
                                 </div>
                             @endforeach
                         </div>
@@ -163,8 +163,8 @@ Article
 
 @section('footer')
 <script>
-    // Replace the <textarea id="editor1"> with a CKEditor
-    // instance, using default configuration.
-    CKEDITOR.replace( 'editor' );
+    CKEDITOR.replace( 'description[{{ $item->id }}]' , {
+        language:'en'
+    } );
 </script>
 @endsection
