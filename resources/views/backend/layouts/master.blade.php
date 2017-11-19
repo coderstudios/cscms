@@ -29,6 +29,10 @@
                 min-height:50px;
             }
         </style>
+
+        <script>
+            window.Laravel = { csrfToken: '{{ csrf_token() }}' };
+        </script>
     </head>
     <body>
 

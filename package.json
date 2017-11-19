@@ -28,6 +28,7 @@
     "vue": "^2.1.10",
     "font-awesome": "^4.7.0",
     "dropzone": "4.3.0",
-    "ckeditor": "4.7.*"
+    "ckeditor": "4.7.*",
+    "tether": "1.4.1"
   }
 }
