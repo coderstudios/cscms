@@ -15,7 +15,8 @@
     "lodash": "^4.16.2",
     "moment": "^2.10.6",
     "phpunserialize": "1.*",
-    "vue": "^2.2.0"
+    "vue": "^2.2.0",
+    "tether": "1.4.1"
   },
   "devDependencies": {
     "axios": "^0.16.2",
