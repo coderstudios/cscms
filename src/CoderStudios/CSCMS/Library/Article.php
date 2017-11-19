@@ -126,10 +126,8 @@ class Article extends BaseLibrary  {
 		if ($this->cache->has($key)) {
 			$article = $this->cache->get($key);
 		} else {
-
-			$article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,article_type_id From cscms_articles group by article_type_id) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));
+			$article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,slug From cscms_articles group by slug) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));
 			$ids = [];
-
 			if (count($article)) {
 				foreach($article as $a) {
 					$ids[] = $a->id;
