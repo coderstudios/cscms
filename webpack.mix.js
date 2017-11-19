@@ -19,7 +19,7 @@ mix
     .js('resources/assets/backend/js/app.js', 'public/js/backend')
     .sass('resources/assets/backend/sass/app.scss', 'public/css/backend')
     .copy('resources/assets/backend/img', 'public/img/backend')
-    .extract(['dropzone'])
+    .extract(['dropzone','ckeditor'])
     .sourceMaps();
     // .copy('public', '../app/public/vendor/cscms')
 
