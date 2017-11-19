@@ -74,6 +74,7 @@ class HomeController extends Controller
         $article = $this->article
             ->where('slug',$slug)
             ->where('enabled',1)
+            ->orderBy('id','DESC')
             ->first();
         if (is_null($article)) {
             Abort(404);

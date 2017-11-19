@@ -12,7 +12,7 @@ window.$ = window.jQuery = require('jquery');
 window.Tether = require('tether');
 require('bootstrap');
 
-window.CKEDITOR_BASEPATH = '/js/ckeditor/'
+window.CKEDITOR_BASEPATH = '/vendor/cscms/js/ckeditor/'
 require('ckeditor')
 
 /**
