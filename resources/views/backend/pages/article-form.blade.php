@@ -163,10 +163,8 @@ Article
 
 @section('footer')
 <script>
-    ClassicEditor
-        .create( document.querySelector( '.editor' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    // Replace the <textarea id="editor1"> with a CKEditor
+    // instance, using default configuration.
+    CKEDITOR.replace( 'editor' );
 </script>
 @endsection
