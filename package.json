@@ -29,6 +29,7 @@
     "font-awesome": "^4.7.0",
     "dropzone": "4.3.0",
     "ckeditor": "4.7.*",
+    "popper.js": "^1.12.6",
     "tether": "1.4.1"
   }
 }
