@@ -95,11 +95,15 @@ class CSCMSServiceProvider extends ServiceProvider
      */
     protected function registerRoutes()
     {
-        Route::middleware('web')
-             ->group(base_path('routes/cscms_backend.php'));
+        if (file_exists(base_path('routes/cscms_backend.php'))) {
+            Route::middleware('web')
+                ->group(base_path('routes/cscms_backend.php'));
+        }
 
-        Route::middleware('web')
-             ->group(base_path('routes/cscms_frontend.php'));
+        if (file_exists(base_path('routes/cscms_frontend.php'))) {
+            Route::middleware('web')
+                 ->group(base_path('routes/cscms_frontend.php'));
+        }
     }
 
     /**
