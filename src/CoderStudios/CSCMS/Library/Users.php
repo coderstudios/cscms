@@ -105,7 +105,7 @@ class Users extends BaseLibrary {
 	public function isEnabled($data)
 	{
 		$user = $this->getByEmail($data->request->get('email'));
-		if ($user->enabled) {
+		if ($user && $user->enabled) {
 			return true;
 		}
 		return false;
@@ -114,7 +114,7 @@ class Users extends BaseLibrary {
 	public function isVerified($data)
 	{
 		$user = $this->getByEmail($data->request->get('email'));
-		if ($user->verified) {
+		if ($user && $user->verified) {
 			return true;
 		}
 		return false;
