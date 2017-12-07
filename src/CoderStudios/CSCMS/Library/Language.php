@@ -43,7 +43,7 @@ class Language extends BaseLibrary {
 	{
 		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $limit . '_' . $page));
 		if ($this->cache->has($key)) {
-			$email_group = $this->cache->get($key);
+			$language = $this->cache->get($key);
 		} else {
 			$language = $this->model;
 			if (!$limit) {
