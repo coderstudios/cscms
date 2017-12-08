@@ -18,6 +18,7 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Frontend', '
 
 	Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 	Route::get('/home', ['as' => 'home', 'middleware' => 'auth', 'uses' => 'HomeController@home']);
+	Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
 
 	Route::get('/verify/{token}', ['as' => 'verify', 'uses' => 'UserController@verifyAccount']);
 
