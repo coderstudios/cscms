@@ -41,6 +41,7 @@ class Upload extends BaseLibrary {
 
 	public function getAll($limit = 0, $page = 1)
 	{
+		$upload = '';
 		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $limit . '_' . $page));
 		if ($this->cache->has($key)) {
 			$upoad = $this->cache->get($key);
