@@ -51,8 +51,14 @@ class ImageController extends Controller
 		if ($this->cache->has($key)) {
 			$view = $this->cache->get($key);
 		} else {
+			$images = $this->image->getAll([
+					'size' => $this->request->session()->get('config')['config_items_per_page'], 
+					'page' => $page_id,
+					'order' => 'id',
+					'dir' => 'DESC',
+				]);
 			$vars = [
-				'images' => $this->image->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
+				'images' => $images,
 			];
 			$view = view('cscms::backend.pages.images', compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

@@ -124,7 +124,8 @@ class UploadController extends Controller
             $message = $message . ' ' . $failed . ' ' . str_plural('file',$failed) . ' failed to upload.';
         }
         if ($success) {
-            $this->request->session()->put('success_message',$message);
+			$this->request->session()->put('success_message',$message);
+			$this->cache->flush();
             return response()->json(['result' => true, 'path' => route('backend.uploads') ]);
         }
 

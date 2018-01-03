@@ -39,18 +39,21 @@ class Image extends BaseLibrary {
 		return $image;
 	}
 
-	public function getAll($limit = 0, $page = 1)
+	public function getAll($params = [])
 	{
-		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $limit . '_' . $page));
+		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . implode($params,'_')));
 		if ($this->cache->has($key)) {
 			$image = $this->cache->get($key);
 		} else {
 			$image = $this->model;
-			if (!$limit) {
+			if (isset($params['order'])) {
+				$image = $image->orderBy($params['order'],$params['dir']);
+			}
+			if (!isset($params['size'])) {
 				$image_count = $image->count() > 0 ? $image->count() : 1;
 				$image = $image->paginate($image_count);
 			} else {
-				$image = $image->paginate($limit);
+				$image = $image->paginate($params['size']);
 			}
 			$this->cache->add($key, $image, config('cscms.coderstudios.cache_duration'));
 		}
