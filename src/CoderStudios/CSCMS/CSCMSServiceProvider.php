@@ -82,6 +82,7 @@ class CSCMSServiceProvider extends ServiceProvider
 
         $this->commands([
             Commands\Install::class,
+            Commands\Cache::class,
             Commands\Reset::class,
             Commands\Email::class,
             Commands\DBBackup::class,
