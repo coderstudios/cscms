@@ -10,7 +10,7 @@ Images
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Images</h1>
 

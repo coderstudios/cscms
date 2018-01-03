@@ -10,7 +10,7 @@ User Roles
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>User Roles</h1>
 

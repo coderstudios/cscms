@@ -10,7 +10,7 @@ Admin - Access denied
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Access denied</h1>
             <p>You don't have sufficient permissions to perform that action!</p>

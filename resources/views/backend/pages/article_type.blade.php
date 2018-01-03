@@ -10,7 +10,7 @@ Article Types
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Article Types</h1>
 

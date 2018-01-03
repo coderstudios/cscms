@@ -10,7 +10,7 @@ Notifications
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Notifications</h1>
 

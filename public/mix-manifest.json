@@ -1,8 +1,14 @@
 {
     "/js/frontend/app.js": "/js/frontend/app.js",
+    "/js/frontend/app.js.map": "/js/frontend/app.js.map",
     "/js/backend/app.js": "/js/backend/app.js",
     "/css/backend/app.css": "/css/backend/app.css",
     "/css/frontend/app.css": "/css/frontend/app.css",
+    "/js/backend/app.js.map": "/js/backend/app.js.map",
+    "/css/backend/app.css.map": "/css/backend/app.css.map",
+    "/css/frontend/app.css.map": "/css/frontend/app.css.map",
     "/js/frontend/vendor.js": "/js/frontend/vendor.js",
-    "/js/frontend/manifest.js": "/js/frontend/manifest.js"
+    "/js/frontend/vendor.js.map": "/js/frontend/vendor.js.map",
+    "/js/frontend/manifest.js": "/js/frontend/manifest.js",
+    "/js/frontend/manifest.js.map": "/js/frontend/manifest.js.map"
 }

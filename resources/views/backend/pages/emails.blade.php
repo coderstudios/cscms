@@ -10,7 +10,7 @@ Emails
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Emails</h1>
 

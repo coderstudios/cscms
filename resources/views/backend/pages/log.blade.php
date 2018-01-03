@@ -10,7 +10,7 @@ Error log
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             <h1>Error log</h1>
 

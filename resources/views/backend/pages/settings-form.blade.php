@@ -10,7 +10,7 @@ Settings
 
     <div class="row">
 
-        <div class="col">
+        <div class="col content-container">
 
             @if ($vars['form_type'] == 'create')
             <h1>New setting</h1>
