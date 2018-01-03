@@ -34,7 +34,7 @@ Capabilities
                         <td>{{ $item->enabled === 1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->sort_order }}</td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{ route('backend.capabilities.capability.edit' , ['id' => $item->id ]) }}" class="btn btn-sm btn-primary">Edit</a>
                             <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this capability?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.capabilities.capability.delete' , ['id' => $item->id ]) }}" class="btn btn-sm btn-danger">Delete</a>
                         </td>

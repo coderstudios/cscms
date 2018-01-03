@@ -32,7 +32,7 @@ Settings
                         <td>{{ $item->class }}</td>
                         <td>{{ $item->name }}</td>
                         <td>{{ $item->serialized === 1 ? '[serialized...]' : substr($item->value,0,12) }}{{ strlen($item->value) > 12 && $item->serialized === 0 ? '...':'' }}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{ route('backend.settings.setting.edit' , ['id' => $item->id ]) }}" class="btn btn-sm btn-primary">Edit</a>
                             <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this setting?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.settings.setting.delete' , ['id' => $item->id ]) }}" class="btn btn-sm btn-danger">Delete</a>
                             </td>

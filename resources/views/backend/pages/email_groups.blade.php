@@ -34,7 +34,7 @@ Email Groups
                         <td>{{ $item->enabled === 1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->sort_order }}</td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{ route('backend.email_groups.email_group.edit' , ['id' => $item->id ]) }}" class="btn btn-sm btn-primary">Edit</a>
                             <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this email group?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.email_groups.email_group.delete' , ['id' => $item->id ]) }}" class="btn btn-sm btn-danger">Delete</a>
                         </td>

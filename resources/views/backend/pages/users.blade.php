@@ -38,7 +38,7 @@ Users
                         <td>{{ $item->enabled === 1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->role->name }}</td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                        <td>
+                        <td class="text-nowrap">
                             <a href="{{ route('backend.users.user.edit' , ['id' => $item->id ]) }}" class="btn btn-sm btn-primary">Edit</a>
                             <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.users.user.delete' , ['id' => $item->id ]) }}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
