@@ -16,24 +16,25 @@
  
 namespace CoderStudios\CSCMS\Commands;
 
+use Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 
-class Cache extends Command
+class Update extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'cscms:clear_cache';
+    protected $signature = 'cscms:update';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Clear the cache';
+    protected $description = 'Update package views and assets and clear the cache';
 
     /**
      * Create a new command instance.
@@ -53,9 +54,10 @@ class Cache extends Command
      */
     public function handle()
     {
+        Artisan::call('vendor:publish --tag=public --force');
+        Artisan::call('vendor:publish --tag=views --force');
         $this->cache->flush();
-        $this->info('Cache cleared');
-
+        $this->info('Cache cleared succesfully');
     }
 
 }

@@ -133,7 +133,7 @@ If you are developing your own theme, ensure you add the view composer relevant 
 Once the package is installed you can add
 
 ```
-    "@php artisan cscms:clear_cache"
+    "@php artisan cscms:update"
 ```
 
 to your composer.json so that on package update, any cached data or views get cleared automatically to account for any new package updates
@@ -142,7 +142,7 @@ Example update composer.json file
 
 ```
     "@php artisan package:discover",
-    "@php artisan cscms:clear_cache"
+    "@php artisan cscms:update"
 
 ``` 
 
