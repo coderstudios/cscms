@@ -56,6 +56,7 @@ class Update extends Command
     public function handle()
     {
         if (App::environment(['local','staging'])) {
+            $this->info('Publishing assets and views');
             Artisan::call('vendor:publish', [ '--tag' => 'public', '--force' => true]);
             Artisan::call('vendor:publish', [ '--tag' => 'views', '--force' => true]);
         }
