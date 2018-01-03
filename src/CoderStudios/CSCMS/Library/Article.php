@@ -136,7 +136,7 @@ class Article extends BaseLibrary  {
 				$article = null;
 			}
 			if (count($ids)) {
-				$article = $this->model->whereIn('id', $ids);
+				$article = $this->model->whereIn('id', $ids)->orderBy('id','DESC');
 				if (!$limit) {
 					$article_count = $article->count() > 0 ? $article->count() : 1;
 					$article = $article->paginate($article_count);
@@ -166,7 +166,7 @@ class Article extends BaseLibrary  {
 			}
 			$article_count = 1;
 			if (count($ids)) {
-				$article = $this->model->whereIn('id', $ids);
+				$article = $this->model->whereIn('id', $ids)->orderBy('id','DESC');
 				$article_count = $article->count() > 0 ? $article->count() : 1;
 			}
 			$this->cache->add($key, $article_count, config('cscms.coderstudios.cache_duration'));
