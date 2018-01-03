@@ -47,6 +47,7 @@ class LogController extends Controller
 		$handle = fopen($filename, 'r+');
 		ftruncate($handle, 0);
 		fclose($handle);
+		$this->cache->flush();
 		return redirect()->route('backend.index')->with('success_message','Log file cleared');
 	}
 
