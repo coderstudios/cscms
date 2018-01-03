@@ -39,7 +39,7 @@ Articles
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->slug }}</td>
                         <td>{{ $item->type->name }}</td>
-                        <td>{{ (strlen($item->publish_at)) ? $item->publish_at : '' }}</td>
+                        <td>{{ (strlen($item->publish_at)) ? $item->publish_at->format('d/m/Y H:i:s') : '' }}</td>
                         <td>{{ $item->enabled ===1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->sort_order }}</td>
                         <td>
