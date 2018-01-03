@@ -22,14 +22,6 @@ Images
 
                 @foreach($vars['images'] as $item)
 
-                    @if ($loop->iteration > 4)
-                        @if ($loop->iteration % 4 == 0)
-                            </div>
-                            <hr />
-                            <div class="row">
-                        @endif
-                    @endif
-
                 <div class="col-3">
                     <div class="card">
                         <div class="card-block">
@@ -54,7 +46,13 @@ Images
                         @endif
                     @endif
 
+                    @if ($loop->iteration == count($vars['images']) && $loop->iteration % 4 != 0 )
+                        </div>
+                    @endif
+
                 @endforeach
+
+            </div>
 
             @else
                 <div class="col-12">
