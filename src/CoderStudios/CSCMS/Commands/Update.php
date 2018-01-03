@@ -16,6 +16,7 @@
  
 namespace CoderStudios\CSCMS\Commands;
 
+use App;
 use Artisan;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
@@ -54,8 +55,10 @@ class Update extends Command
      */
     public function handle()
     {
-        Artisan::call('vendor:publish', [ '--tag' => 'public', '--force' => true]);
-        Artisan::call('vendor:publish', [ '--tag' => 'views', '--force' => true]);
+        if (App::environment(['local','staging'])) {
+            Artisan::call('vendor:publish', [ '--tag' => 'public', '--force' => true]);
+            Artisan::call('vendor:publish', [ '--tag' => 'views', '--force' => true]);
+        }
         $this->cache->flush();
         $this->info('Cache cleared succesfully');
     }
