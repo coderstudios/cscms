@@ -16,6 +16,10 @@ Articles
 
             <p class="text-right"><a href="{{ route('backend.articles.article.create')}}" class="btn btn-primary">New article</a></p>
 
+            @if (count($vars['articles']))
+            <p>Displaying {{ count($vars['articles']) }} articles of {{ $vars['total_articles_count'] }}</p>
+            @endif
+
             <table class="table table-bordered table-hover table-sm">
 
                 <thead>

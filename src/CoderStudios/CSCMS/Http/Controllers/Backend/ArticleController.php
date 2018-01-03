@@ -49,6 +49,8 @@ class ArticleController extends Controller
 			$view = $this->cache->get($key);
 		} else {
 			$new_articles = [];
+
+			$total_articles_count = (int)$this->article->getLatestRevisionsCount();
 			$articles = $this->article->getLatestRevisions($this->request->session()->get('config')['config_items_per_page'],$page_id);
 			if(count($articles))
 				foreach($articles as $article) {
@@ -57,7 +59,8 @@ class ArticleController extends Controller
 					$new_articles[] = $article;
 				}
 			$vars = [
-				'articles' => $articles,
+				'articles'				=> $articles,
+				'total_articles_count'	=> $total_articles_count,
 			];
 			$view = view('cscms::backend.pages.article', compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

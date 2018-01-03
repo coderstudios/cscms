@@ -149,6 +149,31 @@ class Article extends BaseLibrary  {
 		return $article;
 	}
 
+	public function getLatestRevisionsCount()
+	{
+		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__));
+		if ($this->cache->has($key)) {
+			$article = $this->cache->get($key);
+		} else {
+			$article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,slug From cscms_articles group by slug) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));
+			$ids = [];
+			if (count($article)) {
+				foreach($article as $a) {
+					$ids[] = $a->id;
+				}
+			} else {
+				$article = null;
+			}
+			$article_count = 1;
+			if (count($ids)) {
+				$article = $this->model->whereIn('id', $ids);
+				$article_count = $article->count() > 0 ? $article->count() : 1;
+			}
+			$this->cache->add($key, $article_count, config('cscms.coderstudios.cache_duration'));
+		}
+		return $article_count;
+	}
+	
 	public function getEnabled($enabled = 1, $limit = 0)
 	{
 		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $limit . '_' . $enabled));
