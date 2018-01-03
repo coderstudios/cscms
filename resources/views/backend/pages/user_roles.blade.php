@@ -33,8 +33,8 @@ User Roles
                         <td>{{ $item->enabled === 1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
                         <td>
-                            <a href="{{ route('backend.user_roles.user_role.edit' , ['id' => $item->id ]) }}" class="btn">Edit</a>
-                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user role?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.user_roles.user_role.delete' , ['id' => $item->id ]) }}" class="btn">Delete</a>
+                            <a href="{{ route('backend.user_roles.user_role.edit' , ['id' => $item->id ]) }}" class="btn btn-primary">Edit</a>
+                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this user role?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.user_roles.user_role.delete' , ['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                     @endforeach

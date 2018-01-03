@@ -33,8 +33,8 @@ Article Types
                         <td>{{ $item->enabled ===1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->sort_order }}</td>
                         <td>
-                            <a href="{{ route('backend.article_types.article_type.edit' , ['id' => $item->id ]) }}" class="btn">Edit</a>
-                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this article type?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.article_types.article_type.delete' , ['id' => $item->id ]) }}" class="btn">Delete</a>
+                            <a href="{{ route('backend.article_types.article_type.edit' , ['id' => $item->id ]) }}" class="btn btn-primary">Edit</a>
+                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this article type?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.article_types.article_type.delete' , ['id' => $item->id ]) }}" class="btn btn-danger">Delete</a>
                             </td>
                     </tr>
                     @endforeach

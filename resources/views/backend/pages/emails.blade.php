@@ -40,7 +40,7 @@ Emails
                             @endif
                         </td>
                         <td>{{ $item->created_at->format('d-m-Y') }}</td>
-                        <td><a href="{{ route('backend.emails.email.edit' , ['id' => $item->id ]) }}" class="btn">Edit</a></td>
+                        <td><a href="{{ route('backend.emails.email.edit' , ['id' => $item->id ]) }}" class="btn btn-primary">Edit</a></td>
                     </tr>
                     @endforeach
                 @else

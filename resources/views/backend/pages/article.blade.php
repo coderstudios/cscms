@@ -43,8 +43,8 @@ Articles
                         <td>{{ $item->enabled ===1 ? 'Yes' : 'No' }}</td>
                         <td>{{ $item->sort_order }}</td>
                         <td>
-                            <a href="{{ route('backend.articles.article.edit' , ['id' => !empty($item->latest_revision_id) ? $item->latest_revision_id : $item->id ]) }}" class="btn">Edit</a>
-                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this article?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.articles.article.delete' , ['id' => !empty($item->latest_revision_id) ? $item->latest_revision_id : $item->id ]) }}" class="btn">Delete</a>
+                            <a href="{{ route('backend.articles.article.edit' , ['id' => !empty($item->latest_revision_id) ? $item->latest_revision_id : $item->id ]) }}" class="btn btn-primary">Edit</a>
+                            <a onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this article?')){document.getElementById('delete-form').setAttribute('action',this.href); document.getElementById('delete-form').submit();}" href="{{ route('backend.articles.article.delete' , ['id' => !empty($item->latest_revision_id) ? $item->latest_revision_id : $item->id ]) }}" class="btn btn-danger">Delete</a>
                             </td>
                     </tr>
                     @endforeach
