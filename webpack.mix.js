@@ -21,7 +21,8 @@ mix
     .sass('resources/assets/backend/sass/app.scss', 'public/css/backend')
     .copy('resources/assets/backend/img', 'public/img/backend')
     .extract(['dropzone'])
-    .sourceMaps();
+    .sourceMaps()
+    .version();
     // .copy('public', '../app/public/vendor/cscms')
 
 mix
