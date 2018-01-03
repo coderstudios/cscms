@@ -44,16 +44,16 @@ class Upload extends BaseLibrary {
 		$upload = $this->model;
 		$key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $limit . '_' . $page));
 		if ($this->cache->has($key)) {
-			$upoad = $this->cache->get($key);
+			$upload = $this->cache->get($key);
 		} else {
 			if (!$limit) {
 				$upload_count = $upload->count() > 0 ? $upload->count() : 1;
-				$upoad = $upoad->paginate($upload_count);
+				$upload = $upload->paginate($upload_count);
 			} else {
-				$upoad = $upoad->paginate($limit);
+				$upload = $upload->paginate($limit);
 			}
-			$this->cache->add($key, $upoad, config('cscms.coderstudios.cache_duration'));
+			$this->cache->add($key, $upload, config('cscms.coderstudios.cache_duration'));
 		}
-		return $upoad;
+		return $upload;
 	}
 }
