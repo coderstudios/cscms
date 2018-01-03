@@ -54,8 +54,8 @@ class Update extends Command
      */
     public function handle()
     {
-        Artisan::call('vendor:publish --tag=public --force');
-        Artisan::call('vendor:publish --tag=views --force');
+        Artisan::call('vendor:publish', [ '--tag' => 'public', '--force' => true]);
+        Artisan::call('vendor:publish', [ '--tag' => 'views', '--force' => true]);
         $this->cache->flush();
         $this->info('Cache cleared succesfully');
     }
