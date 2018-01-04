@@ -14,7 +14,12 @@ window.Popper = require('popper.js').default;
 require('bootstrap');
 
 window.CKEDITOR_BASEPATH = '/vendor/cscms/js/ckeditor/'
-require('ckeditor')
+require('ckeditor');
+
+window.CKEDITOR.config.allowedContent = true;
+window.CKEDITOR.config.extraAllowedContent = '*(*);*{*}';
+
+
 
 /**
  * Vue is a modern JavaScript library for building interactive web interfaces

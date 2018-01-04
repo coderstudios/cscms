@@ -9,6 +9,9 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <meta property="og:url" content="{{ url()->full() }}">
+        <meta property="og:type" content="website">
+
         @yield('metas')
         <link rel="stylesheet" href="/vendor/cscms/css/frontend/app.css">
         <style type="text/css">
