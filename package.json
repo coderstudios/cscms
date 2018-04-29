@@ -11,9 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.17",
-    "jquery": "^3.1.1",
-    "lodash": "^4.17.4",
-    "moment": "^2.20.1",
+    "moment": "^2.22.1",
     "phpunserialize": "1.*",
     "tether": "1.4.1"
   },
@@ -21,14 +19,14 @@
     "axios": "^0.17",
     "bootstrap": "4.0.0",
     "ckeditor": "4.7.*",
-    "cross-env": "^5.1",
+    "cross-env": "^5.1.4",
     "dropzone": "4.3.0",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.1.1",
+    "jquery": "^3.3.1",
     "laravel-mix": "^1.7.2",
-    "lodash": "^4.17.4",
-    "popper.js": "^1.13.0",
+    "lodash": "^4.17.10",
+    "popper.js": "^1.14.3",
     "tether": "1.4.1",
-    "vue": "^2.5.13"
+    "vue": "^2.5.16"
   }
 }
