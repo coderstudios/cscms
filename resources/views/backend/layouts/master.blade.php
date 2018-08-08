@@ -119,7 +119,7 @@
                                 <li class="nav-item"><a class="nav-link" href="/" target="_blank">Site homepage</a></li>
                             </ul>
                         </div>
-                    <hr />
+                    </nav>
                 </div>
             </div>
 
