@@ -55,7 +55,7 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        return redirect()->route('frontend.index');
+        return redirect()->route('index');
     }
 
     /**

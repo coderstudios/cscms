@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <div class="card">
+            <div class="card p-4">
                 <div class="card-block">
                     <h4 class="card-title">Login</h4>
                     <form role="form" method="POST" action="{{ route('backend.login') }}">
