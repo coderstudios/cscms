@@ -45,7 +45,7 @@ class ArticleTypeController extends Controller
 			$view = $this->cache->get($key);
 		} else {
 			$vars = [
-				'article_types' => $this->article_type->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
+				'article_types' => $this->article_type->getAll($this->request->config['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.article_type', compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

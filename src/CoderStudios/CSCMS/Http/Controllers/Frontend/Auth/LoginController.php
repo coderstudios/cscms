@@ -84,7 +84,7 @@ class LoginController extends Controller
             return $this->sendLockoutResponse($request);
         }
 
-        if ($this->request->session()->get('config')['user_verify_users'] && !$this->user->isVerified($request)) {
+        if ($this->request->config['user_verify_users'] && !$this->user->isVerified($request)) {
             return $this->sendNotVerifiedLoginResponse($request);
         }
 

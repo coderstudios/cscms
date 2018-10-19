@@ -52,7 +52,7 @@ class Settings
             $config['user_require_username'] = 0;
             $config['user_allow_registration'] = 0;
         }
-        $request->session()->put('config',$config);
+        $request->config = $config;
 
         return $next($request);
     }

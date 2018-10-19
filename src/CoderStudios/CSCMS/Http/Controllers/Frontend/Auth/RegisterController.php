@@ -62,11 +62,11 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        if (!$this->request->session()->get('config')['user_allow_registration']) {
+        if (!$this->request->config['user_allow_registration']) {
             return redirect()->route('frontend.index');
         }
         $vars = [
-            'required_username' => $this->request->session()->get('config')['user_require_username'],
+            'required_username' => $this->request->config['user_require_username'],
         ];
         return view('cscms::frontend.default.auth.register',compact('vars'));
     }
@@ -84,7 +84,7 @@ class RegisterController extends Controller
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
         ];
-        if ($this->request->session()->get('config')['user_require_username']) {
+        if ($this->request->config['user_require_username']) {
             $validation['username'] = 'required|max:255|unique:users';
         }
         return Validator::make($data, $validation);
@@ -105,7 +105,7 @@ class RegisterController extends Controller
             'user_role_id' => 1,
         ];
         $user_data['username'] = substr(md5($user_data['email']),0,8);
-        if ($this->request->session()->get('config')['user_require_username']) {
+        if ($this->request->config['user_require_username']) {
             $user_data['username'] = $data['username'];
         }
         return User::create($user_data);

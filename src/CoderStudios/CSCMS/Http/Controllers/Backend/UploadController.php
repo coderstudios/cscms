@@ -49,7 +49,7 @@ class UploadController extends Controller
 			$view = $this->cache->get($key);
 		} else {
 			$vars = [
-				'uploads' => $this->upload->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
+				'uploads' => $this->upload->getAll($this->request->config['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.uploads', compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

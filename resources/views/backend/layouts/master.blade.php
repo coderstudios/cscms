@@ -122,19 +122,15 @@
                     </nav>
                 </div>
             </div>
-
-            @include('cscms::backend.partials.banner',[
-                'success_message' => $success_message,
-                'error_message' => $error_message,
-                'csrf_error' => $csrf_error,
-            ])
-
-            <div class="row">
-                <div class="col content">
-                    @yield('content')
-                </div>
-            </div>
         </div>
+
+        @include('cscms::backend.partials.banner',[
+            'success_message' => $success_message,
+            'error_message' => $error_message,
+            'csrf_error' => $csrf_error,
+        ])
+
+        @yield('content')
 
         <div class="container footer">
             <div class="row">

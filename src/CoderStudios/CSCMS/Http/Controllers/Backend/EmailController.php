@@ -46,7 +46,7 @@ class EmailController extends Controller
 			$view = $this->cache->get($key);
 		} else {
 			$vars = [
-				'emails' => $this->email->getAll($this->request->session()->get('config')['config_items_per_page'],$page_id),
+				'emails' => $this->email->getAll($this->request->config['config_items_per_page'],$page_id),
 			];
 			$view = view('cscms::backend.pages.emails', compact('vars'))->render();
 			$this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

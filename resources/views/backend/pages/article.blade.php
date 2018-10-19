@@ -50,7 +50,7 @@ Articles
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="4">No articles found</td>
+                        <td colspan="7">No articles found</td>
                     </tr>
                 @endif
 

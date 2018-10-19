@@ -51,7 +51,7 @@ class ArticleController extends Controller
 			$new_articles = [];
 
 			$total_articles_count = (int)$this->article->getLatestRevisionsCount();
-			$articles = $this->article->getLatestRevisions($this->request->session()->get('config')['config_items_per_page'],$page_id);
+			$articles = $this->article->getLatestRevisions($this->request->config['config_items_per_page'],$page_id);
 			if(count($articles))
 				foreach($articles as $article) {
 					$article_type = $this->article_type->get($article->article_type_id);

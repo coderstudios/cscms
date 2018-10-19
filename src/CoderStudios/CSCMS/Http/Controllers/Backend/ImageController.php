@@ -52,7 +52,7 @@ class ImageController extends Controller
 			$view = $this->cache->get($key);
 		} else {
 			$images = $this->image->getAll([
-					'size' => $this->request->session()->get('config')['config_items_per_page'], 
+					'size' => $this->request->config['config_items_per_page'], 
 					'page' => $page_id,
 					'order' => 'id',
 					'dir' => 'DESC',
