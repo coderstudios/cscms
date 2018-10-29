@@ -16,6 +16,7 @@
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
+use View;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use CoderStudios\CSCMS\Library\Users;

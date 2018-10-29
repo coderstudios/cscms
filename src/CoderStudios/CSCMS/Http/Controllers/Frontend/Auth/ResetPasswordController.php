@@ -16,6 +16,7 @@
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
+use View;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
