@@ -62,7 +62,11 @@ class ResetPasswordController extends Controller
      */
     public function showResetForm(Request $request, $token = null)
     {
-        return view('cscms::frontend.default.auth.passwords.reset')->with(
+        $view = 'cscms::frontend.default.auth.passwords.reset';
+        if (View::exists(config('cscms.coderstudios.theme').'.auth.passwords.reset')) {
+            $view = config('cscms.coderstudios.theme').'.auth.passwords.reset';
+        }
+        return view($view)->with(
             ['token' => $token, 'email' => $request->email]
         );
     }

@@ -51,7 +51,11 @@ class ForgotPasswordController extends Controller
      */
     public function showLinkRequestForm()
     {
-        return view('cscms::frontend.default.auth.passwords.email');
+        $view = 'cscms::frontend.default.auth.passwords.email';
+        if (View::exists(config('cscms.coderstudios.theme').'.auth.passwords.email')) {
+            $view = config('cscms.coderstudios.theme').'.auth.passwords.email';
+        }
+        return view($view);
     }
 
 }

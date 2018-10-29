@@ -89,7 +89,6 @@ class HomeController extends Controller
         } else {
             $language_id = 1;
             $theme = config('cscms.coderstudios.theme');
-            $theme = config('cscms.coderstudios.theme');
             $view_file = 'cscms::frontend.default.pages.page';
             if (View::exists($theme.'.pages.page')) {
                 $view_file = $theme.'.pages.page';

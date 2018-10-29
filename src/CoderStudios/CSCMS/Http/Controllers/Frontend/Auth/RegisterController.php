@@ -68,7 +68,11 @@ class RegisterController extends Controller
         $vars = [
             'required_username' => $this->request->config['user_require_username'],
         ];
-        return view('cscms::frontend.default.auth.register',compact('vars'));
+        $view = 'cscms::frontend.default.auth.register';
+        if (View::exists(config('cscms.coderstudios.theme').'.auth.register')) {
+            $view = config('cscms.coderstudios.theme').'.auth.register';
+        }
+        return view($view,compact('vars'));
     }
 
     /**

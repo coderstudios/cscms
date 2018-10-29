@@ -62,7 +62,11 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        return view('cscms::frontend.default.auth.login');
+        $view = 'cscms::frontend.default.auth.login';
+        if (View::exists(config('cscms.coderstudios.theme').'.auth.login')) {
+            $view = config('cscms.coderstudios.theme').'.auth.login';
+        }
+        return view($view);
     }
 
     /**
