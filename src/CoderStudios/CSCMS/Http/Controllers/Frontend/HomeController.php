@@ -58,9 +58,9 @@ class HomeController extends Controller
             $view = $this->cache->get($key);
         } else {
             $theme = config('cscms.coderstudios.theme');
-            $view_file = 'cscms::frontend.default.pages.index';
-            if (View::exists($theme.'.pages.index')) {
-                $view_file = $theme.'.pages.index';
+            $view_file = 'cscms::frontend.default.pages.home';
+            if (View::exists($theme.'.pages.home')) {
+                $view_file = $theme.'.pages.home';
             } else {
                 $theme = 'default';
             }
