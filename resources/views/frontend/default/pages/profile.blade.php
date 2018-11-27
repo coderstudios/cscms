@@ -14,7 +14,7 @@ Profile
 
             <h1>Profile</h1>
 
-            @include('cscms::backend.partials.errors')
+            @include('cscms::frontend.partials.errors')
 
             <form method="post" action="{{ $vars['action'] }}">
                 {!! csrf_field() !!}
