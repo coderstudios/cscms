@@ -10,15 +10,15 @@
  * @version    1.0.0
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
- * @copyright  (c) 2017, Coder Studios Ltd
+ * @copyright  (c) 2022, Coder Studios Ltd
  * @link       https://www.coderstudios.com
  */
 
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['auth'] ] , function() {
+Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['auth'] ] , function() {
 	Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
 });
 
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['web','auth','cache']] , function() {
+Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web','auth','cache']] , function() {
 
 	Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
 	Route::get('/phpinfo', ['as' => 'phpinfo', 'uses' => 'HomeController@phpinfo']);
@@ -140,7 +140,7 @@ Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'p
 
 });
 
-Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'prefix' => 'admin', 'as' => 'backend.', 'middleware' => ['web']] , function() {
+Route::group( [ 'namespace' => 'CoderStudios\CSCMS\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web']] , function() {
 
 	Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 	Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);

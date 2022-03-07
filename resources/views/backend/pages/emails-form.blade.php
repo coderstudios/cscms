@@ -1,4 +1,4 @@
-@extends('cscms::backend.layouts.master')
+@extends('cscms::backend.layouts.app')
 
 @section('page_title')
 Email

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Part of the CSCMS package by Coder Studios.
  *
@@ -10,7 +10,7 @@
  * @version    1.0.0
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
- * @copyright  (c) 2017, Coder Studios Ltd
+ * @copyright  (c) 2022, Coder Studios Ltd
  * @link       https://www.coderstudios.com
  */
 
@@ -36,6 +36,8 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/resources/views', 'cscms');
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cscms');
+
+        /*
 
         $this->publishes([
             __DIR__.'/Policies' => app_path('/Policies'),
@@ -80,13 +82,7 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->app->make('view')->composer('cscms::frontend.default.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
         $this->app->make('view')->composer('cscms::backend.layouts.master','CoderStudios\CSCMS\Composers\Backend\MasterComposer');
 
-        $this->commands([
-            Commands\Install::class,
-            Commands\Update::class,
-            Commands\Reset::class,
-            Commands\Email::class,
-            Commands\DBBackup::class,
-        ]);
+        */
     }
 
     /**
@@ -101,12 +97,14 @@ class CSCMSServiceProvider extends ServiceProvider
 
         if (file_exists(base_path('routes/cscms_backend.php'))) {
             Route::middleware('web')
+                ->prefix(config('cscms.coderstudios.backend_prefix'))
                 ->group(base_path('routes/cscms_backend.php'));
         }
 
         if (file_exists(base_path('routes/cscms_frontend.php'))) {
             Route::middleware('web')
-                 ->group(base_path('routes/cscms_frontend.php'));
+                ->prefix(config('cscms.coderstudios.frontend_prefix'))
+                ->group(base_path('routes/cscms_frontend.php'));
         }
     }
 
@@ -130,9 +128,13 @@ class CSCMSServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../../../config/cscms.php', 'cscms'
         );
-        
-        $this->mergeConfigFrom(
-            __DIR__.'/../../../config/cache.php', 'cache.stores'
-        );
+
+        $this->commands([
+            Commands\Install::class,
+            Commands\Update::class,
+            Commands\Reset::class,
+            Commands\Email::class,
+            Commands\DBBackup::class,
+        ]);
     }
 }

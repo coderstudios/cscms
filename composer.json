@@ -37,7 +37,10 @@
         "laravel": {
             "providers": [
                 "CoderStudios\\CSCMS\\CSCMSServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "CSCMS": "CoderStudios\\CSCMS\\Facade"
+            }
         }
     },
     "prefer-stable": true,

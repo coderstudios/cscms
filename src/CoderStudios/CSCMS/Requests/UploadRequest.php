@@ -10,7 +10,7 @@
  * @version    1.0.0
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
- * @copyright  (c) 2017, Coder Studios Ltd
+ * @copyright  (c) 2022, Coder Studios Ltd
  * @link       https://www.coderstudios.com
  */
 

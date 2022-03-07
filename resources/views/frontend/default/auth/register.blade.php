@@ -1,4 +1,4 @@
-@extends('cscms::frontend.default.layouts.master')
+@extends('cscms::frontend.default.layouts.app')
 
 @section('page_title')
 Register

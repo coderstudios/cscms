@@ -1,7 +1,7 @@
 CSCMS
 ==========
 
-CSCMS is a cms package in PHP for use with a Laravel project.
+CSCMS is a CMS package in PHP for use with a Laravel project.
 
 
 [![Latest Stable Version](https://poser.pugx.org/coderstudios/cscms/v/stable)](https://packagist.org/packages/coderstudios/cscms)
@@ -17,12 +17,7 @@ To install CSCMS as a Composer package to be used with Laravel 5+, simply add th
 "coderstudios/cscms": "1.0.*"
 ```
 
-..and run `composer update`.  Once it's installed, you can register the service providers in `app/config/app.php` in the `providers` array add:
-
-```php
-    CoderStudios\CSCMS\CSCMSServiceProvider::class,
-    CoderStudios\CSCMS\Policies\PolicyProvider::class,
-```
+..and run `composer update`.
 
 Edit App\Exceptions\Handler.php
 
