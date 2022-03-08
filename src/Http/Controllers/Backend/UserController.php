@@ -35,7 +35,7 @@ class UserController extends Controller
         $this->users = $users;
         $this->request = $request;
         $this->user_roles = $user_roles;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->users->getFillable();
     }
 

@@ -35,7 +35,7 @@ class BackupsController extends Controller
         $this->utils = $utils;
         $this->request = $request;
         $this->capability = $capability;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function index()

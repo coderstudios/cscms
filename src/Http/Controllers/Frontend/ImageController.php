@@ -33,7 +33,7 @@ class ImageController extends Controller
         $this->image = $image;
         $this->request = $request;
         $this->image_helper = $imageHelper;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->image->getFillable();
     }
 

@@ -30,7 +30,7 @@ class LanguageController extends Controller
     {
         $this->request = $request;
         $this->language = $language;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->language->getFillable();
     }
 

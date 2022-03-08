@@ -33,7 +33,7 @@ class NotificationController extends Controller
         $this->nr = $nr;
         $this->request = $request;
         $this->notifications = $notifications;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->notifications->getFillable();
     }
 

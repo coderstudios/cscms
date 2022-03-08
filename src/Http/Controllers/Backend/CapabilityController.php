@@ -30,7 +30,7 @@ class CapabilityController extends Controller
     {
         $this->request = $request;
         $this->capability = $capability;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->capability->getFillable();
     }
 

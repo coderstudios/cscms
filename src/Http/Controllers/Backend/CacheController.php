@@ -30,9 +30,9 @@ class CacheController extends Controller
         $this->utils = $utils;
         $this->capability = $capability;
         $this->cache = $cache->store('file');
-        $this->data_cache = $cache->store('models');
-        $this->backend_cache = $cache->store('backend_views');
-        $this->frontend_cache = $cache->store('frontend_views');
+        $this->data_cache = $cache->store(config('cache.default'));
+        $this->backend_cache = $cache->store(config('cache.default'));
+        $this->frontend_cache = $cache->store(config('cache.default'));
     }
 
     public function index()

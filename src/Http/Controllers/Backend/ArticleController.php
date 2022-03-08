@@ -35,7 +35,7 @@ class ArticleController extends Controller
         $this->article = $article;
         $this->language = $language;
         $this->article_type = $article_type;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->article->getFillable();
     }
 
