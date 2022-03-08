@@ -6,58 +6,54 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Requests;
 
-use CoderStudios\CSCMS\Requests;
+class ArticleRequest extends Request
+{
+    /**
+     * Determine if the user is authorised to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
 
-class ArticleRequest extends Request {
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'article_type_id' => 'required|integer',
+            'slug' => 'required|max:128',
+            'title' => 'required|max:255',
+            'meta_description' => 'required|max:255',
+            'sort_order' => 'nullable|integer',
+            'enabled' => 'boolean',
+        ];
+    }
 
-	/**
-	 * Determine if the user is authorised to make this request.
-	 *
-	 * @return boolean
-	 */
-	public function authorize()
-	{
-		return true;
-	}
-
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		$rules = [
-            'article_type_id'	=> 'required|integer',
-            'slug'				=> 'required|max:128',
-            'title'				=> 'required|max:255',
-            'meta_description'	=> 'required|max:255',
-            'sort_order'		=> 'nullable|integer',
-            'enabled'			=> 'boolean',
-		];
-
-		return $rules;
-	}
-
-	/**
-	 * Override the default error messages.
-	 *
-	 * @return array
-	 */
-	public function messages()
-	{
-		return [
-
-		];
-	}
+    /**
+     * Override the default error messages.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+        ];
+    }
 }

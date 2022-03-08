@@ -6,12 +6,13 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS;
@@ -19,16 +20,13 @@ namespace CoderStudios\CSCMS;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class CSCMSServiceProvider extends ServiceProvider 
+class CSCMSServiceProvider extends ServiceProvider
 {
-  	/**
-	 * Boot the service provider.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-
+    /**
+     * Boot the service provider.
+     */
+    public function boot()
+    {
         $this->registerRoutes();
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
@@ -86,32 +84,7 @@ class CSCMSServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register the package routes.
-     *
-     * @return void
-     */
-    protected function registerRoutes()
-    {
-        Route::middleware('web')
-             ->group(base_path('routes/web.php'));
-
-        if (file_exists(base_path('routes/cscms_backend.php'))) {
-            Route::middleware('web')
-                ->prefix(config('cscms.coderstudios.backend_prefix'))
-                ->group(base_path('routes/cscms_backend.php'));
-        }
-
-        if (file_exists(base_path('routes/cscms_frontend.php'))) {
-            Route::middleware('web')
-                ->prefix(config('cscms.coderstudios.frontend_prefix'))
-                ->group(base_path('routes/cscms_frontend.php'));
-        }
-    }
-
-    /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
@@ -119,14 +92,37 @@ class CSCMSServiceProvider extends ServiceProvider
     }
 
     /**
+     * Register the package routes.
+     */
+    protected function registerRoutes()
+    {
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'))
+        ;
+
+        if (file_exists(base_path('routes/cscms_backend.php'))) {
+            Route::middleware('web')
+                ->prefix(config('cscms.coderstudios.backend_prefix'))
+                ->group(base_path('routes/cscms_backend.php'))
+            ;
+        }
+
+        if (file_exists(base_path('routes/cscms_frontend.php'))) {
+            Route::middleware('web')
+                ->prefix(config('cscms.coderstudios.frontend_prefix'))
+                ->group(base_path('routes/cscms_frontend.php'))
+            ;
+        }
+    }
+
+    /**
      * Setup the configuration for CSCMS.
-     *
-     * @return void
      */
     protected function configure()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../../../config/cscms.php', 'cscms'
+            __DIR__.'/../../../config/cscms.php',
+            'cscms'
         );
 
         $this->commands([

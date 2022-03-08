@@ -6,26 +6,30 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Traits;
 
-trait ScopeEnabled {
-
+trait ScopeEnabled
+{
     /**
-     * Enabled filter
-     * @param  $query
+     * Enabled filter.
+     *
+     * @param $query
      * @param  value
+     * @param mixed $enabled
+     *
      * @return collection
      */
     public function scopeEnabled($query, $enabled = 1)
     {
-        $query->where('enabled','=',$enabled);
+        $query->where('enabled', '=', $enabled);
     }
 }

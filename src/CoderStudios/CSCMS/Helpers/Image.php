@@ -6,18 +6,19 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Helpers;
 
-class Image {
-
+class Image
+{
     /*
     |--------------------------------------------------------------------------
     | Image Class
@@ -34,150 +35,143 @@ class Image {
     private $info;
 
     /**
+     * @param $file path to image file
      *
-     * @param  $file path to image file
-     *
-     * @return Object
+     * @return object
      */
-    public function setPath($file) {
+    public function setPath($file)
+    {
         if (file_exists($file)) {
             $this->file = $file;
 
             $info = getimagesize($file);
 
-            $this->info = array(
-                'width'  => $info[0],
+            $this->info = [
+                'width' => $info[0],
                 'height' => $info[1],
-                'bits'   => $info['bits'],
-                'mime'   => $info['mime']
-            );
+                'bits' => $info['bits'],
+                'mime' => $info['mime'],
+            ];
 
             $this->image = $this->create($file);
         } else {
-            exit('Error: Could not load image ' . $file . '!');
+            exit('Error: Could not load image '.$file.'!');
         }
+
         return $this;
     }
 
     /**
+     * Save a new file based on the file passed.
      *
-     * @param  $image path to image file
-     *
-     * @return Object
-     */
-	private function create($image) {
-		$mime = $this->info['mime'];
-
-		if ($mime == 'image/gif') {
-			return imagecreatefromgif($image);
-		} elseif ($mime == 'image/png') {
-			return imagecreatefrompng($image);
-		} elseif ($mime == 'image/jpeg') {
-			return imagecreatefromjpeg($image);
-		}
-    }
-
-    /**
-     * Save a new file based on the file passed
-     *
-     * @param  $file path to image file
-     * @param  $quality default to 100 quality used for jpeg outputs
+     * @param $file    path to image file
+     * @param $quality default to 100 quality used for jpeg outputs
      *
      * @return
      */
-    public function save($file, $quality = 100) {
+    public function save($file, $quality = 100)
+    {
         $info = pathinfo($file);
         $extension = strtolower($info['extension']);
 
-        if ($extension == 'jpeg' || $extension == 'jpg') {
+        if ('jpeg' == $extension || 'jpg' == $extension) {
             imagejpeg($this->image, $file, $quality);
-        } elseif($extension == 'png') {
+        } elseif ('png' == $extension) {
             imagepng($this->image, $file, 0);
-        } elseif($extension == 'gif') {
+        } elseif ('gif' == $extension) {
             imagegif($this->image, $file);
         }
 
-	    imagedestroy($this->image);
+        imagedestroy($this->image);
     }
 
     /**
-     * Resize an image based on dimensions
+     * Resize an image based on dimensions.
      *
-     * @param  $width new width of image
-     * @param  $height new height of image
+     * @param $width  new width of image
+     * @param $height new height of image
      *
      * @return
      */
-    public function resize($width = 0, $height = 0) {
-    	if (!$this->info['width'] || !$this->info['height']) {
-			return;
-		}
+    public function resize($width = 0, $height = 0)
+    {
+        if (!$this->info['width'] || !$this->info['height']) {
+            return;
+        }
 
-		$xpos = 0;
-		$ypos = 0;
+        $xpos = 0;
+        $ypos = 0;
 
-		$scale = min($width / $this->info['width'], $height / $this->info['height']);
+        $scale = min($width / $this->info['width'], $height / $this->info['height']);
 
-		if ($scale == 1) {
-			return;
-		}
+        if (1 == $scale) {
+            return;
+        }
 
-		$new_width = (int)($this->info['width'] * $scale);
-		$new_height = (int)($this->info['height'] * $scale);
-    	$xpos = (int)(($width - $new_width) / 2);
-   		$ypos = (int)(($height - $new_height) / 2);
+        $new_width = (int) ($this->info['width'] * $scale);
+        $new_height = (int) ($this->info['height'] * $scale);
+        $xpos = (int) (($width - $new_width) / 2);
+        $ypos = (int) (($height - $new_height) / 2);
 
-       	$image_old = $this->image;
+        $image_old = $this->image;
         $this->image = imagecreatetruecolor($width, $height);
 
-		if (isset($this->info['mime']) && $this->info['mime'] == 'image/png') {
-			imagealphablending($this->image, false);
-			imagesavealpha($this->image, true);
-			$background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
-			imagecolortransparent($this->image, $background);
-		} else {
-			$background = imagecolorallocate($this->image, 255, 255, 255);
-		}
+        if (isset($this->info['mime']) && 'image/png' == $this->info['mime']) {
+            imagealphablending($this->image, false);
+            imagesavealpha($this->image, true);
+            $background = imagecolorallocatealpha($this->image, 255, 255, 255, 127);
+            imagecolortransparent($this->image, $background);
+        } else {
+            $background = imagecolorallocate($this->image, 255, 255, 255);
+        }
 
-		imagefilledrectangle($this->image, 0, 0, $width, $height, $background);
+        imagefilledrectangle($this->image, 0, 0, $width, $height, $background);
 
         imagecopyresampled($this->image, $image_old, $xpos, $ypos, 0, 0, $new_width, $new_height, $this->info['width'], $this->info['height']);
         imagedestroy($image_old);
 
-        $this->info['width']  = $width;
+        $this->info['width'] = $width;
         $this->info['height'] = $height;
     }
 
     /**
-     * Create a watermark image
+     * Create a watermark image.
      *
-     * @param  $file filepath to watermark image
-     * @param  $position where to position the watermark default bottomright
+     * @param $file     filepath to watermark image
+     * @param $position where to position the watermark default bottomright
      *
      * @return
      */
-    public function watermark($file, $position = 'bottomright') {
+    public function watermark($file, $position = 'bottomright')
+    {
         $watermark = $this->create($file);
 
         $watermark_width = imagesx($watermark);
         $watermark_height = imagesy($watermark);
 
-        switch($position) {
+        switch ($position) {
             case 'topleft':
                 $watermark_pos_x = 0;
                 $watermark_pos_y = 0;
+
                 break;
+
             case 'topright':
                 $watermark_pos_x = $this->info['width'] - $watermark_width;
                 $watermark_pos_y = 0;
+
                 break;
+
             case 'bottomleft':
                 $watermark_pos_x = 0;
                 $watermark_pos_y = $this->info['height'] - $watermark_height;
+
                 break;
+
             case 'bottomright':
                 $watermark_pos_x = $this->info['width'] - $watermark_width;
                 $watermark_pos_y = $this->info['height'] - $watermark_height;
+
                 break;
         }
 
@@ -187,16 +181,17 @@ class Image {
     }
 
     /**
-     * Crop an image
+     * Crop an image.
      *
-     * @param  $top_x
-     * @param  $top_y
-     * @param  $bottom_x
-     * @param  $bottom_y
+     * @param $top_x
+     * @param $top_y
+     * @param $bottom_x
+     * @param $bottom_y
      *
      * @return
      */
-    public function crop($top_x, $top_y, $bottom_x, $bottom_y) {
+    public function crop($top_x, $top_y, $bottom_x, $bottom_y)
+    {
         $image_old = $this->image;
         $this->image = imagecreatetruecolor($bottom_x - $top_x, $bottom_y - $top_y);
 
@@ -208,61 +203,85 @@ class Image {
     }
 
     /**
-     * Rotate an image
+     * Rotate an image.
      *
-     * @param  $degree
-     * @param  $color
+     * @param $degree
+     * @param $color
      *
      * @return
      */
-    public function rotate($degree, $color = 'FFFFFF') {
-		$rgb = $this->html2rgb($color);
+    public function rotate($degree, $color = 'FFFFFF')
+    {
+        $rgb = $this->html2rgb($color);
 
         $this->image = imagerotate($this->image, $degree, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
 
-		$this->info['width'] = imagesx($this->image);
-		$this->info['height'] = imagesy($this->image);
+        $this->info['width'] = imagesx($this->image);
+        $this->info['height'] = imagesy($this->image);
     }
 
     /**
-     * Filter an image
+     * @param $image path to image file
      *
-     * @param  $filter
+     * @return object
+     */
+    private function create($image)
+    {
+        $mime = $this->info['mime'];
+
+        if ('image/gif' == $mime) {
+            return imagecreatefromgif($image);
+        }
+        if ('image/png' == $mime) {
+            return imagecreatefrompng($image);
+        }
+        if ('image/jpeg' == $mime) {
+            return imagecreatefromjpeg($image);
+        }
+    }
+
+    /**
+     * Filter an image.
+     *
+     * @param $filter
      *
      * @return
      */
-    private function filter($filter) {
+    private function filter($filter)
+    {
         imagefilter($this->image, $filter);
     }
 
     /**
-     * Create text as an image
+     * Create text as an image.
      *
-     * @param  $text
-     * @param  $x
-     * @param  $y
-     * @param  $size
-     * @param  $color
+     * @param $text
+     * @param $x
+     * @param $y
+     * @param $size
+     * @param $color
      *
      * @return
      */
-    private function text($text, $x = 0, $y = 0, $size = 5, $color = '000000') {
-		$rgb = $this->html2rgb($color);
+    private function text($text, $x = 0, $y = 0, $size = 5, $color = '000000')
+    {
+        $rgb = $this->html2rgb($color);
 
-		imagestring($this->image, $size, $x, $y, $text, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
+        imagestring($this->image, $size, $x, $y, $text, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
     }
 
     /**
-     * Merge an image with existing image
+     * Merge an image with existing image.
      *
-     * @param  $file
-     * @param  $x
-     * @param  $y
-     * @param  $opacity
+     * @param $file
+     * @param $x
+     * @param $y
+     * @param $opacity
      *
      * @return
      */
-    private function merge($file, $x = 0, $y = 0, $opacity = 100) {
+    private function merge($file, $x = 0, $y = 0, $opacity = 100)
+    {
         $merge = $this->create($file);
 
         $merge_width = imagesx($image);
@@ -272,29 +291,30 @@ class Image {
     }
 
     /**
-     * Convert Html2 to RGB colour
+     * Convert Html2 to RGB colour.
      *
-     * @param  $color
+     * @param $color
      *
      * @return array
      */
-	private function html2rgb($color) {
-		if ($color[0] == '#') {
-			$color = substr($color, 1);
-		}
+    private function html2rgb($color)
+    {
+        if ('#' == $color[0]) {
+            $color = substr($color, 1);
+        }
 
-		if (strlen($color) == 6) {
-			list($r, $g, $b) = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
-		} elseif (strlen($color) == 3) {
-			list($r, $g, $b) = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
-		} else {
-			return FALSE;
-		}
+        if (6 == strlen($color)) {
+            list($r, $g, $b) = [$color[0].$color[1], $color[2].$color[3], $color[4].$color[5]];
+        } elseif (3 == strlen($color)) {
+            list($r, $g, $b) = [$color[0].$color[0], $color[1].$color[1], $color[2].$color[2]];
+        } else {
+            return false;
+        }
 
-		$r = hexdec($r);
-		$g = hexdec($g);
-		$b = hexdec($b);
+        $r = hexdec($r);
+        $g = hexdec($g);
+        $b = hexdec($b);
 
-		return array($r, $g, $b);
-	}
+        return [$r, $g, $b];
+    }
 }

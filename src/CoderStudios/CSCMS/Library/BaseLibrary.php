@@ -6,47 +6,51 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Library;
 
-class BaseLibrary {
+class BaseLibrary
+{
+    protected $cache;
 
-	protected $cache;
+    protected $model;
 
-	protected $model;
+    public function __call($method, $args)
+    {
+        return call_user_func_array([$this->model, $method], $args);
+    }
 
-	public function newInstance()
-	{
-		return $this->model->newInstance();
-	}
+    public function newInstance()
+    {
+        return $this->model->newInstance();
+    }
 
-	public function create($data)
-	{
+    public function create($data)
+    {
         $this->cache->flush();
-		return $this->model->create($data);
-	}
 
-	public function update($id, $data)
-	{
+        return $this->model->create($data);
+    }
+
+    public function update($id, $data)
+    {
         $this->cache->flush();
-		return $this->model->where('id',$id)->update($data);
-	}
 
-	public function delete($id)
-	{
+        return $this->model->where('id', $id)->update($data);
+    }
+
+    public function delete($id)
+    {
         $this->cache->flush();
-		return $this->model->where('id',$id)->delete();
-	}
 
-	public function __call($method, $args)
-	{
-		return call_user_func_array([$this->model, $method], $args);
-	}
+        return $this->model->where('id', $id)->delete();
+    }
 }

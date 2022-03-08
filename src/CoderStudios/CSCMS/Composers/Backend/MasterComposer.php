@@ -6,23 +6,24 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Composers\Backend;
 
 use Auth;
-use Illuminate\Http\Request;
-use Illuminate\Contracts\View\View;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
-class MasterComposer {
-
+class MasterComposer
+{
     /*
     |--------------------------------------------------------------------------
     | Admin Master Composer Class
@@ -38,10 +39,10 @@ class MasterComposer {
         $this->backend_cache = $cache->store('backend_views');
     }
 
-	public function compose(View $view)
-	{
+    public function compose(View $view)
+    {
         $user = Auth::user();
-        $view->with('user',$user);
+        $view->with('user', $user);
         $view->with('success_message', '');
         $view->with('error_message', '');
         $view->with('csrf_error', '');
@@ -49,7 +50,7 @@ class MasterComposer {
         if ($this->request->session) {
             if ($this->request->session()->get('success_message') || $this->request->session()->get('error_message') || $this->request->session()->get('csrf_error')) {
                 $this->backend_cache->flush();
-                $this->request->session()->put('clear_cache',1);
+                $this->request->session()->put('clear_cache', 1);
             }
 
             $view->with('success_message', $this->request->session()->pull('success_message'));
@@ -58,5 +59,5 @@ class MasterComposer {
             $notifications = $this->request->session()->pull('notifications');
             $view->with('notifications', $notifications);
         }
-	}
+    }
 }

@@ -6,27 +6,24 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Middleware;
 
 use Closure;
-use Session;
 use Illuminate\Contracts\Cache\Repository as Cache;
 
 class ClearCache
 {
     /**
      * Create a new middleware instance.
-     *
-     * @param  \Illuminate\Contracts\Cache\Repository  $cache
-     * @return void
      */
     public function __construct(Cache $cache)
     {
@@ -36,10 +33,9 @@ class ClearCache
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param \Illuminate\Http\Request $request
      *
+     * @return mixed
      */
     public function handle($request, Closure $next)
     {

@@ -6,14 +6,15 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Middleware;
 
 use Auth;
@@ -26,8 +27,7 @@ class Notifications
     /**
      * Create a new middleware instance.
      *
-     * @param  \Illuminate\Contracts\Cache\Repository  $cache
-     * @return void
+     * @param \Illuminate\Contracts\Cache\Repository $cache
      */
     public function __construct(NotificationsLibrary $notifications, NotificationsRead $notifications_read)
     {
@@ -38,19 +38,18 @@ class Notifications
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param \Illuminate\Http\Request $request
      *
+     * @return mixed
      */
     public function handle($request, Closure $next)
     {
         $notifications_data = [];
         if (Auth::user()) {
-    		$notifications = $this->notifications->getAll();
+            $notifications = $this->notifications->getAll();
             if ($notifications->count()) {
-                foreach($notifications as $notification) {
-                    if (!$this->notifications_read->hasSeen(Auth::user()->id,$notification->id)) {
+                foreach ($notifications as $notification) {
+                    if (!$this->notifications_read->hasSeen(Auth::user()->id, $notification->id)) {
                         $notifications_data[] = $notification;
                         $this->notifications_read->create([
                             'read' => 1,
@@ -64,7 +63,8 @@ class Notifications
             }
         }
 
-        $request->session()->put('notifications',$notifications_data);
+        $request->session()->put('notifications', $notifications_data);
+
         return $next($request);
     }
 }
