@@ -6,24 +6,23 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateCSCMSTables extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -34,7 +33,7 @@ class CreateCSCMSTables extends Migration
             $table->integer('user_id')->nullable()->index();
             $table->timestamps();
             $table->string('class')->index();
-            $table->string('name',128);
+            $table->string('name', 128);
             $table->text('value')->nullable();
         });
 
@@ -43,7 +42,7 @@ class CreateCSCMSTables extends Migration
             $table->boolean('enabled')->index()->default(1);
             $table->integer('sort_order')->default(0)->index();
             $table->timestamps();
-            $table->string('name',128);
+            $table->string('name', 128);
         });
 
         Schema::create('cscms_capabilities', function (Blueprint $table) {
@@ -51,7 +50,7 @@ class CreateCSCMSTables extends Migration
             $table->boolean('enabled')->index()->default(1);
             $table->integer('sort_order')->default(0)->index();
             $table->timestamps();
-            $table->string('name',128);
+            $table->string('name', 128);
         });
 
         Schema::create('cscms_capabilities_user_roles', function (Blueprint $table) {
@@ -65,7 +64,7 @@ class CreateCSCMSTables extends Migration
             $table->increments('id');
             $table->boolean('serialized')->default(0);
             $table->string('class')->index();
-            $table->string('name',128)->index();
+            $table->string('name', 128)->index();
             $table->text('value');
         });
 
@@ -104,10 +103,10 @@ class CreateCSCMSTables extends Migration
             $table->boolean('enabled')->index()->default(1);
             $table->timestamps();
             $table->timestamp('sent_at')->nullable()->index();
-            $table->string('to_email',128)->index();
-            $table->string('from_email',128)->index()->nullable();
-            $table->string('sender',128)->index()->nullable();
-            $table->string('subject',255)->index()->nullable();
+            $table->string('to_email', 128)->index();
+            $table->string('from_email', 128)->index()->nullable();
+            $table->string('sender', 128)->index()->nullable();
+            $table->string('subject', 255)->index()->nullable();
             $table->text('body_html')->nullable();
             $table->text('body_text')->nullable();
         });
@@ -126,7 +125,7 @@ class CreateCSCMSTables extends Migration
             $table->integer('user_id')->index();
             $table->timestamps();
             $table->timestamp('publish_at')->nullable();
-            $table->string('subject',128);
+            $table->string('subject', 128);
             $table->text('message');
         });
 
@@ -146,9 +145,9 @@ class CreateCSCMSTables extends Migration
             $table->integer('sort_order')->default(0)->index();
             $table->integer('image_id')->index()->nullable();
             $table->timestamps();
-            $table->string('code',5);
-            $table->string('name',32);
-            $table->string('locale',255);
+            $table->string('code', 5);
+            $table->string('name', 32);
+            $table->string('locale', 255);
         });
 
         Schema::create('cscms_articles', function (Blueprint $table) {
@@ -160,9 +159,9 @@ class CreateCSCMSTables extends Migration
             $table->integer('article_type_id')->index();
             $table->timestamps();
             $table->timestamp('publish_at')->nullable();
-            $table->string('slug',128)->nullable();
-            $table->string('title',255)->nullable();
-            $table->string('meta_description',255)->nullable();
+            $table->string('slug', 128)->nullable();
+            $table->string('title', 255)->nullable();
+            $table->string('meta_description', 255)->nullable();
         });
 
         Schema::create('cscms_articles_description', function (Blueprint $table) {
@@ -177,8 +176,8 @@ class CreateCSCMSTables extends Migration
             $table->integer('user_id')->index();
             $table->integer('sort_order')->default(0)->index();
             $table->timestamps();
-            $table->string('name',128)->nullable();
-            $table->string('slug',128)->nullable();
+            $table->string('name', 128)->nullable();
+            $table->string('slug', 128)->nullable();
         });
 
         Schema::create('cscms_images', function (Blueprint $table) {
@@ -187,10 +186,10 @@ class CreateCSCMSTables extends Migration
             $table->integer('user_id')->index();
             $table->float('filesize', 8, 2)->index()->default(0);
             $table->timestamps();
-            $table->string('mime',32)->nullable();
-            $table->string('name',255)->nullable();
-            $table->string('filename',255)->nullable();
-            $table->string('generated_filename',255)->nullable();
+            $table->string('mime', 32)->nullable();
+            $table->string('name', 255)->nullable();
+            $table->string('filename', 255)->nullable();
+            $table->string('generated_filename', 255)->nullable();
         });
 
         Schema::create('cscms_uploads', function (Blueprint $table) {
@@ -199,24 +198,22 @@ class CreateCSCMSTables extends Migration
             $table->integer('user_id')->index();
             $table->float('filesize', 8, 2)->index()->default(0);
             $table->timestamps();
-            $table->string('mime',32)->nullable();
-            $table->string('name',255)->nullable();
-            $table->string('filename',255)->nullable();
-            $table->string('generated_filename',255)->nullable();
+            $table->string('mime', 32)->nullable();
+            $table->string('name', 255)->nullable();
+            $table->string('filename', 255)->nullable();
+            $table->string('generated_filename', 255)->nullable();
         });
 
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('enabled')->default(0)->index()->after('id');
             $table->boolean('verified')->default(0)->index()->after('enabled');
             $table->integer('user_role_id')->index()->default(1)->after('verified');
-            $table->string('username',191)->unique()->after('updated_at');
+            $table->string('username', 191)->unique()->after('updated_at');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {
@@ -240,8 +237,7 @@ class CreateCSCMSTables extends Migration
         Schema::dropIfExists('cscms_users_user_roles');
         Schema::dropIfExists('cscms_uploads');
 
-        Schema::table('users', function($table)
-        {
+        Schema::table('users', function ($table) {
             $table->dropColumn('enabled');
             $table->dropColumn('verified');
             $table->dropColumn('user_role_id');

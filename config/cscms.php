@@ -6,16 +6,16 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
-return [
 
+return [
     /*
     |--------------------------------------------------------------------------
     | Coder Studios CMS variables
@@ -27,14 +27,13 @@ return [
     */
 
     'coderstudios' => [
+        'cache_duration' => env('APP_CACHE_MINUTES', 240),
 
-        'cache_duration' => env('APP_CACHE_MINUTES',240),
+        'cache_enabled' => env('APP_CACHE', true),
 
-        'cache_enabled' => env('APP_CACHE',true),
+        'backup_dir' => env('APP_BACKUP_DIR', storage_path().'/app/dumps'),
 
-        'backup_dir'    => env('APP_BACKUP_DIR', storage_path() . '/app/dumps'),
-
-        'theme' => env('APP_THEME','default'),
+        'theme' => env('APP_THEME', 'default'),
 
         'backend_prefix' => env('APP_BACKEND_PREFIX', '_admin'),
 
