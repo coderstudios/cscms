@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class CSCMSServiceProvider extends ServiceProvider
+class CsCmsServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
