@@ -97,22 +97,14 @@ class CsCmsServiceProvider extends ServiceProvider
     protected function registerRoutes()
     {
         Route::middleware('web')
-            ->group(base_path('routes/web.php'))
+            ->prefix(config('cscms.coderstudios.backend_prefix'))
+            ->group(__DIR__.'/../routes/backend.php')
         ;
 
-        if (file_exists(base_path('routes/cscms_backend.php'))) {
-            Route::middleware('web')
-                ->prefix(config('cscms.coderstudios.backend_prefix'))
-                ->group(base_path('routes/cscms_backend.php'))
-            ;
-        }
-
-        if (file_exists(base_path('routes/cscms_frontend.php'))) {
-            Route::middleware('web')
-                ->prefix(config('cscms.coderstudios.frontend_prefix'))
-                ->group(base_path('routes/cscms_frontend.php'))
-            ;
-        }
+        Route::middleware('web')
+            ->prefix(config('cscms.coderstudios.frontend_prefix'))
+            ->group(__DIR__.'/../routes/frontend.php')
+        ;
     }
 
     /**
