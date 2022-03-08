@@ -17,6 +17,6 @@
 
 namespace CoderStudios\CsCms;
 
-class Facade extends \CoderStudios\CSCMS\Facades\CSCMS
+class Facade extends \CoderStudios\CsCms\Facades\CSCMS
 {
 }

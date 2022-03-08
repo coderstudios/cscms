@@ -83,6 +83,6 @@ class Capability extends Model
 
     public function roles()
     {
-        return $this->belongsToMany('CoderStudios\CSCMS\Models\UserRole', 'cscms_capabilities_user_roles', 'capability_id', 'user_role_id');
+        return $this->belongsToMany('CoderStudios\CsCms\Models\UserRole', 'cscms_capabilities_user_roles', 'capability_id', 'user_role_id');
     }
 }

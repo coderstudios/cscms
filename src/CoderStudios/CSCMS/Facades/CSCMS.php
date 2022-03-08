@@ -24,6 +24,6 @@ class CSCMS extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \CoderStudios\CSCMS\CSCMS::class;
+        return \CoderStudios\CsCms\CSCMS::class;
     }
 }

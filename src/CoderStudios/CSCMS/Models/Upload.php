@@ -87,6 +87,6 @@ class Upload extends Model
 
     public function user()
     {
-        return $this->belongsTo('CoderStudios\CSCMS\Models\User', 'user_id', 'id');
+        return $this->belongsTo('CoderStudios\CsCms\Models\User', 'user_id', 'id');
     }
 }
