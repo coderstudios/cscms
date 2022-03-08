@@ -15,14 +15,14 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
 use Auth;
-use CoderStudios\CSCMS\Library\Notifications;
-use CoderStudios\CSCMS\Library\NotificationsRead;
-use CoderStudios\CSCMS\Requests\NotificationRequest;
+use CoderStudios\CsCms\Library\Notifications;
+use CoderStudios\CsCms\Library\NotificationsRead;
+use CoderStudios\CsCms\Requests\NotificationRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

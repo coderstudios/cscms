@@ -15,12 +15,12 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
+namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use CoderStudios\CSCMS\Library\Users;
-use CoderStudios\CSCMS\Requests\UpdateMemberRequest;
+use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Requests\UpdateMemberRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use View;
 

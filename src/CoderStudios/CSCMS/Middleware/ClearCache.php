@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Middleware;
+namespace CoderStudios\CsCms\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Cache\Repository as Cache;

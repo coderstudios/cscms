@@ -15,15 +15,15 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
 use Auth;
-use CoderStudios\CSCMS\Library\Article;
-use CoderStudios\CSCMS\Library\ArticleType;
-use CoderStudios\CSCMS\Library\Language;
-use CoderStudios\CSCMS\Requests\ArticleRequest;
+use CoderStudios\CsCms\Library\Article;
+use CoderStudios\CsCms\Library\ArticleType;
+use CoderStudios\CsCms\Library\Language;
+use CoderStudios\CsCms\Requests\ArticleRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

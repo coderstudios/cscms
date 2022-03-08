@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Library\Utils;
+use CoderStudios\CsCms\Library\Utils;
 use Illuminate\Http\Request;
 
 class DownloadController extends Controller

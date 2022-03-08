@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CSCMS\Models\Language as Model;
+use CoderStudios\CsCms\Models\Language as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Language extends BaseLibrary

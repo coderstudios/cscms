@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Commands;
+namespace CoderStudios\CsCms\Commands;
 
 use App;
 use Artisan;

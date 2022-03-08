@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Traits;
+namespace CoderStudios\CsCms\Traits;
 
 trait SetEnabledAttribute
 {

@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Listeners;
+namespace CoderStudios\CsCms\Listeners;
 
-use CoderStudios\CSCMS\Library\Mail;
-use CoderStudios\CSCMS\Library\Settings as SettingsLibrary;
+use CoderStudios\CsCms\Library\Mail;
+use CoderStudios\CsCms\Library\Settings as SettingsLibrary;
 
 class NewUserSubscriber
 {

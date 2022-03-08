@@ -15,15 +15,15 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
-use CoderStudios\CSCMS\Library\Mail;
-use CoderStudios\CSCMS\Library\UserRoles;
-use CoderStudios\CSCMS\Library\Users;
-use CoderStudios\CSCMS\Requests\UpdateUserRequest;
-use CoderStudios\CSCMS\Requests\UserRequest;
+use CoderStudios\CsCms\Library\Mail;
+use CoderStudios\CsCms\Library\UserRoles;
+use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Requests\UpdateUserRequest;
+use CoderStudios\CsCms\Requests\UserRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

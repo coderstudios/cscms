@@ -15,13 +15,13 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
 use Auth;
-use CoderStudios\CSCMS\Library\ArticleType;
-use CoderStudios\CSCMS\Requests\ArticleTypeRequest;
+use CoderStudios\CsCms\Library\ArticleType;
+use CoderStudios\CsCms\Requests\ArticleTypeRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

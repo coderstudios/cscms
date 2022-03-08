@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS;
+namespace CoderStudios\CsCms;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;

@@ -15,14 +15,14 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Library\Capability as Capabilities;
-use CoderStudios\CSCMS\Library\Settings;
-use CoderStudios\CSCMS\Library\UserRoles;
-use CoderStudios\CSCMS\Library\Users;
-use CoderStudios\CSCMS\Models\Capability;
+use CoderStudios\CsCms\Library\Capability as Capabilities;
+use CoderStudios\CsCms\Library\Settings;
+use CoderStudios\CsCms\Library\UserRoles;
+use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

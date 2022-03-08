@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Facades;
+namespace CoderStudios\CsCms\Facades;
 
 class CSCMS extends \Illuminate\Support\Facades\Facade
 {

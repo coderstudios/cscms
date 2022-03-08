@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CSCMS\Models\User as Model;
+use CoderStudios\CsCms\Models\User as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Users extends BaseLibrary

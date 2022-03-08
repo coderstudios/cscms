@@ -15,13 +15,13 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use CoderStudios\CSCMS\Library\Upload;
-use CoderStudios\CSCMS\Library\Utils;
-use CoderStudios\CSCMS\Requests\UploadRequest;
+use CoderStudios\CsCms\Library\Upload;
+use CoderStudios\CsCms\Library\Utils;
+use CoderStudios\CsCms\Requests\UploadRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;

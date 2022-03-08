@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Requests;
+namespace CoderStudios\CsCms\Requests;
 
 class UserRoleRequest extends Request
 {

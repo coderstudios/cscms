@@ -15,12 +15,12 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
-use CoderStudios\CSCMS\Library\Capability;
-use CoderStudios\CSCMS\Requests\CapabilityRequest;
+use CoderStudios\CsCms\Library\Capability;
+use CoderStudios\CsCms\Requests\CapabilityRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

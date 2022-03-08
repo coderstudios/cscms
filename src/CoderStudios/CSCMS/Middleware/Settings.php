@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Middleware;
+namespace CoderStudios\CsCms\Middleware;
 
 use Closure;
-use CoderStudios\CSCMS\Library\Settings as SettingsLibrary;
+use CoderStudios\CsCms\Library\Settings as SettingsLibrary;
 
 class Settings
 {
