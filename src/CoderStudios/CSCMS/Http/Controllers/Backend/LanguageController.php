@@ -15,12 +15,12 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Auth;
-use CoderStudios\CSCMS\Library\Language;
-use CoderStudios\CSCMS\Requests\LanguageRequest;
+use CoderStudios\CsCms\Library\Language;
+use CoderStudios\CsCms\Requests\LanguageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

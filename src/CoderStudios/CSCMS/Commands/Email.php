@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Commands;
+namespace CoderStudios\CsCms\Commands;
 
-use CoderStudios\CSCMS\Library\Mail as MailLibrary;
-use CoderStudios\CSCMS\Library\Settings;
+use CoderStudios\CsCms\Library\Mail as MailLibrary;
+use CoderStudios\CsCms\Library\Settings;
 use Config;
 use Illuminate\Console\Command;
 use Mail;

@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
+namespace CoderStudios\CsCms\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Models\User;
+use CoderStudios\CsCms\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;

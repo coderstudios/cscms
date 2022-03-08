@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Facades;
+namespace CoderStudios\CsCms\Facades;
 
 class CSCMS extends \Illuminate\Support\Facades\Facade
 {
@@ -24,6 +24,6 @@ class CSCMS extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \CoderStudios\CSCMS\CSCMS::class;
+        return \CoderStudios\CsCms\CSCMS::class;
     }
 }

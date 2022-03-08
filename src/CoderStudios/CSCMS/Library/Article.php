@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CSCMS\Models\Article as Model;
+use CoderStudios\CsCms\Models\Article as Model;
 use DB;
 use Illuminate\Contracts\Cache\Factory as Cache;
 

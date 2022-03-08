@@ -15,12 +15,12 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
-use CoderStudios\CSCMS\Library\Settings;
-use CoderStudios\CSCMS\Requests\SettingRequest;
+use CoderStudios\CsCms\Library\Settings;
+use CoderStudios\CsCms\Requests\SettingRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

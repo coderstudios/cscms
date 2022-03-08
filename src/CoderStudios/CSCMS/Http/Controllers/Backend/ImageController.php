@@ -15,15 +15,15 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Artisan;
 use Auth;
-use CoderStudios\CSCMS\Helpers\ImageHelper;
-use CoderStudios\CSCMS\Library\Image;
-use CoderStudios\CSCMS\Library\Utils;
-use CoderStudios\CSCMS\Requests\ImageRequest;
+use CoderStudios\CsCms\Helpers\ImageHelper;
+use CoderStudios\CsCms\Library\Image;
+use CoderStudios\CsCms\Library\Utils;
+use CoderStudios\CsCms\Requests\ImageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;

@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Models;
+namespace CoderStudios\CsCms\Models;
 
-use CoderStudios\CSCMS\Traits\ScopeEnabled;
-use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
+use CoderStudios\CsCms\Traits\ScopeEnabled;
+use CoderStudios\CsCms\Traits\SetEnabledAttribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Upload extends Model
@@ -87,6 +87,6 @@ class Upload extends Model
 
     public function user()
     {
-        return $this->belongsTo('CoderStudios\CSCMS\Models\User', 'user_id', 'id');
+        return $this->belongsTo('CoderStudios\CsCms\Models\User', 'user_id', 'id');
     }
 }

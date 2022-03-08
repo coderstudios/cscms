@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Models;
+namespace CoderStudios\CsCms\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -76,11 +76,11 @@ class ArticleDescription extends Model
 
     public function article()
     {
-        return $this->belongsTo('CoderStudios\CSCMS\Models\Article', 'article_id', 'id');
+        return $this->belongsTo('CoderStudios\CsCms\Models\Article', 'article_id', 'id');
     }
 
     public function language()
     {
-        return $this->belongsTo('CoderStudios\CSCMS\Models\Language', 'language_id', 'id');
+        return $this->belongsTo('CoderStudios\CsCms\Models\Language', 'language_id', 'id');
     }
 }

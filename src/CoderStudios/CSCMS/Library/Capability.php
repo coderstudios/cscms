@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CSCMS\Models\Capability as Model;
+use CoderStudios\CsCms\Models\Capability as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Capability extends BaseLibrary

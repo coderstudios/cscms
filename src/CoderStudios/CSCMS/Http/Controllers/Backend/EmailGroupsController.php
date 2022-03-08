@@ -15,11 +15,11 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Backend;
+namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Library\EmailGroup;
-use CoderStudios\CSCMS\Requests\EmailGroupRequest;
+use CoderStudios\CsCms\Library\EmailGroup;
+use CoderStudios\CsCms\Requests\EmailGroupRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 

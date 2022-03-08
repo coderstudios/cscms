@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 

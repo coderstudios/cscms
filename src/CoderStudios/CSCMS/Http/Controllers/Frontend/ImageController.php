@@ -15,11 +15,11 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
+namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Helpers\ImageHelper;
-use CoderStudios\CSCMS\Library\Image;
+use CoderStudios\CsCms\Helpers\ImageHelper;
+use CoderStudios\CsCms\Library\Image;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;

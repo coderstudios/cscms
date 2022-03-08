@@ -58,7 +58,7 @@ Update auth.php replace providers array with config:
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => CoderStudios\CSCMS\Models\User::class,
+            'model' => CoderStudios\CsCms\Models\User::class,
         ],
 
 ```
@@ -67,9 +67,9 @@ Update Kernel.php (app/Http/Kernel.php) and add the following middleware:
 
 ```
 
-        'cache' => \CoderStudios\CSCMS\Middleware\ClearCache::class,
-        'notifications' => \CoderStudios\CSCMS\Middleware\Notifications::class,
-        'settings' => \CoderStudios\CSCMS\Middleware\Settings::class,
+        'cache' => \CoderStudios\CsCms\Middleware\ClearCache::class,
+        'notifications' => \CoderStudios\CsCms\Middleware\Notifications::class,
+        'settings' => \CoderStudios\CsCms\Middleware\Settings::class,
 
 ```
 
@@ -91,9 +91,9 @@ So it would similar too:
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'cache' => \CoderStudios\CSCMS\Middleware\ClearCache::class,
-        'notifications' => \CoderStudios\CSCMS\Middleware\Notifications::class,
-        'settings' => \CoderStudios\CSCMS\Middleware\Settings::class,
+        'cache' => \CoderStudios\CsCms\Middleware\ClearCache::class,
+        'notifications' => \CoderStudios\CsCms\Middleware\Notifications::class,
+        'settings' => \CoderStudios\CsCms\Middleware\Settings::class,
 
     ];
 
@@ -103,7 +103,7 @@ So it would similar too:
 
 On a fresh install of laravel run:
 
-1. php artisan vendor:publish --provider="CoderStudios\CSCMS\CSCMSServiceProvider"
+1. php artisan vendor:publish --provider="CoderStudios\CsCms\CSCMSServiceProvider"
 2. php artisan migrate
 3. php artisan cscms:install
 
@@ -120,7 +120,7 @@ exists, remove it as the package provides a route to replace the Laravel default
 If you are developing your own theme, ensure you add the view composer relevant to your theme in the AppServiceProvider.php boot method
 
 ```
-    view()->composer(config('cscms.coderstudios.theme').'.layouts.master','CoderStudios\CSCMS\Composers\Frontend\MasterComposer');
+    view()->composer(config('cscms.coderstudios.theme').'.layouts.master','CoderStudios\CsCms\Composers\Frontend\MasterComposer');
 ```
 
 ## Documentation
@@ -146,7 +146,7 @@ Example update composer.json file
 
 #Assets
 
-php artisan vendor:publish --provider="CoderStudios\CSCMS\CSCMSServiceProvider"
+php artisan vendor:publish --provider="CoderStudios\CsCms\CSCMSServiceProvider"
 
 php artisan vendor:publish --tag=public --force
 

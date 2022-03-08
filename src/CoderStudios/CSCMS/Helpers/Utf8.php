@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Helpers;
+namespace CoderStudios\CsCms\Helpers;
 
 class Utf8
 {

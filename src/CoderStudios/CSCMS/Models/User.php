@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Models;
+namespace CoderStudios\CsCms\Models;
 
-use CoderStudios\CSCMS\Traits\ScopeEnabled;
-use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
+use CoderStudios\CsCms\Traits\ScopeEnabled;
+use CoderStudios\CsCms\Traits\SetEnabledAttribute;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -48,11 +48,11 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne('CoderStudios\CSCMS\Models\UserRole', 'id', 'user_role_id');
+        return $this->hasOne('CoderStudios\CsCms\Models\UserRole', 'id', 'user_role_id');
     }
 
     public function logs()
     {
-        return $this->hasMany('CoderStudios\CSCMS\Models\Audits', 'id', 'user_id');
+        return $this->hasMany('CoderStudios\CsCms\Models\Audits', 'id', 'user_id');
     }
 }

@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Library;
+namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CSCMS\Models\Audit as Model;
+use CoderStudios\CsCms\Models\Audit as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class Audit extends BaseLibrary

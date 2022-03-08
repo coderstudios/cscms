@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Composers\Backend;
+namespace CoderStudios\CsCms\Composers\Backend;
 
 use Auth;
 use Illuminate\Contracts\Cache\Factory as Cache;

@@ -15,14 +15,14 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Commands;
+namespace CoderStudios\CsCms\Commands;
 
-use CoderStudios\CSCMS\Library\Capability;
-use CoderStudios\CSCMS\Library\EmailGroup;
-use CoderStudios\CSCMS\Library\Language;
-use CoderStudios\CSCMS\Library\Settings;
-use CoderStudios\CSCMS\Library\UserRoles;
-use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CsCms\Library\Capability;
+use CoderStudios\CsCms\Library\EmailGroup;
+use CoderStudios\CsCms\Library\Language;
+use CoderStudios\CsCms\Library\Settings;
+use CoderStudios\CsCms\Library\UserRoles;
+use CoderStudios\CsCms\Library\Users;
 use Illuminate\Console\Command;
 
 class Install extends Command

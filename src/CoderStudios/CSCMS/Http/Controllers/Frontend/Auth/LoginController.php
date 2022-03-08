@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
+namespace CoderStudios\CsCms\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CsCms\Library\Users;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use View;

@@ -15,12 +15,12 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Middleware;
+namespace CoderStudios\CsCms\Middleware;
 
 use Auth;
 use Closure;
-use CoderStudios\CSCMS\Library\Notifications as NotificationsLibrary;
-use CoderStudios\CSCMS\Library\NotificationsRead;
+use CoderStudios\CsCms\Library\Notifications as NotificationsLibrary;
+use CoderStudios\CsCms\Library\NotificationsRead;
 
 class Notifications
 {

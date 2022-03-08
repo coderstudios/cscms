@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Policies;
+namespace CoderStudios\CsCms\Policies;
 
-use CoderStudios\CSCMS\Models\Capability;
-use CoderStudios\CSCMS\Models\User;
+use CoderStudios\CsCms\Models\Capability;
+use CoderStudios\CsCms\Models\User;
 
 class UserTypesPolicy
 {

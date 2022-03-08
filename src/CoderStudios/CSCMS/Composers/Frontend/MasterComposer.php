@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Composers\Frontend;
+namespace CoderStudios\CsCms\Composers\Frontend;
 
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Contracts\View\View;

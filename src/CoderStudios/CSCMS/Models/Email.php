@@ -15,9 +15,9 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Models;
+namespace CoderStudios\CsCms\Models;
 
-use CoderStudios\CSCMS\Traits\SetEnabledAttribute;
+use CoderStudios\CsCms\Traits\SetEnabledAttribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Email extends Model
@@ -80,6 +80,6 @@ class Email extends Model
 
     public function groups()
     {
-        return $this->belongsToMany('CoderStudios\CSCMS\Models\EmailGroup', 'cscms_emails_email_groups', 'email_group_id', 'email_id');
+        return $this->belongsToMany('CoderStudios\CsCms\Models\EmailGroup', 'cscms_emails_email_groups', 'email_group_id', 'email_id');
     }
 }

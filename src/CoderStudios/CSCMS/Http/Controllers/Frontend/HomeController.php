@@ -15,10 +15,10 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
+namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use CoderStudios\CSCMS\Library\Article;
+use CoderStudios\CsCms\Library\Article;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use View;
 

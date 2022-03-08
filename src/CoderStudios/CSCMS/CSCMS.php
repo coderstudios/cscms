@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS;
+namespace CoderStudios\CsCms;
 
 class CSCMS
 {

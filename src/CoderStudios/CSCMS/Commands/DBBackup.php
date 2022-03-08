@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CSCMS\Commands;
+namespace CoderStudios\CsCms\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
