@@ -28,7 +28,7 @@ class UserController extends Controller
 {
     public function __construct(Cache $cache, Users $user)
     {
-        $this->cache = $cache->store('frontend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->middleware('auth');
         $this->user = $user;
     }

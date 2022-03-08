@@ -29,7 +29,7 @@ class EmailGroupsController extends Controller
     {
         $this->request = $request;
         $this->email_group = $email_groups;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->email_group->getFillable();
     }
 

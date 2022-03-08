@@ -32,7 +32,7 @@ class UserRolesController extends Controller
         $this->request = $request;
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->user_roles->getFillable();
     }
 

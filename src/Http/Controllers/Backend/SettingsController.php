@@ -30,7 +30,7 @@ class SettingsController extends Controller
     {
         $this->setting = $setting;
         $this->request = $request;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->setting->getFillable();
     }
 

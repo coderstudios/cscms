@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function __construct(Cache $cache, Article $article)
     {
         $this->article = $article;
-        $this->cache = $cache->store('frontend_views');
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function index()

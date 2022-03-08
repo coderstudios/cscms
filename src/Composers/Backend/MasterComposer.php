@@ -36,7 +36,7 @@ class MasterComposer
     public function __construct(Request $request, Cache $cache)
     {
         $this->request = $request;
-        $this->backend_cache = $cache->store('backend_views');
+        $this->backend_cache = $cache->store(config('cache.default'));
     }
 
     public function compose(View $view)

@@ -36,7 +36,7 @@ class ImportController extends Controller
         $this->capability = $capability;
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function index()

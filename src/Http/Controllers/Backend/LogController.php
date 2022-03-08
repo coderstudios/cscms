@@ -24,7 +24,7 @@ class LogController extends Controller
 {
     public function __construct(Cache $cache)
     {
-        $this->cache = $cache->store('backend_views');
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function index()

@@ -26,7 +26,7 @@ class Article extends BaseLibrary
     public function __construct(Model $model, Cache $cache)
     {
         $this->model = $model;
-        $this->cache = $cache->store('models');
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function get($id)
