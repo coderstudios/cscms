@@ -63,59 +63,13 @@ Update auth.php replace providers array with config:
 
 ```
 
-Update Kernel.php (app/Http/Kernel.php) and add the following middleware:
-
-```
-
-        'cache' => \CoderStudios\CsCms\Middleware\ClearCache::class,
-        'notifications' => \CoderStudios\CsCms\Middleware\Notifications::class,
-        'settings' => \CoderStudios\CsCms\Middleware\Settings::class,
-
-```
-
-So it would similar too:
-
-```
-    /**
-     * The application's route middleware.
-     *
-     * These middleware may be assigned to groups or used individually.
-     *
-     * @var array
-     */
-    protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-
-        'cache' => \CoderStudios\CsCms\Middleware\ClearCache::class,
-        'notifications' => \CoderStudios\CsCms\Middleware\Notifications::class,
-        'settings' => \CoderStudios\CsCms\Middleware\Settings::class,
-
-    ];
-
-
-```
-
 
 On a fresh install of laravel run:
 
 1. php artisan vendor:publish --provider="CoderStudios\CsCms\CsCmsServiceProvider"
 2. php artisan migrate
-3. php artisan CsCms:install
+3. php artisan cscms:install
 
-If the route 
-
-```
-Route::get('/', function () {
-    return view('welcome');
-});
-```
-
-exists, remove it as the package provides a route to replace the Laravel default
 
 If you are developing your own theme, ensure you add the view composer relevant to your theme in the AppServiceProvider.php boot method
 
@@ -128,7 +82,7 @@ If you are developing your own theme, ensure you add the view composer relevant 
 Once the package is installed you can add
 
 ```
-    "@php artisan CsCms:update"
+    "@php artisan cscms:update"
 ```
 
 to your composer.json so that on package update, any cached data or views get cleared automatically to account for any new package updates
@@ -137,10 +91,9 @@ Example update composer.json file
 
 ```
     "@php artisan package:discover",
-    "@php artisan CsCms:update"
+    "@php artisan cscms:update"
 
 ``` 
-
 
 ## Updating
 
