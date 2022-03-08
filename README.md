@@ -1,7 +1,7 @@
-CSCMS
+CsCms
 ==========
 
-CSCMS is a CMS package in PHP for use with a Laravel project.
+CsCms is a CMS package in PHP for use with a Laravel project.
 
 
 [![Latest Stable Version](https://poser.pugx.org/coderstudios/cscms/v/stable)](https://packagist.org/packages/coderstudios/cscms)
@@ -11,7 +11,7 @@ CSCMS is a CMS package in PHP for use with a Laravel project.
 
 ## Composer
 
-To install CSCMS as a Composer package to be used with Laravel 5+, simply add this to your composer.json:
+To install CsCms as a Composer package to be used with Laravel 5+, simply add this to your composer.json:
 
 ```json
 "coderstudios/cscms": "1.0.*"
@@ -103,9 +103,9 @@ So it would similar too:
 
 On a fresh install of laravel run:
 
-1. php artisan vendor:publish --provider="CoderStudios\CsCms\CSCMSServiceProvider"
+1. php artisan vendor:publish --provider="CoderStudios\CsCms\CsCmsServiceProvider"
 2. php artisan migrate
-3. php artisan cscms:install
+3. php artisan CsCms:install
 
 If the route 
 
@@ -120,7 +120,7 @@ exists, remove it as the package provides a route to replace the Laravel default
 If you are developing your own theme, ensure you add the view composer relevant to your theme in the AppServiceProvider.php boot method
 
 ```
-    view()->composer(config('cscms.coderstudios.theme').'.layouts.master','CoderStudios\CsCms\Composers\Frontend\MasterComposer');
+    view()->composer(config('CsCms.coderstudios.theme').'.layouts.master','CoderStudios\CsCms\Composers\Frontend\MasterComposer');
 ```
 
 ## Documentation
@@ -128,7 +128,7 @@ If you are developing your own theme, ensure you add the view composer relevant 
 Once the package is installed you can add
 
 ```
-    "@php artisan cscms:update"
+    "@php artisan CsCms:update"
 ```
 
 to your composer.json so that on package update, any cached data or views get cleared automatically to account for any new package updates
@@ -137,7 +137,7 @@ Example update composer.json file
 
 ```
     "@php artisan package:discover",
-    "@php artisan cscms:update"
+    "@php artisan CsCms:update"
 
 ``` 
 
@@ -146,7 +146,7 @@ Example update composer.json file
 
 #Assets
 
-php artisan vendor:publish --provider="CoderStudios\CsCms\CSCMSServiceProvider"
+php artisan vendor:publish --provider="CoderStudios\CsCms\CsCmsServiceProvider"
 
 php artisan vendor:publish --tag=public --force
 
@@ -162,4 +162,4 @@ php artisan vendor:publish --tag=lang --force
 
 ## Copyright and Licence
 
-CSCMS has been written by Coder Studios and is released under the MIT License.
+CsCms has been written by Coder Studios and is released under the MIT License.
