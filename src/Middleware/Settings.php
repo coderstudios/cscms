@@ -46,11 +46,7 @@ class Settings
         } catch (\Exception $e) {
             exit('Error. Have you run the migrations yet?');
         }
-        if (empty($config)) {
-            $config['config_items_per_page'] = 25;
-            $config['user_require_username'] = 0;
-            $config['user_allow_registration'] = 0;
-        }
+
         $request->config = $config;
 
         return $next($request);

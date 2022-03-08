@@ -35,6 +35,9 @@ class CsCmsServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cscms');
 
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\ClearCache::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Notifications::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Settings::class);
         /*
 
         $this->publishes([
@@ -105,6 +108,17 @@ class CsCmsServiceProvider extends ServiceProvider
             ->prefix(config('cscms.coderstudios.frontend_prefix'))
             ->group(__DIR__.'/../routes/frontend.php')
         ;
+    }
+
+    /**
+     * Register the Middleware.
+     *
+     * @param string $middleware
+     */
+    protected function registerMiddleware($middleware)
+    {
+        $kernel = $this->app[Kernel::class];
+        $kernel->pushMiddleware($middleware);
     }
 
     /**
