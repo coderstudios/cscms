@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of the CSCMS package by Coder Studios.
+ * Part of the CsCms package by Coder Studios.
  *
  * NOTICE OF LICENSE
  *
@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
-class CSCMSServiceProvider extends ServiceProvider
+class CsCmsServiceProvider extends ServiceProvider
 {
     /**
      * Boot the service provider.
@@ -116,7 +116,7 @@ class CSCMSServiceProvider extends ServiceProvider
     }
 
     /**
-     * Setup the configuration for CSCMS.
+     * Setup the configuration for CsCms.
      */
     protected function configure()
     {

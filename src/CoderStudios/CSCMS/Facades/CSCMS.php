@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of the CSCMS package by Coder Studios.
+ * Part of the CsCms package by Coder Studios.
  *
  * NOTICE OF LICENSE
  *
@@ -17,13 +17,13 @@
 
 namespace CoderStudios\CsCms\Facades;
 
-class CSCMS extends \Illuminate\Support\Facades\Facade
+class CsCms extends \Illuminate\Support\Facades\Facade
 {
     /**
      * {@inheritDoc}
      */
     protected static function getFacadeAccessor()
     {
-        return \CoderStudios\CsCms\CSCMS::class;
+        return \CoderStudios\CsCms\CsCms::class;
     }
 }

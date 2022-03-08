@@ -40,10 +40,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "CoderStudios\\CSCMS\\CSCMSServiceProvider"
+                "CoderStudios\\CsCms\\CsCmsServiceProvider"
             ],
             "aliases": {
-                "CSCMS": "CoderStudios\\CSCMS\\Facade"
+                "CsCms": "CoderStudios\\CsCms\\Facade"
             }
         }
     },

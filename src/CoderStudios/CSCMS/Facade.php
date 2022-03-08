@@ -1,6 +1,6 @@
 <?php
 /**
- * Part of the CSCMS package by Coder Studios.
+ * Part of the CsCms package by Coder Studios.
  *
  * NOTICE OF LICENSE
  *
@@ -17,6 +17,6 @@
 
 namespace CoderStudios\CsCms;
 
-class Facade extends \CoderStudios\CsCms\Facades\CSCMS
+class Facade extends \CoderStudios\CsCms\Facades\CsCms
 {
 }
