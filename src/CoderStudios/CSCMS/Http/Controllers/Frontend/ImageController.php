@@ -6,79 +6,77 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
-use Auth;
-use Artisan;
+use App\Http\Controllers\Controller;
+use CoderStudios\CSCMS\Helpers\ImageHelper;
+use CoderStudios\CSCMS\Library\Image;
+use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use App\Http\Controllers\Controller;
-use Illuminate\Filesystem\Filesystem;
-use CoderStudios\CSCMS\Library\Image;
-use CoderStudios\CSCMS\Helpers\ImageHelper;
-use CoderStudios\CSCMS\Requests\ImageRequest;
-use Illuminate\Contracts\Cache\Factory as Cache;
 
 class ImageController extends Controller
 {
-	public function __construct(Request $request, Cache $cache, Image $image, ImageHelper $imageHelper, Filesystem $file)
+    public function __construct(Request $request, Cache $cache, Image $image, ImageHelper $imageHelper, Filesystem $file)
     {
         $this->file = $file;
-    	$this->image = $image;
+        $this->image = $image;
         $this->request = $request;
-    	$this->image_helper = $imageHelper;
+        $this->image_helper = $imageHelper;
         $this->cache = $cache->store('backend_views');
         $this->attributes = $this->image->getFillable();
     }
 
-	public function render()
-	{
-		$user_id = '';
-		$width = 100;
-		$height = 100;
-		$filename = '';
-		$folder = '';
+    public function render()
+    {
+        $user_id = '';
+        $width = 100;
+        $height = 100;
+        $filename = '';
+        $folder = '';
 
-		if ($this->request->input('filename')) {
-			$filename = $this->request->input('filename');
-		}
+        if ($this->request->input('filename')) {
+            $filename = $this->request->input('filename');
+        }
 
-		if ($this->request->input('user_id')) {
-			$user_id = $this->request->input('user_id');
-		}
+        if ($this->request->input('user_id')) {
+            $user_id = $this->request->input('user_id');
+        }
 
-		if (empty($user_id) && $this->request->input('id')) {
-			$user_id = $this->request->input('id');
-		}
+        if (empty($user_id) && $this->request->input('id')) {
+            $user_id = $this->request->input('id');
+        }
 
-		if ($this->request->input('width')) {
-			$width = $this->request->input('width');
-		}
+        if ($this->request->input('width')) {
+            $width = $this->request->input('width');
+        }
 
-		if ($this->request->input('height')) {
-			$height = $this->request->input('height');
-		}
+        if ($this->request->input('height')) {
+            $height = $this->request->input('height');
+        }
 
-		$image = $this->image_helper->resize( $folder , $filename , $width , $height );
+        $image = $this->image_helper->resize($folder, $filename, $width, $height);
 
-		if(!$image && !empty($user_id)) {
-			$image = $this->image_helper->resize( $user_id , $filename , $width , $height );
-		}
+        if (!$image && !empty($user_id)) {
+            $image = $this->image_helper->resize($user_id, $filename, $width, $height);
+        }
 
-		$info = pathinfo($image);
-		$extension = isset($info['extension']) ? $info['extension'] : 'png';
-		$image = $this->file->get($image);
+        $info = pathinfo($image);
+        $extension = isset($info['extension']) ? $info['extension'] : 'png';
+        $image = $this->file->get($image);
 
         return (new Response($image, 200))
-              ->header('Content-Type', 'image/'.$extension);
-
-	}
+            ->header('Content-Type', 'image/'.$extension)
+        ;
+    }
 }

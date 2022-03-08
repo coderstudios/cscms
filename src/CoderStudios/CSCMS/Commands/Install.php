@@ -6,23 +6,24 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Commands;
 
-use Illuminate\Console\Command;
-use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CSCMS\Library\Capability;
+use CoderStudios\CSCMS\Library\EmailGroup;
 use CoderStudios\CSCMS\Library\Language;
 use CoderStudios\CSCMS\Library\Settings;
 use CoderStudios\CSCMS\Library\UserRoles;
-use CoderStudios\CSCMS\Library\EmailGroup;
-use CoderStudios\CSCMS\Library\Capability;
+use CoderStudios\CSCMS\Library\Users;
+use Illuminate\Console\Command;
 
 class Install extends Command
 {
@@ -42,8 +43,6 @@ class Install extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(Settings $settings, UserRoles $user_roles, EmailGroup $email_group, Capability $capabilities, Users $user, Language $language)
     {
@@ -66,90 +65,90 @@ class Install extends Command
         $settings = $user_roles = $email_groups = $capabilities = $language = [];
 
         $settings[] = [
-            'name'          => 'user_verify_users',
-            'class'         => 'user',
-            'value'         => '1',
-            'serialized'    => 0,
+            'name' => 'user_verify_users',
+            'class' => 'user',
+            'value' => '1',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'user_require_username',
-            'class'         => 'user',
-            'value'         => '1',
-            'serialized'    => 0,
+            'name' => 'user_require_username',
+            'class' => 'user',
+            'value' => '1',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'user_allow_registration',
-            'class'         => 'user',
-            'value'         => '1',
-            'serialized'    => 0,
+            'name' => 'user_allow_registration',
+            'class' => 'user',
+            'value' => '1',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_from_address',
-            'class'         => 'mail',
-            'value'         => 'example@example.com',
-            'serialized'    => 0,
+            'name' => 'mail_from_address',
+            'class' => 'mail',
+            'value' => 'example@example.com',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_from_name',
-            'class'         => 'mail',
-            'value'         => 'Example',
-            'serialized'    => 0,
+            'name' => 'mail_from_name',
+            'class' => 'mail',
+            'value' => 'Example',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_mailgun_domain',
-            'class'         => 'mail',
-            'value'         => 'example.com',
-            'serialized'    => 0,
+            'name' => 'mail_mailgun_domain',
+            'class' => 'mail',
+            'value' => 'example.com',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_mailgun_secret',
-            'class'         => 'mail',
-            'value'         => '123456789',
-            'serialized'    => 0,
+            'name' => 'mail_mailgun_secret',
+            'class' => 'mail',
+            'value' => '123456789',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_mail_driver',
-            'class'         => 'mail',
-            'value'         => 'mailgun',
-            'serialized'    => 0,
+            'name' => 'mail_mail_driver',
+            'class' => 'mail',
+            'value' => 'mailgun',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_mail_encryption',
-            'class'         => 'mail',
-            'value'         => 'tls',
-            'serialized'    => 0,
+            'name' => 'mail_mail_encryption',
+            'class' => 'mail',
+            'value' => 'tls',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'mail_mail_enabled',
-            'class'         => 'mail',
-            'value'         => '0',
-            'serialized'    => 0,
+            'name' => 'mail_mail_enabled',
+            'class' => 'mail',
+            'value' => '0',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'config_contact_email',
-            'class'         => 'config',
-            'value'         => 'example@example.com',
-            'serialized'    => 0,
+            'name' => 'config_contact_email',
+            'class' => 'config',
+            'value' => 'example@example.com',
+            'serialized' => 0,
         ];
 
         $settings[] = [
-            'name'          => 'config_items_per_page',
-            'class'         => 'config',
-            'value'         => '25',
-            'serialized'    => 0,
+            'name' => 'config_items_per_page',
+            'class' => 'config',
+            'value' => '25',
+            'serialized' => 0,
         ];
 
-        foreach($settings as $setting) {
+        foreach ($settings as $setting) {
             $this->settings->create($setting);
         }
 
@@ -177,7 +176,7 @@ class Install extends Command
             'name' => 'Power user',
         ];
 
-        foreach($user_roles as $user_role) {
+        foreach ($user_roles as $user_role) {
             $this->user_roles->create($user_role);
         }
 
@@ -187,7 +186,7 @@ class Install extends Command
             'name' => 'Newsletter',
         ];
 
-        foreach($email_groups as $email_group) {
+        foreach ($email_groups as $email_group) {
             $this->email_group->create($email_group);
         }
 
@@ -201,7 +200,7 @@ class Install extends Command
             'locale' => 'en-US,en_US.UTF-8,en-gb,english',
         ];
 
-        foreach($language as $l) {
+        foreach ($language as $l) {
             $this->language->create($l);
         }
 
@@ -475,11 +474,11 @@ class Install extends Command
             'name' => 'update_language',
         ];
 
-        foreach($capabilities as $capability) {
+        foreach ($capabilities as $capability) {
             $this->capabilities->create($capability);
         }
 
-        $role = $this->user_roles->where('id',2)->first();
+        $role = $this->user_roles->where('id', 2)->first();
         $role->capabilities()->sync($this->capabilities->pluck('id'));
 
         $this->info('Lets setup your admin account...');
@@ -489,19 +488,17 @@ class Install extends Command
 
         if (!empty($email) && !empty($name) && !empty($password)) {
             $this->users->create([
-                'email'         => $email,
-                'name'          => $name,
-                'username'      => 'admin',
-                'password'      => bcrypt($password),
-                'enabled'       => 1,
-                'verified'      => 1,
-                'user_role_id'  => 2,
+                'email' => $email,
+                'name' => $name,
+                'username' => 'admin',
+                'password' => bcrypt($password),
+                'enabled' => 1,
+                'verified' => 1,
+                'user_role_id' => 2,
             ]);
-            $this->info('Great thanks, account setup. Login via: ' . route('backend.login'));
+            $this->info('Great thanks, account setup. Login via: '.route('backend.login'));
         } else {
             $this->info('You need to enter appropriate information for each question, please re run the install!');
         }
-
     }
-
 }

@@ -6,21 +6,22 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Commands;
 
-use Mail;
+use CoderStudios\CSCMS\Library\Mail as MailLibrary;
+use CoderStudios\CSCMS\Library\Settings;
 use Config;
 use Illuminate\Console\Command;
-use CoderStudios\CSCMS\Library\Settings;
-use CoderStudios\CSCMS\Library\Mail as MailLibrary;
+use Mail;
 
 class Email extends Command
 {
@@ -40,8 +41,6 @@ class Email extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(MailLibrary $mail, Settings $settings)
     {
@@ -57,27 +56,29 @@ class Email extends Command
      */
     public function handle()
     {
-        $mail_config = $this->settings->where('class','mail')->get();
-        Config::set('mail.driver',$mail_config->where('name','mail_mail_driver')->pluck('value')->first());
-        Config::set('mail.from.address',$mail_config->where('name','mail_from_address')->pluck('value')->first());
-        Config::set('mail.from.name',$mail_config->where('name','mail_from_name')->pluck('value')->first());
-        Config::set('services.mailgun.domain',$mail_config->where('name','mail_mailgun_domain')->pluck('value')->first());
-        Config::set('services.mailgun.secret',$mail_config->where('name','mail_mailgun_secret')->pluck('value')->first());
-        if ($mail_config->where('name','mail_mail_enabled')->pluck('value')->first()) {
+        $mail_config = $this->settings->where('class', 'mail')->get();
+        Config::set('mail.driver', $mail_config->where('name', 'mail_mail_driver')->pluck('value')->first());
+        Config::set('mail.from.address', $mail_config->where('name', 'mail_from_address')->pluck('value')->first());
+        Config::set('mail.from.name', $mail_config->where('name', 'mail_from_name')->pluck('value')->first());
+        Config::set('services.mailgun.domain', $mail_config->where('name', 'mail_mailgun_domain')->pluck('value')->first());
+        Config::set('services.mailgun.secret', $mail_config->where('name', 'mail_mailgun_secret')->pluck('value')->first());
+        if ($mail_config->where('name', 'mail_mail_enabled')->pluck('value')->first()) {
             $emails = $this->mail
-                            ->where('enabled',1)
-                            ->orWhere('resend',1)
-                            ->whereNull('sent_at')
-                            ->take(100)
-                            ->get();
+                ->where('enabled', 1)
+                ->orWhere('resend', 1)
+                ->whereNull('sent_at')
+                ->take(100)
+                ->get()
+            ;
 
             if ($emails->count()) {
-                foreach($emails as $email) {
-                    $result = Mail::raw('', function($message) use ($email) {
+                foreach ($emails as $email) {
+                    $result = Mail::raw('', function ($message) use ($email) {
                         $message->to($email->to_email, $email->sender)
-                                ->subject($email->subject)
-                                ->addPart($email->body_text)
-                                ->setBody($email->body_html,'text/html');
+                            ->subject($email->subject)
+                            ->addPart($email->body_text)
+                            ->setBody($email->body_html, 'text/html')
+                        ;
                     });
                     $email->sent_at = date('Y-m-d H:i:s');
                     $email->enabled = 0;

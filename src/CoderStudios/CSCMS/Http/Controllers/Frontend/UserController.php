@@ -6,22 +6,23 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend;
 
-use Auth;
-use View;
 use App\Http\Controllers\Controller;
+use Auth;
 use CoderStudios\CSCMS\Library\Users;
-use Illuminate\Contracts\Cache\Factory as Cache;
 use CoderStudios\CSCMS\Requests\UpdateMemberRequest;
+use Illuminate\Contracts\Cache\Factory as Cache;
+use View;
 
 class UserController extends Controller
 {
@@ -35,7 +36,7 @@ class UserController extends Controller
     public function profile()
     {
         $current_user = Auth::user();
-        $key = md5(snake_case(str_replace('\\','',__namespace__) . class_basename($this) . '_' .  __function__ . '_' . $current_user->id));
+        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$current_user->id));
         if ($this->cache->has($key)) {
             $view = $this->cache->get($key);
         } else {
@@ -54,28 +55,31 @@ class UserController extends Controller
             $view = view($view_file, compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
         }
-        return $view;
 
+        return $view;
     }
 
     public function verifyAccount($token)
     {
         if (!empty($token)) {
-            $user = $this->user->where('verified_token',$token)->first();
+            $user = $this->user->where('verified_token', $token)->first();
             if ($user) {
                 $user->verified = 1;
                 $user->save();
-                return redirect()->route('frontend.login')->with('success_message','Account verified, login to continue');
+
+                return redirect()->route('frontend.login')->with('success_message', 'Account verified, login to continue');
             }
         }
+
         return redirect()->route('frontend.index');
     }
 
     public function updateProfile(UpdateMemberRequest $request)
     {
-        $data = $request->only('name','email');
+        $data = $request->only('name', 'email');
         $data['enabled'] = 1;
-        $this->user->update($request->input('id'),$data);
-        return redirect()->route('frontend.profile')->with('success_message','Profile updated');
+        $this->user->update($request->input('id'), $data);
+
+        return redirect()->route('frontend.profile')->with('success_message', 'Profile updated');
     }
 }

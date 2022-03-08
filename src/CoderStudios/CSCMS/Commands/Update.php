@@ -6,14 +6,15 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Commands;
 
 use App;
@@ -39,8 +40,6 @@ class Update extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(CacheFactory $cache)
     {
@@ -55,13 +54,12 @@ class Update extends Command
      */
     public function handle()
     {
-        if (App::environment(['local','staging'])) {
+        if (App::environment(['local', 'staging'])) {
             $this->info('Publishing assets and views');
-            Artisan::call('vendor:publish', [ '--tag' => 'public', '--force' => true]);
-            Artisan::call('vendor:publish', [ '--tag' => 'views', '--force' => true]);
+            Artisan::call('vendor:publish', ['--tag' => 'public', '--force' => true]);
+            Artisan::call('vendor:publish', ['--tag' => 'views', '--force' => true]);
         }
         $this->cache->flush();
         $this->info('Cache cleared succesfully');
     }
-
 }

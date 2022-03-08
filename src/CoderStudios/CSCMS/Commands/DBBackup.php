@@ -6,14 +6,15 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Commands;
 
 use Illuminate\Console\Command;
@@ -37,8 +38,6 @@ class DBBackup extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -53,14 +52,15 @@ class DBBackup extends Command
     public function handle()
     {
         $process = new Process('');
-        $default_config = sprintf('database.connections.%s',config('database.default'));
+        $default_config = sprintf('database.connections.%s', config('database.default'));
         $db = config($default_config);
         if (!is_dir(config('cscms.coderstudios.backup_dir'))) {
             mkdir(config('cscms.coderstudios.backup_dir'));
         }
-        $path = config('cscms.coderstudios.backup_dir') . '/' . $db['database'] . '-' . date('Y-m-d-h-i') . '.gz';
+        $path = config('cscms.coderstudios.backup_dir').'/'.$db['database'].'-'.date('Y-m-d-h-i').'.gz';
 
-        $command = sprintf('mysqldump --host=%s --port=%s --user=%s --password=%s --opt %s | gzip -c | cat > %s',
+        $command = sprintf(
+            'mysqldump --host=%s --port=%s --user=%s --password=%s --opt %s | gzip -c | cat > %s',
             $db['host'],
             $db['port'],
             $db['username'],

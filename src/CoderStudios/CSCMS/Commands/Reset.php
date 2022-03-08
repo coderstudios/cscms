@@ -6,23 +6,24 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
- 
+
 namespace CoderStudios\CSCMS\Commands;
 
-use Illuminate\Console\Command;
-use CoderStudios\CSCMS\Library\Users;
+use CoderStudios\CSCMS\Library\Capability;
+use CoderStudios\CSCMS\Library\EmailGroup;
 use CoderStudios\CSCMS\Library\Language;
 use CoderStudios\CSCMS\Library\Settings;
 use CoderStudios\CSCMS\Library\UserRoles;
-use CoderStudios\CSCMS\Library\EmailGroup;
-use CoderStudios\CSCMS\Library\Capability;
+use CoderStudios\CSCMS\Library\Users;
+use Illuminate\Console\Command;
 
 class Reset extends Command
 {
@@ -42,8 +43,6 @@ class Reset extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(Settings $settings, UserRoles $user_roles, EmailGroup $email_group, Capability $capabilities, Users $user, Language $language)
     {
@@ -71,5 +70,4 @@ class Reset extends Command
         $this->language->truncate();
         $this->call('cscms:install');
     }
-
 }

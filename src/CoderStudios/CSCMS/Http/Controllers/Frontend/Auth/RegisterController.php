@@ -6,22 +6,23 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Http\Controllers\Frontend\Auth;
 
-use View;
-use Illuminate\Http\Request;
-use CoderStudios\CSCMS\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use CoderStudios\CSCMS\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use View;
 
 class RegisterController extends Controller
 {
@@ -47,8 +48,6 @@ class RegisterController extends Controller
 
     /**
      * Create a new controller instance.
-     *
-     * @return void
      */
     public function __construct(Request $request)
     {
@@ -73,13 +72,13 @@ class RegisterController extends Controller
         if (View::exists(config('cscms.coderstudios.theme').'.auth.register')) {
             $view = config('cscms.coderstudios.theme').'.auth.register';
         }
-        return view($view,compact('vars'));
+
+        return view($view, compact('vars'));
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -92,13 +91,13 @@ class RegisterController extends Controller
         if ($this->request->config['user_require_username']) {
             $validation['username'] = 'required|max:255|unique:users';
         }
+
         return Validator::make($data, $validation);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
      * @return User
      */
     protected function create(array $data)
@@ -109,10 +108,11 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'user_role_id' => 1,
         ];
-        $user_data['username'] = substr(md5($user_data['email']),0,8);
+        $user_data['username'] = substr(md5($user_data['email']), 0, 8);
         if ($this->request->config['user_require_username']) {
             $user_data['username'] = $data['username'];
         }
+
         return User::create($user_data);
     }
 }

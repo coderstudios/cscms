@@ -6,25 +6,26 @@
  *
  * Licensed under the terms of the MIT license https://opensource.org/licenses/MIT
  *
- * @package    CSCMS
  * @version    1.0.0
+ *
  * @author     Coder Studios Ltd
  * @license    MIT https://opensource.org/licenses/MIT
  * @copyright  (c) 2022, Coder Studios Ltd
- * @link       https://www.coderstudios.com
+ *
+ * @see       https://www.coderstudios.com
  */
 
 namespace CoderStudios\CSCMS\Http\Controllers\Backend;
 
-use Artisan;
 use App\Http\Controllers\Controller;
+use Artisan;
 use CoderStudios\CSCMS\Library\Utils;
 use CoderStudios\CSCMS\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class CacheController extends Controller
 {
-	public function __construct(Cache $cache, Utils $utils, Capability $capability)
+    public function __construct(Cache $cache, Utils $utils, Capability $capability)
     {
         $this->utils = $utils;
         $this->capability = $capability;
@@ -34,9 +35,9 @@ class CacheController extends Controller
         $this->frontend_cache = $cache->store('frontend_views');
     }
 
-	public function index()
-	{
-        $this->authorize('view_cache',$this->capability->where('name','view_cache')->pluck('id')->first());
+    public function index()
+    {
+        $this->authorize('view_cache', $this->capability->where('name', 'view_cache')->pluck('id')->first());
 
         $all_size = 0;
         $frontend = $backend = $data = $all = '0 b';
@@ -61,74 +62,83 @@ class CacheController extends Controller
             'image' => $this->utils->convertBytes($image_size),
             'all' => $this->utils->convertBytes(($all_size + $image_size)),
         ];
-		return view('cscms::backend.pages.cache', compact('vars'))->render();
-	}
+
+        return view('cscms::backend.pages.cache', compact('vars'))->render();
+    }
 
     public function optimiseClasses()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         Artisan::call('optimize');
-        return redirect()->route('backend.cache')->with('success_message','Classes optimised');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Classes optimised');
     }
 
     public function optimiseUrls()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         Artisan::call('route:clear');
         Artisan::call('route:cache');
-        return redirect()->route('backend.cache')->with('success_message','URLs optimised');
+
+        return redirect()->route('backend.cache')->with('success_message', 'URLs optimised');
     }
 
     public function optimiseConfig()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         Artisan::call('config:cache');
-        return redirect()->route('backend.cache')->with('success_message','Config optimised');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Config optimised');
     }
 
     public function clearFrontend()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->frontend_cache->flush();
-        return redirect()->route('backend.cache')->with('success_message','Front end cache cleared');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Front end cache cleared');
     }
 
     public function clearBackend()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->backend_cache->flush();
-        return redirect()->route('backend.cache')->with('success_message','Back end cache cleared');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Back end cache cleared');
     }
 
     public function clearData()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->data_cache->flush();
-        return redirect()->route('backend.cache')->with('success_message','Data cache cleared');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Data cache cleared');
     }
 
     public function clearImage()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->clearImages();
-        return redirect()->route('backend.cache')->with('success_message','Data cache cleared');
+
+        return redirect()->route('backend.cache')->with('success_message', 'Data cache cleared');
     }
 
     public function clear()
     {
-        $this->authorize('update_cache',$this->capability->where('name','update_cache')->pluck('id')->first());
+        $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->cache->flush();
-        return redirect()->route('backend.cache')->with('success_message','All cache cleared');
+
+        return redirect()->route('backend.cache')->with('success_message', 'All cache cleared');
     }
 
     private function clearImages()
     {
-        $dir = storage_path() . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'cache';
+        $dir = storage_path().DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'cache';
         $files = scandir($dir);
-        if(count($files)) {
-            foreach($files as $file) {
-                if ($file != '.' && $file != '..') {
-                    unlink($dir . DIRECTORY_SEPARATOR . $file);
+        if (count($files)) {
+            foreach ($files as $file) {
+                if ('.' != $file && '..' != $file) {
+                    unlink($dir.DIRECTORY_SEPARATOR.$file);
                 }
             }
         }
@@ -136,18 +146,19 @@ class CacheController extends Controller
 
     private function cacheImageDirSize()
     {
-        $dir = storage_path() . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'cache';
+        $dir = storage_path().DIRECTORY_SEPARATOR.'app'.DIRECTORY_SEPARATOR.'uploads'.DIRECTORY_SEPARATOR.'cache';
         $size = 0;
         if (is_dir($dir)) {
             $files = scandir($dir);
-            if(count($files)) {
-                foreach($files as $file) {
-                    if ($file != '.' && $file != '..') {
-                        $size = $size + filesize($dir . DIRECTORY_SEPARATOR . $file);
+            if (count($files)) {
+                foreach ($files as $file) {
+                    if ('.' != $file && '..' != $file) {
+                        $size = $size + filesize($dir.DIRECTORY_SEPARATOR.$file);
                     }
                 }
             }
         }
+
         return $size;
     }
 }
