@@ -17,6 +17,7 @@
 
 namespace CoderStudios\CsCms;
 
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
