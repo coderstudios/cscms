@@ -18,21 +18,19 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Capability as Capabilities;
-use CoderStudios\CsCms\Library\Settings;
-use CoderStudios\CsCms\Library\UserRoles;
-use CoderStudios\CsCms\Library\Users;
-use CoderStudios\CsCms\Models\Capability;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
+use CoderStudios\CsCms\Library\UserRolesLibrary;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class ImportController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Capabilities $capabilities, Capability $capability, Settings $settings, Users $users, UserRoles $user_roles)
+    public function __construct(Request $request, Cache $cache, CapabilitiesLibrary $capabilities, CapabilityLibrary $capability, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles)
     {
         $this->user = $users;
         $this->settings = $settings;
-        $this->capability = $capability;
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
         parent::__construct($cache, $request);
@@ -40,7 +38,7 @@ class ImportController extends Controller
 
     public function index()
     {
-        $this->authorize('view_import', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('view_import', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
@@ -58,7 +56,7 @@ class ImportController extends Controller
 
     public function import()
     {
-        $this->authorize('create_import', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_import', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $file = $this->request->file('import');
         $contents = file_get_contents($file->getRealPath());
         if ($this->request->get('replace') && strlen($contents)) {
@@ -83,14 +81,14 @@ class ImportController extends Controller
                 break;
 
                 case 'capabilities':
-                    $this->capability->truncate();
-                    $this->capability->insert($this->convertLines($contents, $this->capability->getFillable()));
+                    $this->capabilities->truncate();
+                    $this->capabilities->insert($this->convertLines($contents, $this->capabilities->getFillable()));
 
                 break;
             }
         }
 
-        return redirect()->route('backend.index')->with('success_message', 'Import successful');
+        return redirect()->route('backend.index')->with('success', 'Import successful');
     }
 
     private function convertLines($contents, $columns)

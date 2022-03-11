@@ -40,17 +40,17 @@ class MasterComposer
 
     public function compose(View $view)
     {
-        $view->with('success_message', '');
+        $view->with('success', '');
         $view->with('error_message', '');
         $view->with('csrf_error', '');
         $view->with('notifications', '');
         if ($this->request->session) {
-            if ($this->request->session()->get('success_message') || $this->request->session()->get('error_message') || $this->request->session()->get('csrf_error')) {
+            if ($this->request->session()->get('success') || $this->request->session()->get('error_message') || $this->request->session()->get('csrf_error')) {
                 $this->backend_cache->flush();
                 $this->request->session()->put('clear_cache', 1);
             }
 
-            $view->with('success_message', $this->request->session()->pull('success_message'));
+            $view->with('success', $this->request->session()->pull('success'));
             $view->with('error_message', $this->request->session()->pull('error_message'));
             $view->with('csrf_error', $this->request->session()->pull('csrf_error'));
             $notifications = $this->request->session()->pull('notifications');

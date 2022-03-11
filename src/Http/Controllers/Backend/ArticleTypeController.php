@@ -19,14 +19,14 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Auth;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\ArticleType;
+use CoderStudios\CsCms\Library\ArticleTypeLibrary;
 use CoderStudios\CsCms\Requests\ArticleTypeRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class ArticleTypeController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, ArticleType $article_type)
+    public function __construct(Request $request, Cache $cache, ArticleTypeLibrary $article_type)
     {
         $this->article_type = $article_type;
         $this->attributes = $this->article_type->getFillable();
@@ -99,7 +99,7 @@ class ArticleTypeController extends Controller
         $this->article_type->create($data);
         $this->cache->flush();
 
-        return redirect()->route('backend.article_types')->with('success_message', 'Article type created');
+        return redirect()->route('backend.article_types')->with('success', 'Article type created');
     }
 
     public function update(ArticleTypeRequest $request, $id = '')
@@ -109,6 +109,6 @@ class ArticleTypeController extends Controller
         $this->article_type->update($id, $data);
         $this->cache->flush();
 
-        return redirect()->route('backend.article_types')->with('success_message', 'Article type updated');
+        return redirect()->route('backend.article_types')->with('success', 'Article type updated');
     }
 }

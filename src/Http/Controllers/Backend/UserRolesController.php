@@ -18,15 +18,15 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Capability;
-use CoderStudios\CsCms\Library\UserRoles;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
+use CoderStudios\CsCms\Library\UserRolesLibrary;
 use CoderStudios\CsCms\Requests\UserRoleRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class UserRolesController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, UserRoles $user_roles, Capability $capabilities)
+    public function __construct(Request $request, Cache $cache, UserRolesLibrary $user_roles, CapabilityLibrary $capabilities)
     {
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
@@ -104,7 +104,7 @@ class UserRolesController extends Controller
         }
         $this->cache->flush();
 
-        return redirect()->route('backend.user_roles')->with('success_message', 'User role created');
+        return redirect()->route('backend.user_roles')->with('success', 'User role created');
     }
 
     public function update(UserRoleRequest $request, $id)
@@ -120,7 +120,7 @@ class UserRolesController extends Controller
         }
         $this->cache->flush();
 
-        return redirect()->route('backend.user_roles')->with('success_message', 'User role updated');
+        return redirect()->route('backend.user_roles')->with('success', 'User role updated');
     }
 
     public function delete($id)
@@ -128,6 +128,6 @@ class UserRolesController extends Controller
         $this->user_roles->delete($id);
         $this->cache->flush();
 
-        return redirect()->route('backend.user_roles')->with('success_message', 'User role deleted');
+        return redirect()->route('backend.user_roles')->with('success', 'User role deleted');
     }
 }

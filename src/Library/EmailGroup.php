@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms\Library;
 use CoderStudios\CsCms\Models\EmailGroup as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class EmailGroup extends BaseLibrary
+class EmailGroupLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

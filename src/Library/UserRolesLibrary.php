@@ -17,10 +17,10 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Language as Model;
+use CoderStudios\CsCms\Models\UserRole as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Language extends BaseLibrary
+class UserRolesLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

@@ -19,14 +19,14 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Artisan;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Utils;
-use CoderStudios\CsCms\Models\Capability;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
+use CoderStudios\CsCms\Library\UtilsLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class CacheController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Utils $utils, Capability $capability)
+    public function __construct(Request $request, Cache $cache, UtilsLibrary $utils, CapabilityLibrary $capability)
     {
         $this->utils = $utils;
         $this->capability = $capability;
@@ -69,7 +69,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         Artisan::call('optimize');
 
-        return redirect()->route('backend.cache')->with('success_message', 'Classes optimised');
+        return redirect()->route('backend.cache')->with('success', 'Classes optimised');
     }
 
     public function optimiseUrls()
@@ -78,7 +78,7 @@ class CacheController extends Controller
         Artisan::call('route:clear');
         Artisan::call('route:cache');
 
-        return redirect()->route('backend.cache')->with('success_message', 'URLs optimised');
+        return redirect()->route('backend.cache')->with('success', 'URLs optimised');
     }
 
     public function optimiseConfig()
@@ -86,7 +86,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         Artisan::call('config:cache');
 
-        return redirect()->route('backend.cache')->with('success_message', 'Config optimised');
+        return redirect()->route('backend.cache')->with('success', 'Config optimised');
     }
 
     public function clearFrontend()
@@ -94,7 +94,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->frontend_cache->flush();
 
-        return redirect()->route('backend.cache')->with('success_message', 'Front end cache cleared');
+        return redirect()->route('backend.cache')->with('success', 'Front end cache cleared');
     }
 
     public function clearBackend()
@@ -102,7 +102,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->backend_cache->flush();
 
-        return redirect()->route('backend.cache')->with('success_message', 'Back end cache cleared');
+        return redirect()->route('backend.cache')->with('success', 'Back end cache cleared');
     }
 
     public function clearData()
@@ -110,7 +110,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->data_cache->flush();
 
-        return redirect()->route('backend.cache')->with('success_message', 'Data cache cleared');
+        return redirect()->route('backend.cache')->with('success', 'Data cache cleared');
     }
 
     public function clearImage()
@@ -118,7 +118,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->clearImages();
 
-        return redirect()->route('backend.cache')->with('success_message', 'Data cache cleared');
+        return redirect()->route('backend.cache')->with('success', 'Data cache cleared');
     }
 
     public function clear()
@@ -126,7 +126,7 @@ class CacheController extends Controller
         $this->authorize('update_cache', $this->capability->where('name', 'update_cache')->pluck('id')->first());
         $this->cache->flush();
 
-        return redirect()->route('backend.cache')->with('success_message', 'All cache cleared');
+        return redirect()->route('backend.cache')->with('success', 'All cache cleared');
     }
 
     private function clearImages()

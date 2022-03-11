@@ -18,14 +18,12 @@
 namespace CoderStudios\CsCms\Middleware;
 
 use Closure;
-use CoderStudios\CsCms\Library\Settings as SettingsLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
 
 class Settings
 {
     /**
      * Create a new middleware instance.
-     *
-     * @param \CoderStudios\CsCms\Library\SettingsLibrary $settings
      */
     public function __construct(SettingsLibrary $settings)
     {

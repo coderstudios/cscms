@@ -19,15 +19,15 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Auth;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Notifications;
-use CoderStudios\CsCms\Library\NotificationsRead;
+use CoderStudios\CsCms\Library\NotificationsLibrary;
+use CoderStudios\CsCms\Library\NotificationsReadLibrary;
 use CoderStudios\CsCms\Requests\NotificationRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Notifications $notifications, NotificationsRead $nr)
+    public function __construct(Request $request, Cache $cache, NotificationsLibrary $notifications, NotificationsReadLibrary $nr)
     {
         $this->nr = $nr;
         $this->notifications = $notifications;
@@ -99,7 +99,7 @@ class NotificationController extends Controller
         $notification = $this->notifications->create($data);
         $this->cache->flush();
 
-        return redirect()->route('backend.notifications')->with('success_message', 'Notification created');
+        return redirect()->route('backend.notifications')->with('success', 'Notification created');
     }
 
     public function update(NotificationRequest $request, $id = '')
@@ -109,6 +109,6 @@ class NotificationController extends Controller
         $this->notifications->update($id, $data);
         $this->cache->flush();
 
-        return redirect()->route('backend.notifications')->with('success_message', 'Notification updated');
+        return redirect()->route('backend.notifications')->with('success', 'Notification updated');
     }
 }

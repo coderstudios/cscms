@@ -18,14 +18,14 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Settings;
+use CoderStudios\CsCms\Library\SettingsLibrary;
 use CoderStudios\CsCms\Requests\SettingRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Settings $setting)
+    public function __construct(Request $request, Cache $cache, SettingsLibrary $setting)
     {
         $this->setting = $setting;
         $this->attributes = $this->setting->getFillable();
@@ -99,7 +99,7 @@ class SettingsController extends Controller
         $this->setting->create($data);
         $this->cache->flush();
 
-        return redirect()->route('backend.settings')->with('success_message', 'Setting created');
+        return redirect()->route('backend.settings')->with('success', 'Setting created');
     }
 
     public function update(SettingRequest $request, $id = '')
@@ -109,7 +109,7 @@ class SettingsController extends Controller
         $this->setting->update($id, $data);
         $this->cache->flush();
 
-        return redirect()->route('backend.settings')->with('success_message', 'Setting updated');
+        return redirect()->route('backend.settings')->with('success', 'Setting updated');
     }
 
     public function delete($id)
@@ -117,7 +117,7 @@ class SettingsController extends Controller
         $this->setting->delete($id);
         $this->cache->flush();
 
-        return redirect()->route('backend.settings')->with('success_message', 'Setting deleted');
+        return redirect()->route('backend.settings')->with('success', 'Setting deleted');
     }
 
     private function setSerialized($data)

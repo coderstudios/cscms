@@ -18,7 +18,7 @@
 namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use CoderStudios\CsCms\Requests\UpdateMemberRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
@@ -26,7 +26,7 @@ use View;
 
 class UserController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Users $user)
+    public function __construct(Request $request, Cache $cache, UsersLibrary $user)
     {
         $this->middleware('auth');
         $this->user = $user;
@@ -66,7 +66,7 @@ class UserController extends Controller
                 $user->verified = 1;
                 $user->save();
 
-                return redirect()->route('frontend.login')->with('success_message', 'Account verified, login to continue');
+                return redirect()->route('frontend.login')->with('success', 'Account verified, login to continue');
             }
         }
 
@@ -79,6 +79,6 @@ class UserController extends Controller
         $data['enabled'] = 1;
         $this->user->update($request->input('id'), $data);
 
-        return redirect()->route('frontend.profile')->with('success_message', 'Profile updated');
+        return redirect()->route('frontend.profile')->with('success', 'Profile updated');
     }
 }

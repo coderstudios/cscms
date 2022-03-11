@@ -17,23 +17,14 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\NotificationsRead as Model;
+use CoderStudios\CsCms\Models\Language as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class NotificationsRead extends BaseLibrary
+class LanguageLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {
         $this->model = $model;
         $this->cache = $cache->store(config('cache.default'));
-    }
-
-    public function hasSeen($user_id = '', $notification_id = '')
-    {
-        return $this->model
-            ->where('user_id', $user_id)
-            ->where('notification_id', $notification_id)
-            ->count()
-        ;
     }
 }

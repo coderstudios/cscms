@@ -21,7 +21,7 @@ use CoderStudios\CsCms\Models\Article as Model;
 use DB;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Article extends BaseLibrary
+class ArticleLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

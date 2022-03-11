@@ -17,10 +17,10 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Audit as Model;
+use CoderStudios\CsCms\Models\Capability as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Audit extends BaseLibrary
+class CapabilityLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

@@ -18,9 +18,9 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Mail;
-use CoderStudios\CsCms\Library\UserRoles;
-use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Library\MailLibrary;
+use CoderStudios\CsCms\Library\UserRolesLibrary;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use CoderStudios\CsCms\Requests\UpdateUserRequest;
 use CoderStudios\CsCms\Requests\UserRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -28,7 +28,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Users $users, UserRoles $user_roles, Mail $mail)
+    public function __construct(Request $request, Cache $cache, UsersLibrary $users, UserRolesLibrary $user_roles, MailLibrary $mail)
     {
         $this->mail = $mail;
         $this->users = $users;
@@ -105,7 +105,7 @@ class UserController extends Controller
         $this->users->create($data);
         $this->cache->flush();
 
-        return redirect()->route('backend.users')->with('success_message', 'User created');
+        return redirect()->route('backend.users')->with('success', 'User created');
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -122,7 +122,7 @@ class UserController extends Controller
         $this->users->update($id, $data);
         $this->cache->flush();
 
-        return redirect()->route('backend.users')->with('success_message', 'User updated');
+        return redirect()->route('backend.users')->with('success', 'User updated');
     }
 
     public function view()
@@ -134,7 +134,7 @@ class UserController extends Controller
         $this->users->delete($id);
         $this->cache->flush();
 
-        return redirect()->route('backend.users')->with('success_message', 'User deleted');
+        return redirect()->route('backend.users')->with('success', 'User deleted');
     }
 
     public function resendVerify($id = '')

@@ -18,8 +18,8 @@
 namespace CoderStudios\CsCms\Middleware;
 
 use Closure;
-use CoderStudios\CsCms\Library\Notifications as NotificationsLibrary;
-use CoderStudios\CsCms\Library\NotificationsRead;
+use CoderStudios\CsCms\Library\NotificationsLibrary;
+use CoderStudios\CsCms\Library\NotificationsReadLibrary;
 
 class Notifications
 {
@@ -28,7 +28,7 @@ class Notifications
      *
      * @param \Illuminate\Contracts\Cache\Repository $cache
      */
-    public function __construct(NotificationsLibrary $notifications, NotificationsRead $notifications_read)
+    public function __construct(NotificationsLibrary $notifications, NotificationsReadLibrary $notifications_read)
     {
         $this->notifications = $notifications;
         $this->notifications_read = $notifications_read;

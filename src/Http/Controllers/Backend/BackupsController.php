@@ -19,8 +19,8 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Artisan;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Utils;
-use CoderStudios\CsCms\Models\Capability;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
+use CoderStudios\CsCms\Library\UtilsLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
@@ -30,7 +30,7 @@ class BackupsController extends Controller
     protected $utils;
     protected $keys = [];
 
-    public function __construct(Request $request, Cache $cache, Utils $utils, Capability $capability)
+    public function __construct(Request $request, Cache $cache, UtilsLibrary $utils, CapabilityLibrary $capability)
     {
         $this->utils = $utils;
         $this->capability = $capability;
@@ -65,7 +65,7 @@ class BackupsController extends Controller
         $this->cache->forget($this->request->session()->get('key'));
         $this->request->session()->forget('key');
 
-        return redirect()->route('backend.backups')->with('success_message', 'Backup file generated');
+        return redirect()->route('backend.backups')->with('success', 'Backup file generated');
     }
 
     public function delete()
@@ -83,6 +83,6 @@ class BackupsController extends Controller
             }
         }
 
-        return redirect()->route('backend.backups')->with('success_message', 'Backup file deleted');
+        return redirect()->route('backend.backups')->with('success', 'Backup file deleted');
     }
 }

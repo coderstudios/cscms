@@ -52,6 +52,6 @@ class LogController extends Controller
         fclose($handle);
         $this->cache->flush();
 
-        return redirect()->route('backend.index')->with('success_message', 'Log file cleared');
+        return redirect()->route('backend.index')->with('success', 'Log file cleared');
     }
 }

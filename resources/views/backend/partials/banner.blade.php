@@ -1,10 +1,10 @@
-@if($success_message)
+@if($success)
 
 <div class="row">
 
 	<div class="col">
 
-		<div class="alert alert-success" role="alert">{!! $success_message !!}</div>
+		<div class="alert alert-success" role="alert">{!! $success !!}</div>
 
 	</div>
 
@@ -12,13 +12,13 @@
 
 @endif
 
-@if($error_message)
+@if($error)
 
 <div class="row">
 
 	<div class="col">
 
-		<div class="alert alert-danger text-center" role="alert">{!! $error_message !!}</div>
+		<div class="alert alert-danger text-center" role="alert">{!! $error !!}</div>
 
 	</div>
 

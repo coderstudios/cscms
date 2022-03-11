@@ -125,8 +125,8 @@
         </div>
 
         @include('cscms::backend.partials.banner',[
-            'success_message' => $success_message,
-            'error_message' => $error_message,
+            'success' => $success,
+            'error' => $error,
             'csrf_error' => $csrf_error,
         ])
 

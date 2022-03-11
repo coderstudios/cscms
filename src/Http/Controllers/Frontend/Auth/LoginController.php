@@ -18,7 +18,7 @@
 namespace CoderStudios\CsCms\Http\Controllers\Frontend\Auth;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use View;
@@ -48,7 +48,7 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      */
-    public function __construct(Request $request, Users $user)
+    public function __construct(Request $request, UsersLibrary $user)
     {
         $this->middleware('guest', ['except' => 'logout']);
         $this->user = $user;

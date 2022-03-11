@@ -19,14 +19,14 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Auth;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Language;
+use CoderStudios\CsCms\Library\LanguageLibrary;
 use CoderStudios\CsCms\Requests\LanguageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class LanguageController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Language $language)
+    public function __construct(Request $request, Cache $cache, LanguageLibrary $language)
     {
         $this->language = $language;
         $this->attributes = $this->language->getFillable();
@@ -96,7 +96,7 @@ class LanguageController extends Controller
         $data['user_id'] = Auth::user()->id;
         $notification = $this->language->create($data);
 
-        return redirect()->route('backend.languages')->with('success_message', 'Language created');
+        return redirect()->route('backend.languages')->with('success', 'Language created');
     }
 
     public function update(LanguageRequest $request, $id = '')
@@ -105,6 +105,6 @@ class LanguageController extends Controller
         $data['user_id'] = Auth::user()->id;
         $this->language->update($id, $data);
 
-        return redirect()->route('backend.languages')->with('success_message', 'Language updated');
+        return redirect()->route('backend.languages')->with('success', 'Language updated');
     }
 }

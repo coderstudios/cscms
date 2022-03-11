@@ -17,31 +17,14 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Setting as Model;
+use CoderStudios\CsCms\Models\Upload as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Settings extends BaseLibrary
+class UploadLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {
         $this->model = $model;
         $this->cache = $cache->store(config('cache.default'));
-    }
-
-    public function getSettings()
-    {
-        $key = $this->key('settings');
-        if ($this->useCachedContent($key)) {
-            $a = $this->cache->get($key);
-        } else {
-            $config = $this->model->get();
-            $a = [];
-            foreach ($config as $item) {
-                $a[$item->name] = 1 === $item->serialized ? unserialize($item->value) : $item->value;
-            }
-            $this->cache->add($key, $s, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $a;
     }
 }

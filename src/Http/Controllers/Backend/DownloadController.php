@@ -18,13 +18,13 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Utils;
+use CoderStudios\CsCms\Library\UtilsLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class DownloadController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Utils $utils)
+    public function __construct(Request $request, Cache $cache, UtilsLibrary $utils)
     {
         $this->utils = $utils;
         parent::__construct($cache, $request);

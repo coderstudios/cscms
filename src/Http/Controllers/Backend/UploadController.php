@@ -19,8 +19,8 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Auth;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Upload;
-use CoderStudios\CsCms\Library\Utils;
+use CoderStudios\CsCms\Library\UploadLibrary;
+use CoderStudios\CsCms\Library\UtilsLibrary;
 use CoderStudios\CsCms\Requests\UploadRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
@@ -28,7 +28,7 @@ use Illuminate\Http\Request;
 
 class UploadController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Upload $upload, Utils $utils, Filesystem $file)
+    public function __construct(Request $request, Cache $cache, UploadLibrary $upload, UtilsLibrary $utils, Filesystem $file)
     {
         $this->file = $file;
         $this->utils = $utils;
@@ -126,13 +126,13 @@ class UploadController extends Controller
             $message = $message.' '.$failed.' '.str_plural('file', $failed).' failed to upload.';
         }
         if ($success) {
-            $this->request->session()->put('success_message', $message);
+            $this->request->session()->put('success', $message);
             $this->cache->flush();
 
             return response()->json(['result' => true, 'path' => route('backend.uploads')]);
         }
 
-        return redirect()->route('backend.uploads')->with('success_message', $message);
+        return redirect()->route('backend.uploads')->with('success', $message);
     }
 
     public function update(UploadRequest $request, $id = '')
@@ -141,7 +141,7 @@ class UploadController extends Controller
         $data['user_id'] = Auth::user()->id;
         $this->upload->update($id, $data);
 
-        return redirect()->route('backend.uploads')->with('success_message', 'Upload updated');
+        return redirect()->route('backend.uploads')->with('success', 'Upload updated');
     }
 
     public function delete($id = '')
@@ -155,6 +155,6 @@ class UploadController extends Controller
             $upload->delete();
         }
 
-        return redirect()->route('backend.uploads')->with('success_message', 'Upload deleted');
+        return redirect()->route('backend.uploads')->with('success', 'Upload deleted');
     }
 }

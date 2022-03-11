@@ -18,7 +18,7 @@ Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as'
     Route::get('/image.png', ['as' => 'image', 'uses' => 'ImageController@render']);
 });
 
-Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web', 'auth', 'cache']], function () {
+Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web', 'auth', \CoderStudios\CsCms\Middleware\ClearCache::class]], function () {
     Route::get('/', ['as' => 'index', 'uses' => 'HomeController@index']);
     Route::get('/phpinfo', ['as' => 'phpinfo', 'uses' => 'HomeController@phpinfo']);
     Route::get('/access-denied', ['as' => 'access_denied', 'uses' => 'HomeController@accessDenied']);

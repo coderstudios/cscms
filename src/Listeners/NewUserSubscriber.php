@@ -17,12 +17,12 @@
 
 namespace CoderStudios\CsCms\Listeners;
 
-use CoderStudios\CsCms\Library\Mail;
-use CoderStudios\CsCms\Library\Settings as SettingsLibrary;
+use CoderStudios\CsCms\Library\MailLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
 
 class NewUserSubscriber
 {
-    public function __construct(Mail $mail, SettingsLibrary $settings)
+    public function __construct(MailLibrary $mail, SettingsLibrary $settings)
     {
         $this->mail = $mail;
         $this->settings = $settings;

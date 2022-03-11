@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms\Library;
 use CoderStudios\CsCms\Models\User as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Users extends BaseLibrary
+class UsersLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

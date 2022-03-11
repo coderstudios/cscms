@@ -17,10 +17,10 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Upload as Model;
+use CoderStudios\CsCms\Models\Email as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Upload extends BaseLibrary
+class EmailLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

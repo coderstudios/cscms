@@ -18,33 +18,30 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Capability as Capabilities;
-use CoderStudios\CsCms\Library\Download;
-use CoderStudios\CsCms\Library\Email;
-use CoderStudios\CsCms\Library\Settings;
-use CoderStudios\CsCms\Library\UserRoles;
-use CoderStudios\CsCms\Library\Users;
-use CoderStudios\CsCms\Models\Capability;
+use CoderStudios\CsCms\Library\DownloadLibrary;
+use CoderStudios\CsCms\Library\EmailLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
+use CoderStudios\CsCms\Library\UserRolesLibrary;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class ExportController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Capabilities $capabilities, Capability $capability, Settings $settings, Users $users, UserRoles $user_roles, Download $download, Email $emails)
+    public function __construct(Request $request, Cache $cache, CapabilitiesLibrary $capabilities, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles, DownloadLibrary $download, EmailLibrary $emails)
     {
         $this->user = $users;
         $this->email = $emails;
         $this->settings = $settings;
         $this->download = $download;
         $this->user_roles = $user_roles;
-        $this->capability = $capability;
         $this->capabilities = $capabilities;
         parent::__construct($cache, $request);
     }
 
     public function index()
     {
-        $this->authorize('view_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('view_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
@@ -60,7 +57,7 @@ class ExportController extends Controller
 
     public function capabilities()
     {
-        $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $rows = $this->capabilities->getAll();
 
         return $this->download->getCSV('capabilities-'.date('Ymd').'.csv', $rows->toArray());
@@ -68,7 +65,7 @@ class ExportController extends Controller
 
     public function settings()
     {
-        $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $rows = $this->settings->getSettings();
 
         return $this->download->getCSV('settings-'.date('Ymd').'.csv', $rows->toArray());
@@ -76,7 +73,7 @@ class ExportController extends Controller
 
     public function users()
     {
-        $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $rows = $this->user->getAll();
 
         return $this->download->getCSV('users-'.date('Ymd').'.csv', $rows->toArray());
@@ -84,7 +81,7 @@ class ExportController extends Controller
 
     public function userRoles()
     {
-        $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $rows = $this->user_roles->getAll();
 
         return $this->download->getCSV('user_roles-'.date('Ymd').'.csv', $rows->toArray());
@@ -92,7 +89,7 @@ class ExportController extends Controller
 
     public function emails()
     {
-        $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
+        $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
         $rows = $this->email->getAll();
 
         return $this->download->getCSV('emails-'.date('Ymd').'.csv', $rows->toArray());

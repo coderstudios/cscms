@@ -19,15 +19,15 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Artisan;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Email;
-use CoderStudios\CsCms\Library\EmailGroup;
+use CoderStudios\CsCms\Library\EmailGroupLibrary;
+use CoderStudios\CsCms\Library\EmailLibrary;
 use CoderStudios\CsCms\Requests\EmailRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class EmailController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Email $emails, EmailGroup $email_groups)
+    public function __construct(Request $request, Cache $cache, EmailLibrary $emails, EmailGroupLibrary $email_groups)
     {
         $this->email = $emails;
         $this->email_groups = $email_groups;
@@ -102,7 +102,7 @@ class EmailController extends Controller
             $email->groups()->sync($this->request->request->get('email_groups'));
         }
 
-        return redirect()->route('backend.emails')->with('success_message', 'Email created');
+        return redirect()->route('backend.emails')->with('success', 'Email created');
     }
 
     public function update(EmailRequest $request, $id = '')
@@ -114,13 +114,13 @@ class EmailController extends Controller
             $email->groups()->sync($this->request->request->get('email_groups'));
         }
 
-        return redirect()->route('backend.emails')->with('success_message', 'Email updated');
+        return redirect()->route('backend.emails')->with('success', 'Email updated');
     }
 
     public function send()
     {
         Artisan::call('email:send');
 
-        return redirect()->route('backend.index')->with('success_message', 'Emails sent');
+        return redirect()->route('backend.index')->with('success', 'Emails sent');
     }
 }

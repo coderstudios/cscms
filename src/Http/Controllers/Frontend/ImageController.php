@@ -19,7 +19,7 @@ namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use CoderStudios\CsCms\Helpers\ImageHelper;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Image;
+use CoderStudios\CsCms\Library\ImageLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ use Illuminate\Http\Response;
 
 class ImageController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Image $image, ImageHelper $imageHelper, Filesystem $file)
+    public function __construct(Request $request, Cache $cache, ImageLibrary $image, ImageHelper $imageHelper, Filesystem $file)
     {
         $this->file = $file;
         $this->image = $image;

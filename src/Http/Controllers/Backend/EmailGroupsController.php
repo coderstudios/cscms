@@ -18,14 +18,14 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\EmailGroup;
+use CoderStudios\CsCms\Library\EmailGroupLibrary;
 use CoderStudios\CsCms\Requests\EmailGroupRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class EmailGroupsController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, EmailGroup $email_groups)
+    public function __construct(Request $request, Cache $cache, EmailGroupLibrary $email_groups)
     {
         $this->email_group = $email_groups;
         $this->attributes = $this->email_group->getFillable();
@@ -94,7 +94,7 @@ class EmailGroupsController extends Controller
         $data = $request->only($this->attributes);
         $this->email_group->create($data);
 
-        return redirect()->route('backend.email_groups')->with('success_message', 'Email Group created');
+        return redirect()->route('backend.email_groups')->with('success', 'Email Group created');
     }
 
     public function update(EmailGroupRequest $request, $id = '')
@@ -102,13 +102,13 @@ class EmailGroupsController extends Controller
         $data = $request->only($this->attributes);
         $this->email_group->update($id, $data);
 
-        return redirect()->route('backend.email_groups')->with('success_message', 'Email Group updated');
+        return redirect()->route('backend.email_groups')->with('success', 'Email Group updated');
     }
 
     public function delete($id)
     {
         $this->email_group->delete($id);
 
-        return redirect()->route('backend.email_groups')->with('success_message', 'Email Group deleted');
+        return redirect()->route('backend.email_groups')->with('success', 'Email Group deleted');
     }
 }

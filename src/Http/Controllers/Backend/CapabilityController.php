@@ -18,14 +18,14 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Capability;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
 use CoderStudios\CsCms\Requests\CapabilityRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class CapabilityController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Capability $capability)
+    public function __construct(Request $request, Cache $cache, CapabilityLibrary $capability)
     {
         $this->capability = $capability;
         $this->attributes = $this->capability->getFillable();
@@ -140,7 +140,7 @@ class CapabilityController extends Controller
         $this->capability->create($data);
         $this->cache->flush();
 
-        return redirect()->route('backend.capabilities')->with('success_message', 'Capability created');
+        return redirect()->route('backend.capabilities')->with('success', 'Capability created');
     }
 
     public function update(CapabilityRequest $request, $id)
@@ -153,7 +153,7 @@ class CapabilityController extends Controller
         $this->capability->update($id, $data);
         $this->cache->flush();
 
-        return redirect()->route('backend.capabilities')->with('success_message', 'Capability updated');
+        return redirect()->route('backend.capabilities')->with('success', 'Capability updated');
     }
 
     public function delete($id)
@@ -161,6 +161,6 @@ class CapabilityController extends Controller
         $this->capability->delete($id);
         $this->cache->flush();
 
-        return redirect()->route('backend.capabilities')->with('success_message', 'Capability deleted');
+        return redirect()->route('backend.capabilities')->with('success', 'Capability deleted');
     }
 }

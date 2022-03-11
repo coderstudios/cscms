@@ -17,8 +17,8 @@
 
 namespace CoderStudios\CsCms\Commands;
 
-use CoderStudios\CsCms\Library\Mail as MailLibrary;
-use CoderStudios\CsCms\Library\Settings;
+use CoderStudios\CsCms\Library\MailLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
 use Config;
 use Illuminate\Console\Command;
 use Mail;
@@ -42,7 +42,7 @@ class Email extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct(MailLibrary $mail, Settings $settings)
+    public function __construct(MailLibrary $mail, SettingsLibrary $settings)
     {
         parent::__construct();
         $this->mail = $mail;

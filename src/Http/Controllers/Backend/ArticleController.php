@@ -19,16 +19,16 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use Auth;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Article;
-use CoderStudios\CsCms\Library\ArticleType;
-use CoderStudios\CsCms\Library\Language;
+use CoderStudios\CsCms\Library\ArticleLibrary;
+use CoderStudios\CsCms\Library\ArticleTypeLibrary;
+use CoderStudios\CsCms\Library\LanguageLibrary;
 use CoderStudios\CsCms\Requests\ArticleRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Article $article, ArticleType $article_type, Language $language)
+    public function __construct(Request $request, Cache $cache, ArticleLibrary $article, ArticleTypeLibrary $article_type, LanguageLibrary $language)
     {
         $this->article = $article;
         $this->language = $language;
@@ -141,6 +141,6 @@ class ArticleController extends Controller
         }
         $this->cache->flush();
 
-        return redirect()->route('backend.articles')->with('success_message', 'article created');
+        return redirect()->route('backend.articles')->with('success', 'article created');
     }
 }

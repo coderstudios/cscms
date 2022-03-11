@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms\Library;
 use CoderStudios\CsCms\Models\Image as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Image extends BaseLibrary
+class ImageLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {

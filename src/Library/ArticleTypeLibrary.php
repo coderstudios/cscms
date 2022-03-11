@@ -17,21 +17,14 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Notification as Model;
+use CoderStudios\CsCms\Models\ArticleType as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Notifications extends BaseLibrary
+class ArticleTypeLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {
         $this->model = $model;
         $this->cache = $cache->store(config('cache.default'));
-    }
-
-    public function unread($user_id = '')
-    {
-        if ($user_id) {
-            $notifications = $this->model->unreadMessages($user_id)->get();
-        }
     }
 }

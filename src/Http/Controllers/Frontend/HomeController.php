@@ -18,14 +18,14 @@
 namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Article;
+use CoderStudios\CsCms\Library\ArticleLibrary;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 use View;
 
 class HomeController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Article $article)
+    public function __construct(Request $request, Cache $cache, ArticleLibrary $article)
     {
         $this->article = $article;
         parent::__construct($cache, $request);

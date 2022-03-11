@@ -20,8 +20,8 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 use Auth;
 use CoderStudios\CsCms\Helpers\ImageHelper;
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use CoderStudios\CsCms\Library\Image;
-use CoderStudios\CsCms\Library\Utils;
+use CoderStudios\CsCms\Library\ImageLibrary;
+use CoderStudios\CsCms\Library\UtilsLibrary;
 use CoderStudios\CsCms\Requests\ImageRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;
@@ -30,7 +30,7 @@ use Illuminate\Http\Response;
 
 class ImageController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, Image $image, Utils $utils, ImageHelper $imageHelper, Filesystem $file)
+    public function __construct(Request $request, Cache $cache, ImageLibrary $image, UtilsLibrary $utils, ImageHelper $imageHelper, Filesystem $file)
     {
         $this->file = $file;
         $this->image = $image;
@@ -134,13 +134,13 @@ class ImageController extends Controller
             $message = $message.' '.$failed.' '.str_plural('file', $failed).' failed to upload.';
         }
         if ($success) {
-            $this->request->session()->put('success_message', $message);
+            $this->request->session()->put('success', $message);
 
             return response()->json(['result' => true, 'path' => route('backend.images')]);
         }
         $this->cache->flush();
 
-        return redirect()->route('backend.images')->with('success_message', $message);
+        return redirect()->route('backend.images')->with('success', $message);
     }
 
     public function update(ImageRequest $request, $id = '')
@@ -149,7 +149,7 @@ class ImageController extends Controller
         $data['user_id'] = Auth::user()->id;
         $this->image->update($id, $data);
 
-        return redirect()->route('backend.images')->with('success_message', 'Image updated');
+        return redirect()->route('backend.images')->with('success', 'Image updated');
     }
 
     public function delete($id = '')
@@ -164,7 +164,7 @@ class ImageController extends Controller
         }
         $this->cache->flush();
 
-        return redirect()->route('backend.images')->with('success_message', 'Image deleted');
+        return redirect()->route('backend.images')->with('success', 'Image deleted');
     }
 
     public function render()

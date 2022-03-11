@@ -17,12 +17,12 @@
 
 namespace CoderStudios\CsCms\Commands;
 
-use CoderStudios\CsCms\Library\Capability;
-use CoderStudios\CsCms\Library\EmailGroup;
-use CoderStudios\CsCms\Library\Language;
-use CoderStudios\CsCms\Library\Settings;
-use CoderStudios\CsCms\Library\UserRoles;
-use CoderStudios\CsCms\Library\Users;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
+use CoderStudios\CsCms\Library\EmailGroupLibrary;
+use CoderStudios\CsCms\Library\LanguageLibrary;
+use CoderStudios\CsCms\Library\SettingsLibrary;
+use CoderStudios\CsCms\Library\UserRolesLibrary;
+use CoderStudios\CsCms\Library\UsersLibrary;
 use Illuminate\Console\Command;
 
 class Install extends Command
@@ -44,7 +44,7 @@ class Install extends Command
     /**
      * Create a new command instance.
      */
-    public function __construct(Settings $settings, UserRoles $user_roles, EmailGroup $email_group, Capability $capabilities, Users $user, Language $language)
+    public function __construct(SettingsLibrary $settings, UserRolesLibrary $user_roles, EmailGroupLibrary $email_group, CapabilityLibrary $capabilities, UsersLibrary $user, LanguageLibrary $language)
     {
         parent::__construct();
         $this->users = $user;

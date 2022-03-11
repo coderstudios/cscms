@@ -17,10 +17,10 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\Capability as Model;
+use CoderStudios\CsCms\Models\Mail as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
-class Capability extends BaseLibrary
+class MailLibrary extends BaseLibrary
 {
     public function __construct(Model $model, Cache $cache)
     {
