@@ -17,8 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
 use Artisan;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Utils;
 use CoderStudios\CsCms\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -33,9 +33,8 @@ class BackupsController extends Controller
     public function __construct(Request $request, Cache $cache, Utils $utils, Capability $capability)
     {
         $this->utils = $utils;
-        $this->request = $request;
         $this->capability = $capability;
-        $this->cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -44,7 +43,7 @@ class BackupsController extends Controller
 
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
         $this->request->session()->put('key', $key);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $backups = $this->utils->getBackUps();

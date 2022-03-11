@@ -17,9 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use Auth;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\ArticleType;
 use CoderStudios\CsCms\Requests\ArticleTypeRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -29,10 +28,9 @@ class ArticleTypeController extends Controller
 {
     public function __construct(Request $request, Cache $cache, ArticleType $article_type)
     {
-        $this->request = $request;
         $this->article_type = $article_type;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->article_type->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -42,7 +40,7 @@ class ArticleTypeController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -99,7 +97,7 @@ class ArticleTypeController extends Controller
         $data = $request->only($this->attributes);
         $data['user_id'] = Auth::user()->id;
         $this->article_type->create($data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.article_types')->with('success_message', 'Article type created');
     }
@@ -109,7 +107,7 @@ class ArticleTypeController extends Controller
         $data = $request->only($this->attributes);
         $data['user_id'] = Auth::user()->id;
         $this->article_type->update($id, $data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.article_types')->with('success_message', 'Article type updated');
     }

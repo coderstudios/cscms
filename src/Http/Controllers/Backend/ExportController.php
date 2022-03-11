@@ -34,20 +34,19 @@ class ExportController extends Controller
     {
         $this->user = $users;
         $this->email = $emails;
-        $this->request = $request;
         $this->settings = $settings;
         $this->download = $download;
         $this->user_roles = $user_roles;
         $this->capability = $capability;
         $this->capabilities = $capabilities;
-        $this->cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()
     {
         $this->authorize('view_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

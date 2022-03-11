@@ -17,8 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
 use Artisan;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Email;
 use CoderStudios\CsCms\Library\EmailGroup;
 use CoderStudios\CsCms\Requests\EmailRequest;
@@ -30,10 +30,9 @@ class EmailController extends Controller
     public function __construct(Request $request, Cache $cache, Email $emails, EmailGroup $email_groups)
     {
         $this->email = $emails;
-        $this->request = $request;
         $this->email_groups = $email_groups;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->email->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -43,7 +42,7 @@ class EmailController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

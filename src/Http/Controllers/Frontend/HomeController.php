@@ -32,7 +32,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
+        $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
@@ -55,7 +55,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
+        $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
@@ -87,7 +87,7 @@ class HomeController extends Controller
         if (is_null($article)) {
             Abort(404);
         }
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$slug));
+        $key = $this->key($slug);
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {

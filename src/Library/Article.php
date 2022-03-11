@@ -32,7 +32,7 @@ class Article extends BaseLibrary
     public function getByParentId($id)
     {
         $key = $this->key('article_parent-'.$id);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $article = $this->cache->get($key);
         } else {
             $article = $this->model->where('parent_id', $id)->first();
@@ -45,7 +45,7 @@ class Article extends BaseLibrary
     public function getRevisions($post_id)
     {
         $key = $this->key($post_id);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $article = $this->cache->get($key);
         } else {
             $children = $this->getArticleIdsToChild($post_id);
@@ -61,7 +61,7 @@ class Article extends BaseLibrary
     public function getLatestRevisions($limit = 0, $page = 1)
     {
         $key = $this->key($limit.'_'.$page);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $article = $this->cache->get($key);
         } else {
             $article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,slug From cscms_articles group by slug) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));
@@ -91,7 +91,7 @@ class Article extends BaseLibrary
     public function getLatestRevisionsCount()
     {
         $key = $this->key();
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $article = $this->cache->get($key);
         } else {
             $article = DB::select(DB::raw('SELECT * FROM (SELECT max(id) as id,slug From cscms_articles group by slug) As idx Inner Join cscms_articles ON idx.id=cscms_articles.id'));

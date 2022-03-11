@@ -19,18 +19,19 @@ namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Http\Request;
 
 class LogController extends Controller
 {
-    public function __construct(Cache $cache)
+    public function __construct(Request $request, Cache $cache)
     {
-        $this->cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

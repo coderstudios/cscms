@@ -31,7 +31,7 @@ class Users extends BaseLibrary
     public function getByUsername($username)
     {
         $key = 'userbyusername-'.$username;
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $user = $this->cache->get($key);
         } else {
             $user = $this->model->where('username', $username)->first();
@@ -47,7 +47,7 @@ class Users extends BaseLibrary
     public function getByEmail($email)
     {
         $key = 'userbyemail-'.$email;
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $user = $this->cache->get($key);
         } else {
             $user = $this->model->where('email', $email)->first();

@@ -31,19 +31,18 @@ class ImportController extends Controller
     public function __construct(Request $request, Cache $cache, Capabilities $capabilities, Capability $capability, Settings $settings, Users $users, UserRoles $user_roles)
     {
         $this->user = $users;
-        $this->request = $request;
         $this->settings = $settings;
         $this->capability = $capability;
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
-        $this->cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()
     {
         $this->authorize('view_import', $this->capability->where('name', 'view_export')->pluck('id')->first());
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

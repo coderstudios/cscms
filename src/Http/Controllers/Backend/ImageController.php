@@ -17,10 +17,9 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use Auth;
 use CoderStudios\CsCms\Helpers\ImageHelper;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Image;
 use CoderStudios\CsCms\Library\Utils;
 use CoderStudios\CsCms\Requests\ImageRequest;
@@ -36,10 +35,9 @@ class ImageController extends Controller
         $this->file = $file;
         $this->image = $image;
         $this->utils = $utils;
-        $this->request = $request;
         $this->image_helper = $imageHelper;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->image->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -49,7 +47,7 @@ class ImageController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $images = $this->image->getAll([
@@ -140,7 +138,7 @@ class ImageController extends Controller
 
             return response()->json(['result' => true, 'path' => route('backend.images')]);
         }
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.images')->with('success_message', $message);
     }
@@ -164,7 +162,7 @@ class ImageController extends Controller
             }
             $image->delete();
         }
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.images')->with('success_message', 'Image deleted');
     }

@@ -18,7 +18,6 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use CoderStudios\CsCms\Library\Capability;
 use CoderStudios\CsCms\Library\UserRoles;
 use CoderStudios\CsCms\Requests\UserRoleRequest;
@@ -29,11 +28,10 @@ class UserRolesController extends Controller
 {
     public function __construct(Request $request, Cache $cache, UserRoles $user_roles, Capability $capabilities)
     {
-        $this->request = $request;
         $this->user_roles = $user_roles;
         $this->capabilities = $capabilities;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->user_roles->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -44,7 +42,7 @@ class UserRolesController extends Controller
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
         $this->request->session()->put('key', $key);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -104,7 +102,7 @@ class UserRolesController extends Controller
         if (count($this->request->request->get('capabilities'))) {
             $role->capabilities()->sync($this->request->request->get('capabilities'));
         }
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.user_roles')->with('success_message', 'User role created');
     }
@@ -120,7 +118,7 @@ class UserRolesController extends Controller
         if (count($this->request->request->get('capabilities'))) {
             $role->capabilities()->sync($this->request->request->get('capabilities'));
         }
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.user_roles')->with('success_message', 'User role updated');
     }
@@ -128,7 +126,7 @@ class UserRolesController extends Controller
     public function delete($id)
     {
         $this->user_roles->delete($id);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.user_roles')->with('success_message', 'User role deleted');
     }

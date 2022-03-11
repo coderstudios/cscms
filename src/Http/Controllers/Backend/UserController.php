@@ -18,7 +18,6 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use CoderStudios\CsCms\Library\Mail;
 use CoderStudios\CsCms\Library\UserRoles;
 use CoderStudios\CsCms\Library\Users;
@@ -33,10 +32,9 @@ class UserController extends Controller
     {
         $this->mail = $mail;
         $this->users = $users;
-        $this->request = $request;
         $this->user_roles = $user_roles;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->users->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -47,7 +45,7 @@ class UserController extends Controller
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
         $this->request->session()->put('key', $key);
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -105,7 +103,7 @@ class UserController extends Controller
         $data = $request->only('name', 'email', 'enabled', 'password', 'username', 'user_role_id');
         $data['password'] = bcrypt($data['password']);
         $this->users->create($data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.users')->with('success_message', 'User created');
     }
@@ -122,7 +120,7 @@ class UserController extends Controller
             $data['enabled'] = 0;
         }
         $this->users->update($id, $data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.users')->with('success_message', 'User updated');
     }
@@ -134,7 +132,7 @@ class UserController extends Controller
     public function delete($id)
     {
         $this->users->delete($id);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.users')->with('success_message', 'User deleted');
     }

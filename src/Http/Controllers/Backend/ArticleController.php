@@ -17,9 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use Auth;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Article;
 use CoderStudios\CsCms\Library\ArticleType;
 use CoderStudios\CsCms\Library\Language;
@@ -31,12 +30,11 @@ class ArticleController extends Controller
 {
     public function __construct(Request $request, Cache $cache, Article $article, ArticleType $article_type, Language $language)
     {
-        $this->request = $request;
         $this->article = $article;
         $this->language = $language;
         $this->article_type = $article_type;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->article->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -46,7 +44,7 @@ class ArticleController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $new_articles = [];
@@ -141,7 +139,7 @@ class ArticleController extends Controller
                 $article->descriptions()->create($data);
             }
         }
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.articles')->with('success_message', 'article created');
     }

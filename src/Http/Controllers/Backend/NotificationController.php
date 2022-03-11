@@ -17,9 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use Auth;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Notifications;
 use CoderStudios\CsCms\Library\NotificationsRead;
 use CoderStudios\CsCms\Requests\NotificationRequest;
@@ -31,10 +30,9 @@ class NotificationController extends Controller
     public function __construct(Request $request, Cache $cache, Notifications $notifications, NotificationsRead $nr)
     {
         $this->nr = $nr;
-        $this->request = $request;
         $this->notifications = $notifications;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->notifications->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -44,7 +42,7 @@ class NotificationController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -99,7 +97,7 @@ class NotificationController extends Controller
         $data = $request->only($this->attributes);
         $data['user_id'] = Auth::user()->id;
         $notification = $this->notifications->create($data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.notifications')->with('success_message', 'Notification created');
     }
@@ -109,7 +107,7 @@ class NotificationController extends Controller
         $data = $request->only($this->attributes);
         $data['user_id'] = Auth::user()->id;
         $this->notifications->update($id, $data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.notifications')->with('success_message', 'Notification updated');
     }

@@ -28,9 +28,8 @@ class SettingsController extends Controller
     public function __construct(Request $request, Cache $cache, Settings $setting)
     {
         $this->setting = $setting;
-        $this->request = $request;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->setting->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -40,7 +39,7 @@ class SettingsController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

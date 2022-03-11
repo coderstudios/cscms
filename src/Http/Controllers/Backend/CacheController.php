@@ -17,22 +17,20 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use CoderStudios\CsCms\Http\Controllers\Controller;
 use Artisan;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Utils;
 use CoderStudios\CsCms\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Http\Request;
 
 class CacheController extends Controller
 {
-    public function __construct(Cache $cache, Utils $utils, Capability $capability)
+    public function __construct(Request $request, Cache $cache, Utils $utils, Capability $capability)
     {
         $this->utils = $utils;
         $this->capability = $capability;
-        $this->cache = $cache->store('file');
-        $this->data_cache = $cache->store(config('cache.default'));
-        $this->backend_cache = $cache->store(config('cache.default'));
-        $this->frontend_cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()

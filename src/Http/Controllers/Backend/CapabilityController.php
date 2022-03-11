@@ -18,7 +18,6 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
-use Artisan;
 use CoderStudios\CsCms\Library\Capability;
 use CoderStudios\CsCms\Requests\CapabilityRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -28,10 +27,9 @@ class CapabilityController extends Controller
 {
     public function __construct(Request $request, Cache $cache, Capability $capability)
     {
-        $this->request = $request;
         $this->capability = $capability;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->capability->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -84,7 +82,7 @@ class CapabilityController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -140,7 +138,7 @@ class CapabilityController extends Controller
         $data = $request->only($this->attributes);
         $data['created_at'] = date('Y-m-d H:i:s');
         $this->capability->create($data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.capabilities')->with('success_message', 'Capability created');
     }
@@ -153,7 +151,7 @@ class CapabilityController extends Controller
         }
         $data['updated_at'] = date('Y-m-d H:i:s');
         $this->capability->update($id, $data);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.capabilities')->with('success_message', 'Capability updated');
     }
@@ -161,7 +159,7 @@ class CapabilityController extends Controller
     public function delete($id)
     {
         $this->capability->delete($id);
-        Artisan::call('cache:clear');
+        $this->cache->flush();
 
         return redirect()->route('backend.capabilities')->with('success_message', 'Capability deleted');
     }

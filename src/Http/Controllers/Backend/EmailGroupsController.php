@@ -27,10 +27,9 @@ class EmailGroupsController extends Controller
 {
     public function __construct(Request $request, Cache $cache, EmailGroup $email_groups)
     {
-        $this->request = $request;
         $this->email_group = $email_groups;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->email_group->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function index()
@@ -40,7 +39,7 @@ class EmailGroupsController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-                if ($this->useCachedContent($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
