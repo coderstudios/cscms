@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Models\Capability;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function index()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [];
@@ -46,7 +46,7 @@ class HomeController extends Controller
     public function home()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [];
@@ -60,7 +60,7 @@ class HomeController extends Controller
     public function accessDenied()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [];
@@ -76,7 +76,7 @@ class HomeController extends Controller
         $this->authorize('view_phpinfo', $this->capability->where('name', 'view_phpinfo')->pluck('id')->first());
 
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             ob_start();

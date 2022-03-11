@@ -17,8 +17,8 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use CoderStudios\CsCms\Helpers\ImageHelper;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Image;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Filesystem\Filesystem;

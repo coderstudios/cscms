@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Frontend\Auth;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;

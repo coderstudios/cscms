@@ -31,7 +31,7 @@ class Image extends BaseLibrary
     public function getAll($params = [])
     {
         $key = $this->key(implode($params, '_'));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $image = $this->cache->get($key);
         } else {
             $image = $this->model;
