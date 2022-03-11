@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\CsCms\Controllers;
+namespace CoderStudios\CsCms\Http\Controllers;
 
 use App\Http\Controllers\Controller as BaseController;
 use CoderStudios\CsCms\Traits\AccessDenied;
