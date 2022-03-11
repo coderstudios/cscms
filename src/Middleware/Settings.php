@@ -44,7 +44,7 @@ class Settings
         try {
             $config = $this->settings->getSettings();
         } catch (\Exception $e) {
-            exit('Error. Have you run the migrations yet?');
+            $config = config('cscms.coderstudios.settings');
         }
 
         $request->config = $config;

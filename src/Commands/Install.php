@@ -100,7 +100,7 @@ class Install extends Command
         ];
 
         $settings[] = [
-            'name' => 'mail_mailgun_domain',
+            'name' => 'mail_domain',
             'class' => 'mail',
             'value' => 'example.com',
             'serialized' => 0,
