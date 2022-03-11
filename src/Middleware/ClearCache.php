@@ -18,7 +18,7 @@
 namespace CoderStudios\CsCms\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Cache\Repository as Cache;
+use Illuminate\Contracts\Cache\Factory as Cache;
 
 class ClearCache
 {

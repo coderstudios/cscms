@@ -25,7 +25,7 @@ class Settings
     /**
      * Create a new middleware instance.
      *
-     * @param \Illuminate\Contracts\Cache\Repository $cache
+     * @param \CoderStudios\CsCms\Library\SettingsLibrary $settings
      */
     public function __construct(SettingsLibrary $settings)
     {
