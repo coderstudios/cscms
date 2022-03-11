@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use Auth;
 use CoderStudios\CsCms\Library\Users;
 use CoderStudios\CsCms\Requests\UpdateMemberRequest;
@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $current_user = Auth::user();
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$current_user->id));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $theme = config('cscms.coderstudios.theme');

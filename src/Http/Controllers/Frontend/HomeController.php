@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Article;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use View;
@@ -33,7 +33,7 @@ class HomeController extends Controller
     public function index()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $theme = config('cscms.coderstudios.theme');
@@ -56,7 +56,7 @@ class HomeController extends Controller
     public function home()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $theme = config('cscms.coderstudios.theme');
@@ -88,7 +88,7 @@ class HomeController extends Controller
             Abort(404);
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$slug));
-        if ($this->cache->has($key)) {
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $language_id = 1;

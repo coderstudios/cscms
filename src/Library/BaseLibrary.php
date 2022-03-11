@@ -17,8 +17,8 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\Traits\CachedContent;
-use CoderStudios\Traits\GenerateKey;
+use CoderStudios\CsCms\Traits\CachedContent;
+use CoderStudios\CsCms\Traits\GenerateKey;
 
 class BaseLibrary
 {
@@ -63,7 +63,7 @@ class BaseLibrary
     public function get($id)
     {
         $key = $this->key(class_basename($this).'-'.$id);
-        if ($this->cache->has($key)) {
+        if ($this->useCachedContent($key)) {
             $item = $this->cache->get($key);
         } else {
             $item = $this->model->where('id', $id)->first();
@@ -76,7 +76,7 @@ class BaseLibrary
     public function getEnabled($enabled = 1, $limit = 0)
     {
         $key = $this->key($limit.'_'.$enabled);
-        if ($this->cache->has($key)) {
+        if ($this->useCachedContent($key)) {
             $item = $this->cache->get($key);
         } else {
             $audit = $this->model->enabled($enabled);

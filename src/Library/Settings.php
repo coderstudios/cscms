@@ -31,7 +31,7 @@ class Settings extends BaseLibrary
     public function getSettings()
     {
         $key = $this->key('settings');
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $a = $this->cache->get($key);
         } else {
             $config = $this->model->get();
