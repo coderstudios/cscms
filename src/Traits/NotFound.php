@@ -15,7 +15,7 @@
  * @see       https://www.coderstudios.com
  */
 
-namespace CoderStudios\Traits;
+namespace CoderStudios\CsCms\Traits;
 
 trait NotFound
 {
