@@ -35,6 +35,9 @@ class CsCmsServiceProvider extends ServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cscms');
 
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\ClearCache::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Notifications::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Settings::class);
         /*
 
         $this->publishes([
