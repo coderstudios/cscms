@@ -21,15 +21,16 @@ use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Users;
 use CoderStudios\CsCms\Requests\UpdateMemberRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Http\Request;
 use View;
 
 class UserController extends Controller
 {
-    public function __construct(Cache $cache, Users $user)
+    public function __construct(Request $request, Cache $cache, Users $user)
     {
-        $this->cache = $cache->store(config('cache.default'));
         $this->middleware('auth');
         $this->user = $user;
+        parent::__construct($cache, $request);
     }
 
     public function profile()

@@ -31,10 +31,9 @@ class ImageController extends Controller
     {
         $this->file = $file;
         $this->image = $image;
-        $this->request = $request;
         $this->image_helper = $imageHelper;
-        $this->cache = $cache->store(config('cache.default'));
         $this->attributes = $this->image->getFillable();
+        parent::__construct($cache, $request);
     }
 
     public function render()

@@ -20,14 +20,15 @@ namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\Article;
 use Illuminate\Contracts\Cache\Factory as Cache;
+use Illuminate\Http\Request;
 use View;
 
 class HomeController extends Controller
 {
-    public function __construct(Cache $cache, Article $article)
+    public function __construct(Request $request, Cache $cache, Article $article)
     {
         $this->article = $article;
-        $this->cache = $cache->store(config('cache.default'));
+        parent::__construct($cache, $request);
     }
 
     public function index()
