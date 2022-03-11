@@ -28,19 +28,6 @@ class NotificationsRead extends BaseLibrary
         $this->cache = $cache->store(config('cache.default'));
     }
 
-    public function get($id)
-    {
-        $key = 'notifications_read-'.$id;
-        if ($this->cache->has($key)) {
-            $notification = $this->cache->get($key);
-        } else {
-            $notification = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $notification;
-    }
-
     public function hasSeen($user_id = '', $notification_id = '')
     {
         return $this->model

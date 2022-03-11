@@ -83,4 +83,13 @@ class Notification extends Model
         'subject',
         'message',
     ];
+
+    public function unreadMessages($user_id = '')
+    {
+        if ($user_id) {
+            return $this->leftJoin('cscms_notifications_read', 'cscms_notifications.id', '=', 'user_id')->whereNull('notification_id');
+        }
+
+        return $this;
+    }
 }

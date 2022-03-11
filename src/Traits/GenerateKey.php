@@ -17,17 +17,17 @@
 
 namespace CoderStudios\CsCms\Traits;
 
+use Auth;
+
 trait GenerateKey
 {
-    /**
-     * Generate Key.
-     *
-     * @param $string
-     *
-     * @return string
-     */
-    public function generateKey($string)
+    public function key($str = '', $prefix = '')
     {
-        return md5($string);
+        $user = '';
+        if (Auth::user()) {
+            $user = '_'.Auth::user()->id.'_';
+        }
+
+        return $prefix.md5(app()->request->getUri().'_'.$str.$user);
     }
 }

@@ -30,44 +30,18 @@ class Settings extends BaseLibrary
 
     public function getSettings()
     {
-        $config = $this->getAll();
-        $a = [];
-        foreach ($config as $item) {
-            $a[$item->name] = 1 === $item->serialized ? unserialize($item->value) : $item->value;
+        $key = $this->key('settings');
+        if ($this->cache->has($key)) {
+            $a = $this->cache->get($key);
+        } else {
+            $config = $this->model->get();
+            $a = [];
+            foreach ($config as $item) {
+                $a[$item->name] = 1 === $item->serialized ? unserialize($item->value) : $item->value;
+            }
+            $this->cache->add($key, $s, config('cscms.coderstudios.cache_duration'));
         }
 
         return $a;
-    }
-
-    public function get($id)
-    {
-        $key = 'setting-'.$id;
-        if ($this->cache->has($key)) {
-            $setting = $this->cache->get($key);
-        } else {
-            $setting = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $setting, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $setting;
-    }
-
-    public function getAll($limit = 0, $page = 1)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$page));
-        if ($this->cache->has($key)) {
-            $setting = $this->cache->get($key);
-        } else {
-            $setting = $this->model;
-            if (!$limit) {
-                $setting_count = $setting->count() > 0 ? $setting->count() : 1;
-                $setting = $setting->paginate($setting_count);
-            } else {
-                $setting = $setting->paginate($limit);
-            }
-            $this->cache->add($key, $setting, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $setting;
     }
 }

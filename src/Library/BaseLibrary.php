@@ -17,8 +17,14 @@
 
 namespace CoderStudios\CsCms\Library;
 
+use CoderStudios\Traits\CachedContent;
+use CoderStudios\Traits\GenerateKey;
+
 class BaseLibrary
 {
+    use GenerateKey;
+    use CachedContent;
+
     protected $cache;
 
     protected $model;
@@ -52,5 +58,37 @@ class BaseLibrary
         $this->cache->flush();
 
         return $this->model->where('id', $id)->delete();
+    }
+
+    public function get($id)
+    {
+        $key = $this->key(class_basename($this).'-'.$id);
+        if ($this->cache->has($key)) {
+            $item = $this->cache->get($key);
+        } else {
+            $item = $this->model->where('id', $id)->first();
+            $this->cache->add($key, $item, config('cscms.coderstudios.cache_duration'));
+        }
+
+        return $item;
+    }
+
+    public function getEnabled($enabled = 1, $limit = 0)
+    {
+        $key = $this->key($limit.'_'.$enabled);
+        if ($this->cache->has($key)) {
+            $item = $this->cache->get($key);
+        } else {
+            $audit = $this->model->enabled($enabled);
+            if (!$limit) {
+                $count = $item->count() > 0 ? $item->count() : 1;
+                $item = $item->paginate($count);
+            } else {
+                $item = $item->paginate($limit);
+            }
+            $this->cache->add($key, $item, config('cscms.coderstudios.cache_duration'));
+        }
+
+        return $item;
     }
 }

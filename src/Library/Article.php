@@ -29,22 +29,9 @@ class Article extends BaseLibrary
         $this->cache = $cache->store(config('cache.default'));
     }
 
-    public function get($id)
-    {
-        $key = 'article-'.$id;
-        if ($this->cache->has($key)) {
-            $article = $this->cache->get($key);
-        } else {
-            $article = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $article;
-    }
-
     public function getByParentId($id)
     {
-        $key = 'article_parent-'.$id;
+        $key = $this->key('article_parent-'.$id);
         if ($this->cache->has($key)) {
             $article = $this->cache->get($key);
         } else {
@@ -55,28 +42,9 @@ class Article extends BaseLibrary
         return $article;
     }
 
-    public function getAll($limit = 0, $page = 1)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$page));
-        if ($this->cache->has($key)) {
-            $article = $this->cache->get($key);
-        } else {
-            $article = $this->model;
-            if (!$limit) {
-                $article_count = $article->count() > 0 ? $article->count() : 1;
-                $article = $article->paginate($article_count);
-            } else {
-                $article = $article->paginate($limit);
-            }
-            $this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $article;
-    }
-
     public function getRevisions($post_id)
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$post_id));
+        $key = $this->key($post_id);
         if ($this->cache->has($key)) {
             $article = $this->cache->get($key);
         } else {
@@ -92,7 +60,7 @@ class Article extends BaseLibrary
 
     public function getLatestRevisions($limit = 0, $page = 1)
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$page));
+        $key = $this->key($limit.'_'.$page);
         if ($this->cache->has($key)) {
             $article = $this->cache->get($key);
         } else {
@@ -122,7 +90,7 @@ class Article extends BaseLibrary
 
     public function getLatestRevisionsCount()
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
+        $key = $this->key();
         if ($this->cache->has($key)) {
             $article = $this->cache->get($key);
         } else {
@@ -144,25 +112,6 @@ class Article extends BaseLibrary
         }
 
         return $article_count;
-    }
-
-    public function getEnabled($enabled = 1, $limit = 0)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$enabled));
-        if ($this->cache->has($key)) {
-            $article = $this->cache->get($key);
-        } else {
-            $article = $this->model->enabled($enabled);
-            if (!$limit) {
-                $article_count = $article->count() > 0 ? $article->count() : 1;
-                $article = $article->paginate($article_count);
-            } else {
-                $article = $article->paginate($limit);
-            }
-            $this->cache->add($key, $article, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $article;
     }
 
     private function getArticleIdsToParent($id, $ids = [])

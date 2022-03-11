@@ -70,7 +70,7 @@ class ExportController extends Controller
     public function settings()
     {
         $this->authorize('create_export', $this->capability->where('name', 'view_export')->pluck('id')->first());
-        $rows = $this->settings->getAll();
+        $rows = $this->settings->getSettings();
 
         return $this->download->getCSV('settings-'.date('Ymd').'.csv', $rows->toArray());
     }

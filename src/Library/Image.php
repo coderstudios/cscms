@@ -28,22 +28,9 @@ class Image extends BaseLibrary
         $this->cache = $cache->store(config('cache.default'));
     }
 
-    public function get($id)
-    {
-        $key = 'image-'.$id;
-        if ($this->cache->has($key)) {
-            $image = $this->cache->get($key);
-        } else {
-            $image = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $image, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $image;
-    }
-
     public function getAll($params = [])
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.implode($params, '_')));
+        $key = $this->key(implode($params, '_'));
         if ($this->cache->has($key)) {
             $image = $this->cache->get($key);
         } else {
