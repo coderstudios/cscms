@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Facades;
 
-class CsCms extends \Illuminate\Support\Facades\Facade
+class CSCMS extends \Illuminate\Support\Facades\Facade
 {
     /**
      * {@inheritDoc}
