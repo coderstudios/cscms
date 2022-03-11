@@ -19,7 +19,7 @@ namespace CoderStudios\CsCms\Library;
 
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 
-class Cache
+class CacheLibrary
 {
     public function __construct(CacheRepository $cache)
     {

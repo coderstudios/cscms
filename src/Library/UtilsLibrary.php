@@ -20,7 +20,7 @@ namespace CoderStudios\CsCms\Library;
 use Carbon\Carbon;
 use Illuminate\Filesystem\Filesystem;
 
-class Utils
+class UtilsLibrary
 {
     public function convertBytes($number)
     {

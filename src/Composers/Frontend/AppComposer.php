@@ -21,37 +21,37 @@ use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class MasterComposer
+class AppComposer
 {
     /*
     |--------------------------------------------------------------------------
-    | Admin Master Composer Class
+    | Admin App Composer Class
     |--------------------------------------------------------------------------
     |
-    | Loads variables for the master layout in one place
+    | Loads variables for the app layout in one place
     |
     */
 
     public function __construct(Request $request, Cache $cache)
     {
         $this->request = $request;
-        $this->backend_cache = $cache->store(config('cache.default'));
+        $this->cache = $cache->store(config('cache.default'));
     }
 
     public function compose(View $view)
     {
         $view->with('success', '');
-        $view->with('error_message', '');
+        $view->with('error', '');
         $view->with('csrf_error', '');
         $view->with('notifications', '');
         if ($this->request->session) {
-            if ($this->request->session()->get('success') || $this->request->session()->get('error_message') || $this->request->session()->get('csrf_error')) {
-                $this->backend_cache->flush();
+            if ($this->request->session()->get('success') || $this->request->session()->get('error') || $this->request->session()->get('csrf_error')) {
+                $this->cache->flush();
                 $this->request->session()->put('clear_cache', 1);
             }
 
             $view->with('success', $this->request->session()->pull('success'));
-            $view->with('error_message', $this->request->session()->pull('error_message'));
+            $view->with('error', $this->request->session()->pull('error'));
             $view->with('csrf_error', $this->request->session()->pull('csrf_error'));
             $notifications = $this->request->session()->pull('notifications');
             $view->with('notifications', $notifications);

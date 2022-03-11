@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Library;
 
-class Download
+class DownloadLibrary
 {
     public function getCSV($filename, array $data = [])
     {
@@ -29,7 +29,7 @@ class Download
             'Pragma' => 'public',
         ];
 
-        //array_unshift($data, array_keys[$data[0]]);
+        // array_unshift($data, array_keys[$data[0]]);
 
         $callback = function () use ($data) {
             $fh = fopen('php://output', 'w');
