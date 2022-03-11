@@ -17,7 +17,6 @@
 
 namespace CoderStudios\CsCms\Middleware;
 
-use Auth;
 use Closure;
 use CoderStudios\CsCms\Library\Notifications as NotificationsLibrary;
 use CoderStudios\CsCms\Library\NotificationsRead;
@@ -45,20 +44,16 @@ class Notifications
     public function handle($request, Closure $next)
     {
         $notifications_data = [];
-        if (Auth::user()) {
-            $notifications = $this->notifications->getAll();
+        if ($request->user()) {
+            $notifications = $this->notifications->unread($request->user()->id);
             if ($notifications->count()) {
                 foreach ($notifications as $notification) {
-                    if (!$this->notifications_read->hasSeen(Auth::user()->id, $notification->id)) {
-                        $notifications_data[] = $notification;
-                        $this->notifications_read->create([
-                            'read' => 1,
-                            'user_id' => Auth::user()->id,
-                            'notification_id' => $notification->id,
-                            'created_at' => date('Y-m-d H:i:s'),
-                            'updated_at' => date('Y-m-d H:i:s'),
-                        ]);
-                    }
+                    $notifications_data[] = $notification;
+                    $this->notifications_read->create([
+                        'read' => 1,
+                        'user_id' => $request->user()->id,
+                        'notification_id' => $notification->id,
+                    ]);
                 }
             }
         }

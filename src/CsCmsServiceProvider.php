@@ -17,7 +17,6 @@
 
 namespace CoderStudios\CsCms;
 
-use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -119,7 +118,7 @@ class CsCmsServiceProvider extends ServiceProvider
     protected function registerMiddleware($middleware)
     {
         $kernel = $this->app[Kernel::class];
-        $kernel->pushMiddleware($middleware);
+        $kernel->appendMiddlewareToGroup('web', $middleware);
     }
 
     /**
@@ -139,5 +138,9 @@ class CsCmsServiceProvider extends ServiceProvider
             Commands\Email::class,
             Commands\DBBackup::class,
         ]);
+
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\ClearCache::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Notifications::class);
+        $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Settings::class);
     }
 }

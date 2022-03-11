@@ -27,36 +27,4 @@ class Language extends BaseLibrary
         $this->model = $model;
         $this->cache = $cache->store(config('cache.default'));
     }
-
-    public function get($id)
-    {
-        $key = 'language-'.$id;
-        if ($this->cache->has($key)) {
-            $language = $this->cache->get($key);
-        } else {
-            $language = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $language, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $language;
-    }
-
-    public function getAll($limit = 0, $page = 1)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$page));
-        if ($this->cache->has($key)) {
-            $language = $this->cache->get($key);
-        } else {
-            $language = $this->model;
-            if (!$limit) {
-                $language_count = $language->count() > 0 ? $language->count() : 1;
-                $language = $language->paginate($language_count);
-            } else {
-                $language = $language->paginate($limit);
-            }
-            $this->cache->add($key, $language, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $language;
-    }
 }

@@ -28,54 +28,10 @@ class Notifications extends BaseLibrary
         $this->cache = $cache->store(config('cache.default'));
     }
 
-    public function get($id)
+    public function unread($user_id = '')
     {
-        $key = 'notifications-'.$id;
-        if ($this->cache->has($key)) {
-            $notification = $this->cache->get($key);
-        } else {
-            $notification = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
+        if ($user_id) {
+            $notifications = $this->model->unreadMessages($user_id)->get();
         }
-
-        return $notification;
-    }
-
-    public function getAll($limit = 0, $page = 1)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$page));
-        if ($this->cache->has($key)) {
-            $notification = $this->cache->get($key);
-        } else {
-            $notification = $this->model;
-            if (!$limit) {
-                $notification_count = $notification->count() > 0 ? $notification->count() : 1;
-                $notification = $notification->paginate($notification_count);
-            } else {
-                $notification = $notification->paginate($limit);
-            }
-            $this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $notification;
-    }
-
-    public function getEnabled($enabled = 1, $limit = 0)
-    {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$limit.'_'.$enabled));
-        if ($this->cache->has($key)) {
-            $notification = $this->cache->get($key);
-        } else {
-            $notification = $this->model->enabled($enabled);
-            if (!$limit) {
-                $notification_count = $notification->count() > 0 ? $notification->count() : 1;
-                $notification = $notification->paginate($notification_count);
-            } else {
-                $notification = $notification->paginate($limit);
-            }
-            $this->cache->add($key, $notification, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $notification;
     }
 }

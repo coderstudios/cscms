@@ -27,17 +27,4 @@ class Mail extends BaseLibrary
         $this->model = $model;
         $this->cache = $cache->store(config('cache.default'));
     }
-
-    public function get($id)
-    {
-        $key = 'email-'.$id;
-        if ($this->cache->has($key)) {
-            $email = $this->cache->get($key);
-        } else {
-            $email = $this->model->where('id', $id)->first();
-            $this->cache->add($key, $email, config('cscms.coderstudios.cache_duration'));
-        }
-
-        return $email;
-    }
 }
