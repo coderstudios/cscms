@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use Artisan;
 use CoderStudios\CsCms\Library\Utils;
 use CoderStudios\CsCms\Models\Capability;

@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\EmailGroup;
 use CoderStudios\CsCms\Requests\EmailGroupRequest;
 use Illuminate\Contracts\Cache\Factory as Cache;
@@ -40,7 +40,7 @@ class EmailGroupsController extends Controller
             $page_id = $this->request->get('page');
         }
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

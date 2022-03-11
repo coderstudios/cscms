@@ -17,7 +17,7 @@
 
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use CoderStudios\CsCms\Http\Controllers\Controller;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class LogController extends Controller
@@ -30,7 +30,7 @@ class LogController extends Controller
     public function index()
     {
         $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key)) {
+                if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
