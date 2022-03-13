@@ -27,7 +27,7 @@ use Illuminate\Http\Request;
 
 class ImportController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, CapabilitiesLibrary $capabilities, CapabilityLibrary $capability, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles)
+    public function __construct(Request $request, Cache $cache, CapabilityLibrary $capabilities, CapabilityLibrary $capability, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles)
     {
         $this->user = $users;
         $this->settings = $settings;

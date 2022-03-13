@@ -18,6 +18,7 @@
 namespace CoderStudios\CsCms\Http\Controllers\Backend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
+use CoderStudios\CsCms\Library\CapabilityLibrary;
 use CoderStudios\CsCms\Library\DownloadLibrary;
 use CoderStudios\CsCms\Library\EmailLibrary;
 use CoderStudios\CsCms\Library\SettingsLibrary;
@@ -28,7 +29,7 @@ use Illuminate\Http\Request;
 
 class ExportController extends Controller
 {
-    public function __construct(Request $request, Cache $cache, CapabilitiesLibrary $capabilities, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles, DownloadLibrary $download, EmailLibrary $emails)
+    public function __construct(Request $request, Cache $cache, CapabilityLibrary $capabilities, SettingsLibrary $settings, UsersLibrary $users, UserRolesLibrary $user_roles, DownloadLibrary $download, EmailLibrary $emails)
     {
         $this->user = $users;
         $this->email = $emails;
