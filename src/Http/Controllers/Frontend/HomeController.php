@@ -123,7 +123,7 @@ class HomeController extends Controller
                 if (!View::exists($theme.'.pages.'.$slug) && !View::exists($slug)) {
                     Abort(404);
                 } else {
-                    $view = view($theme.'.pages.'.$slug ?? $slug)->render();
+                    $view = view(!View::exists($theme.'.pages.'.$slug) ? $slug : $theme.'.pages.'.$slug)->render();
                     $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
 
                     return $view;
