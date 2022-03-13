@@ -23,6 +23,8 @@ Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Frontend', 'as
 
     Route::get('/profile', ['as' => 'profile', 'uses' => 'UserController@profile']);
     Route::post('/profile', ['as' => 'profile.update', 'uses' => 'UserController@updateProfile']);
+
+    /*
     Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
     Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
     Route::post('/logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
@@ -32,6 +34,6 @@ Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Frontend', 'as
     Route::get('/password/reset/{token}', ['as' => 'password.reset.form', 'uses' => 'Auth\ResetPasswordController@showResetForm']);
     Route::get('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
     Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
-
+    */
     Route::get('{all}', ['as' => 'wildcard', 'uses' => 'HomeController@wildcard'])->where('all', '.*');
 });

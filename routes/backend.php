@@ -138,6 +138,7 @@ Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as'
     Route::post('/cache/optimise/classes', ['as' => 'cache.optimise.classes', 'uses' => 'CacheController@optimiseClasses']);
 });
 
+/*
 Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as' => 'backend.', 'middleware' => ['web']], function () {
     Route::get('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
     Route::post('/login', ['as' => 'login', 'uses' => 'Auth\LoginController@login']);
@@ -149,3 +150,4 @@ Route::group(['namespace' => 'CoderStudios\CsCms\Http\Controllers\Backend', 'as'
     Route::get('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@showRegistrationForm']);
     Route::post('/register', ['as' => 'register', 'uses' => 'Auth\RegisterController@register']);
 });
+*/
