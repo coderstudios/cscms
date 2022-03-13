@@ -107,6 +107,10 @@ class CsCmsServiceProvider extends ServiceProvider
             ->prefix(config('cscms.coderstudios.frontend_prefix'))
             ->group(__DIR__.'/../routes/frontend.php')
         ;
+
+        Route::middleware('web')
+            ->group(base_path('routes/web.php'))
+        ;
     }
 
     /**
