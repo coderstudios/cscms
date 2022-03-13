@@ -54,12 +54,16 @@
                         </div>
                     </li>
                     @else
+                    @if (Route::has('frontend.login'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('frontend.login') }}">Login</a>
                     </li>
+                    @endif
+                    @if (Route::has('frontend.register'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('frontend.register') }}">Register</a>
                     </li>
+                    @endif
                     @endif
                 </ul>
             </div>
@@ -87,8 +91,8 @@
 
             </div>
         </footer>
-        <script type="text/javascript" src="/vendor/cscms/js/frontend/manifest.js"></script>
-        <script type="text/javascript" src="/vendor/cscms/js/frontend/vendor.js"></script>
-        <script type="text/javascript" src="/vendor/cscms/js/frontend/app.js"></script>
+        <script src="/vendor/cscms/js/frontend/manifest.js"></script>
+        <script src="/vendor/cscms/js/frontend/vendor.js"></script>
+        <script src="/vendor/cscms/js/frontend/app.js"></script>
     </body>
 </html>
