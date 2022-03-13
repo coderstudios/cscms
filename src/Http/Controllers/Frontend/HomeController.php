@@ -19,6 +19,7 @@ namespace CoderStudios\CsCms\Http\Controllers\Frontend;
 
 use CoderStudios\CsCms\Http\Controllers\Controller;
 use CoderStudios\CsCms\Library\ArticleLibrary;
+use DB;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
 use View;
@@ -79,22 +80,36 @@ class HomeController extends Controller
 
     public function wildcard($slug)
     {
-        $article = $this->article
-            ->where('slug', $slug)
-            ->where('enabled', 1)
-            ->orderBy('id', 'DESC')
-            ->first()
-        ;
-        if (is_null($article)) {
-            Abort(404);
+        $language_id = 1;
+        $theme = config('cscms.coderstudios.theme');
+        $view_file = 'cscms::frontend.default.pages.page';
+
+        // Test database connection
+        try {
+            DB::connection()->getPdo();
+            $db = true;
+        } catch (\Exception $e) {
+            exit('Could not connect to the database.  Please check your configuration. error:'.$e);
+        }
+        if ($db) {
+            $article = $this->article
+                ->where('slug', $slug)
+                ->where('enabled', 1)
+                ->orderBy('id', 'DESC')
+                ->first()
+            ;
+            if (is_null($article)) {
+                Abort(404);
+            }
+        } else {
+            if (!View::exists($theme.'.pages.'.$slug) && !View::exists($slug)) {
+                Abort(404);
+            }
         }
         $key = $this->key($slug);
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
-            $language_id = 1;
-            $theme = config('cscms.coderstudios.theme');
-            $view_file = 'cscms::frontend.default.pages.page';
             if (View::exists($theme.'.pages.page')) {
                 $view_file = $theme.'.pages.page';
             } else {
