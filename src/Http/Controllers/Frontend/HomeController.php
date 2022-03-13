@@ -86,44 +86,49 @@ class HomeController extends Controller
         $view_file = 'cscms::frontend.default.pages.page';
         $db = false;
 
-        // Test database connection
-        try {
-            DB::connection()->getPdo();
-            $db = true;
-        } catch (\Exception $e) {
-            Log::info('Could not connect to the database.  Please check your database configuration if you are wishing to use a database.');
-        }
-        if ($db) {
-            $article = $this->article
-                ->where('slug', $slug)
-                ->where('enabled', 1)
-                ->orderBy('id', 'DESC')
-                ->first()
-            ;
-            if (is_null($article)) {
-                Abort(404);
-            }
-        } else {
-            if (!View::exists($theme.'.pages.'.$slug) && !View::exists($slug)) {
-                Abort(404);
-            }
-        }
         $key = $this->key($slug);
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
-            if (View::exists($theme.'.pages.page')) {
-                $view_file = $theme.'.pages.page';
-            } else {
-                $theme = 'default';
+            // Test database connection
+            try {
+                DB::connection()->getPdo();
+                $db = true;
+            } catch (\Exception $e) {
+                Log::info('Could not connect to the database.  Please check your database configuration if you are wishing to use a database.');
             }
-            $vars = [
-                'theme' => $theme,
-                'article' => $article,
-                'description' => $article->descriptions()->where('language_id', $language_id)->first(),
-            ];
-            $view = view($view_file, compact('vars'))->render();
-            $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
+            if ($db) {
+                $article = $this->article
+                    ->where('slug', $slug)
+                    ->where('enabled', 1)
+                    ->orderBy('id', 'DESC')
+                    ->first()
+                ;
+                if (is_null($article)) {
+                    Abort(404);
+                }
+                if (View::exists($theme.'.pages.page')) {
+                    $view_file = $theme.'.pages.page';
+                } else {
+                    $theme = 'default';
+                }
+                $vars = [
+                    'theme' => $theme,
+                    'article' => $article,
+                    'description' => $article->descriptions()->where('language_id', $language_id)->first(),
+                ];
+                $view = view($view_file, compact('vars'))->render();
+                $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
+            } else {
+                if (!View::exists($theme.'.pages.'.$slug) && !View::exists($slug)) {
+                    Abort(404);
+                } else {
+                    $view = view($theme.'.pages.'.$slug ?? $slug)->render();
+                    $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
+
+                    return $view;
+                }
+            }
         }
 
         return $view;
