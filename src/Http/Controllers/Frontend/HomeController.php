@@ -22,6 +22,7 @@ use CoderStudios\CsCms\Library\ArticleLibrary;
 use DB;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
+use Log;
 use View;
 
 class HomeController extends Controller
@@ -83,13 +84,14 @@ class HomeController extends Controller
         $language_id = 1;
         $theme = config('cscms.coderstudios.theme');
         $view_file = 'cscms::frontend.default.pages.page';
+        $db = false;
 
         // Test database connection
         try {
             DB::connection()->getPdo();
             $db = true;
         } catch (\Exception $e) {
-            exit('Could not connect to the database.  Please check your configuration. error:'.$e);
+            Log::info('Could not connect to the database.  Please check your database configuration if you are wishing to use a database.');
         }
         if ($db) {
             $article = $this->article
