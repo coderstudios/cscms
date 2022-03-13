@@ -38,27 +38,27 @@ class CsCmsServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/lang' => resource_path('lang/vendor/cscms/lang'),
-        ], 'lang');
+        ], 'cscms-lang');
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/vendor/cscms'),
-        ], 'views');
+        ], 'cscms-views');
 
         $this->publishes([
             __DIR__.'/../config/cscms.php' => config_path('cscms.php'),
-        ], 'config');
+        ], 'cscms-config');
 
         $this->publishes([
             __DIR__.'/../resources/assets' => resource_path('vendor/cscms'),
-        ], 'resources');
+        ], 'cscms-resources');
 
         $this->publishes([
             __DIR__.'/../public' => public_path('vendor/cscms'),
-        ], 'public');
+        ], 'cscms-public');
 
         $this->publishes([
             __DIR__.'/../public/fonts' => public_path('fonts'),
-        ], 'fonts');
+        ], 'cscms-fonts');
 
         /*
 

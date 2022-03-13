@@ -101,17 +101,17 @@ Example update composer.json file
 
 php artisan vendor:publish --provider="CoderStudios\CsCms\CsCmsServiceProvider"
 
-php artisan vendor:publish --tag=public --force
+php artisan vendor:publish --tag=cscms-public --force
 
-php artisan vendor:publish --tag=resource --force
+php artisan vendor:publish --tag=cscms-resource --force
 
-php artisan vendor:publish --tag=config --force
+php artisan vendor:publish --tag=cscms-config --force
 
-php artisan vendor:publish --tag=views --force
+php artisan vendor:publish --tag=cscms-views --force
 
-php artisan vendor:publish --tag=migrations --force
+php artisan vendor:publish --tag=cscms-migrations --force
 
-php artisan vendor:publish --tag=lang --force
+php artisan vendor:publish --tag=cscms-lang --force
 
 ## Copyright and Licence
 

@@ -56,8 +56,8 @@ class Update extends Command
     {
         if (App::environment(['local', 'staging'])) {
             $this->info('Publishing assets and views');
-            Artisan::call('vendor:publish', ['--tag' => 'public', '--force' => true]);
-            Artisan::call('vendor:publish', ['--tag' => 'views', '--force' => true]);
+            Artisan::call('vendor:publish', ['--tag' => 'cscms-public', '--force' => true]);
+            Artisan::call('vendor:publish', ['--tag' => 'cscms-views', '--force' => true]);
         }
         $this->cache->flush();
         $this->info('Cache cleared succesfully');
