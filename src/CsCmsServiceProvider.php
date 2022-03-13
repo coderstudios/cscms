@@ -32,27 +32,9 @@ class CsCmsServiceProvider extends ServiceProvider
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'cscms');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'cscms');
 
-        $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'cscms');
-
-        /*
-
-        $this->publishes([
-            __DIR__.'/Policies' => app_path('/Policies'),
-        ], 'policies');
-
-        $this->publishes([
-            __DIR__.'/../../../routes/backend.php' => base_path('/routes/cscms_backend.php'),
-        ], 'routes');
-
-        $this->publishes([
-            __DIR__.'/../../../routes/frontend.php' => base_path('/routes/cscms_frontend.php'),
-        ], 'routes');
-
-        $this->publishes([
-            __DIR__.'/database/migrations' => database_path('/migrations'),
-        ], 'migrations');
+        $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cscms');
 
         $this->publishes([
             __DIR__.'/resources/lang' => resource_path('lang/vendor/cscms/lang'),
@@ -78,6 +60,15 @@ class CsCmsServiceProvider extends ServiceProvider
             __DIR__.'/../../../public/fonts' => public_path('fonts'),
         ], 'fonts');
 
+        /*
+
+        $this->publishes([
+            __DIR__.'/Policies' => app_path('/Policies'),
+        ], 'policies');
+
+        $this->publishes([
+            __DIR__.'/database/migrations' => database_path('/migrations'),
+        ], 'migrations');
 
         */
 

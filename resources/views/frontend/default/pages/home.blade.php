@@ -1,4 +1,4 @@
-@extends('cscms::frontend.'.$vars['theme'].'.layouts.master')
+@extends('cscms::frontend.'.$vars['theme'].'.layouts.app')
 
 @section('page_title')
 {{ config('app.name') }}

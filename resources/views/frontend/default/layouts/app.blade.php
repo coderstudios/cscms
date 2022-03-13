@@ -83,7 +83,7 @@
             <div class="container">
 
                 <p>Codey Version 1</p>
-                <p>Designed and maintained by <a href="http://www.coderstudios.com" target="_blank">Coder Studios</a></p>
+                <p>Designed and maintained by <a href="https://www.coderstudios.com" target="_blank">Coder Studios</a></p>
 
             </div>
         </footer>

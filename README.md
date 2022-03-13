@@ -74,7 +74,7 @@ On a fresh install of laravel run:
 If you are developing your own theme, ensure you add the view composer relevant to your theme in the AppServiceProvider.php boot method
 
 ```
-    view()->composer(config('CsCms.coderstudios.theme').'.layouts.master','CoderStudios\CsCms\Composers\Frontend\MasterComposer');
+    view()->composer(config('cscms.coderstudios.theme').'.layouts.app','CoderStudios\CsCms\Composers\Frontend\AppComposer');
 ```
 
 ## Documentation
