@@ -37,27 +37,27 @@ class CsCmsServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'cscms');
 
         $this->publishes([
-            __DIR__.'/resources/lang' => resource_path('lang/vendor/cscms/lang'),
+            __DIR__.'/../resources/lang' => resource_path('lang/vendor/cscms/lang'),
         ], 'lang');
 
         $this->publishes([
-            __DIR__.'/../../../resources/views' => resource_path('views/vendor/cscms'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/cscms'),
         ], 'views');
 
         $this->publishes([
-            __DIR__.'/../../../config/cscms.php' => config_path('cscms.php'),
+            __DIR__.'/../config/cscms.php' => config_path('cscms.php'),
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../../resources/assets' => resource_path('vendor/cscms'),
+            __DIR__.'/../resources/assets' => resource_path('vendor/cscms'),
         ], 'resources');
 
         $this->publishes([
-            __DIR__.'/../../../public' => public_path('vendor/cscms'),
+            __DIR__.'/../public' => public_path('vendor/cscms'),
         ], 'public');
 
         $this->publishes([
-            __DIR__.'/../../../public/fonts' => public_path('fonts'),
+            __DIR__.'/../public/fonts' => public_path('fonts'),
         ], 'fonts');
 
         /*
