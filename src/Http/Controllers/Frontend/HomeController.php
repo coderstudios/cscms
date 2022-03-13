@@ -22,6 +22,7 @@ use CoderStudios\CsCms\Library\ArticleLibrary;
 use DB;
 use Illuminate\Contracts\Cache\Factory as Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Log;
 use View;
 
@@ -81,6 +82,14 @@ class HomeController extends Controller
 
     public function wildcard($slug)
     {
+        if (Route::has($slug)) {
+            foreach (Route::getRoutes() as $route) {
+                if ($route->uri == $slug) {
+                    return \App::call($route->getAction()['controller']);
+                }
+            }
+        }
+
         $language_id = 1;
         $theme = config('cscms.coderstudios.theme');
         $view_file = 'cscms::frontend.default.pages.page';
