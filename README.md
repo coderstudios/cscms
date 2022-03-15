@@ -19,39 +19,6 @@ To install CsCms as a Composer package to be used with Laravel 5+, simply add th
 
 ..and run `composer update`.
 
-Edit App\Exceptions\Handler.php
-
-..add the use statement 
-
-```
-Illuminate\Auth\AuthenticationException;
-```
-
-and override the unauthenticated default function with the following
-
-```php
-
-    /**
-     * Convert an authentication exception into a response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Illuminate\Auth\AuthenticationException  $exception
-     * @return \Illuminate\Http\Response
-     */
-    protected function unauthenticated($request, AuthenticationException $exception)
-    {
-        $path = route('frontend.login');
-        if ($request->is('admin/*') || $request->is('admin')) {
-            $path = route('backend.login');
-        }
-        return $request->expectsJson()
-                    ? response()->json(['message' => $exception->getMessage()], 401)
-                    : redirect()->guest($path);
-    }
-
-
-```
-
 Update auth.php replace providers array with config:
 
 ```
@@ -62,7 +29,6 @@ Update auth.php replace providers array with config:
         ],
 
 ```
-
 
 On a fresh install of laravel run:
 
