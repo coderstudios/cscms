@@ -81,7 +81,7 @@ class CapabilityController extends Controller
         if ($this->request->get('page')) {
             $page_id = $this->request->get('page');
         }
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$page_id));
+        $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
@@ -97,8 +97,8 @@ class CapabilityController extends Controller
 
     public function create()
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
-        if ($this->cache->has($key) && !count($this->request->session()->get('errors'))) {
+        $key = $this->key();
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [
@@ -116,8 +116,8 @@ class CapabilityController extends Controller
 
     public function edit($id = '')
     {
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__.'_'.$id));
-        if ($this->cache->has($key) && !count($this->request->session()->get('errors'))) {
+        $key = $this->key();
+        if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {
             $vars = [

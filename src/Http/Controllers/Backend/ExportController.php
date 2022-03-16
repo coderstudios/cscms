@@ -43,7 +43,7 @@ class ExportController extends Controller
     public function index()
     {
         $this->authorize('view_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
+        $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
         } else {

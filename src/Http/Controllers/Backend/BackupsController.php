@@ -41,7 +41,7 @@ class BackupsController extends Controller
     {
         $this->authorize('view_backups', $this->capability->where('name', 'view_backups')->pluck('id')->first());
 
-        $key = md5(snake_case(str_replace('\\', '', __NAMESPACE__).class_basename($this).'_'.__FUNCTION__));
+        $key = $this->key();
         $this->request->session()->put('key', $key);
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
