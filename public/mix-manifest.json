@@ -1,7 +1,23 @@
 {
-    "/js/backend/app.js": "/js/backend/app.js",
-    "/js/frontend/app.js": "/js/frontend/app.js",
-    "/js/frontend/manifest.js": "/js/frontend/manifest.js",
-    "/css/frontend/app.css": "/css/frontend/app.css",
-    "/css/backend/app.css": "/css/backend/app.css"
+    "/js/backend/app.js": "/js/backend/app.js?id=95338ad668fcc609860bb33d96a1c525",
+    "/js/frontend/app.js": "/js/frontend/app.js?id=8722fa7fece3d8a1dd1f8eb43dfd86f3",
+    "/js/frontend/manifest.js": "/js/frontend/manifest.js?id=af5f12702629f35da093faa4d39c07f7",
+    "/css/frontend/app.css": "/css/frontend/app.css?id=0db0edf977b967dbb3f217cdfc988e57",
+    "/css/backend/app.css": "/css/backend/app.css?id=68848aeabb0493b140589b90d6ffc3ff",
+    "/fonts/FontAwesome.otf": "/fonts/FontAwesome.otf?id=663236d7aa447620b641032d1b7be57c",
+    "/fonts/fontawesome-webfont.eot": "/fonts/fontawesome-webfont.eot?id=016fa45033a942ffecadc970f22fe41b",
+    "/fonts/fontawesome-webfont.svg": "/fonts/fontawesome-webfont.svg?id=912ec66d7572ff821749319396470bde",
+    "/fonts/fontawesome-webfont.ttf": "/fonts/fontawesome-webfont.ttf?id=ecebce3ab95b6640919b6b2f66b44bf8",
+    "/fonts/fontawesome-webfont.woff": "/fonts/fontawesome-webfont.woff?id=5e0388aeae16469773b8cf74e2d6304b",
+    "/fonts/fontawesome-webfont.woff2": "/fonts/fontawesome-webfont.woff2?id=d829b32251e423806ca9c8aa640b7dcf",
+    "/js/ckeditor/CHANGES.md": "/js/ckeditor/CHANGES.md?id=4b6d93f0687223f88d2921746cc0be7c",
+    "/js/ckeditor/LICENSE.md": "/js/ckeditor/LICENSE.md?id=49588918c50f7c27633b271a80bc56f4",
+    "/js/ckeditor/README.md": "/js/ckeditor/README.md?id=f4abeb4b86f14bd154d898fd4ff35e1c",
+    "/js/ckeditor/bower.json": "/js/ckeditor/bower.json?id=4351338895eda6d5778a59678e0d177e",
+    "/js/ckeditor/ckeditor.js": "/js/ckeditor/ckeditor.js?id=393876007a006b28bc55b90ed8648ea3",
+    "/js/ckeditor/composer.json": "/js/ckeditor/composer.json?id=f82323e6600fea0c713b1104138efefb",
+    "/js/ckeditor/config.js": "/js/ckeditor/config.js?id=aa4a0c985e07c728a83b323e2dc07021",
+    "/js/ckeditor/contents.css": "/js/ckeditor/contents.css?id=5511bb53ae47a8c42da62e277f0ae789",
+    "/js/ckeditor/package.json": "/js/ckeditor/package.json?id=a857faa5e64c4837386656acad2e179e",
+    "/js/ckeditor/styles.js": "/js/ckeditor/styles.js?id=4a98624b06535c0034e48b2d1cf46eac"
 }

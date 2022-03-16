@@ -32,4 +32,4 @@ mix
     .sourceMaps();
     // .copy('public', '../app/public/vendor/cscms')
 
-mix.copy('public', '../../coderstudioscscms/public/vendor/cscms');
+//mix.copy('public', '../../coderstudios/cscms/public/vendor/cscms');
