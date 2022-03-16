@@ -130,7 +130,7 @@ class CsCmsServiceProvider extends ServiceProvider
         ]);
 
         $this->app->register(
-            PolicyProvider::class
+            \CoderStudios\CsCms\Policies\PolicyProvider::class
         );
 
         $this->registerMiddleware(\CoderStudios\CsCms\Middleware\ClearCache::class);
