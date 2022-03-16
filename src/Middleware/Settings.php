@@ -42,7 +42,7 @@ class Settings
         try {
             $config = $this->settings->getSettings();
         } catch (\Exception $e) {
-            $config = config('cscms.coderstudios.settings');
+            $settings = config('cscms.coderstudios.settings');
             foreach ($settings as $setting) {
                 $config[] = [$setting['name'] => $setting['value']];
             }
