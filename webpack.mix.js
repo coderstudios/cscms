@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -34,14 +33,3 @@ mix
     // .copy('public', '../app/public/vendor/cscms')
 
 mix.copy('public', '../../coderstudioscscms/public/vendor/cscms');
-    
-mix.webpackConfig({
-    plugins: [
-        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ],
-    resolve: {
-        alias: {
-            'vue$': 'vue/dist/vue.runtime.esm.js'
-        }
-    }
-});
