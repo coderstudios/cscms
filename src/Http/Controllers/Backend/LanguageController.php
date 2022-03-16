@@ -41,7 +41,7 @@ class LanguageController extends Controller
             $view = $this->cache->get($key);
         } else {
             $vars = [
-                'languages' => $this->language->getAll($this->request->config['config_items_per_page'], $page_id),
+                'languages' => $this->language->paginate($this->request->config['config_items_per_page']),
             ];
             $view = view('cscms::backend.pages.language', compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

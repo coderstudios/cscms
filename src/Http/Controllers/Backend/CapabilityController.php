@@ -83,7 +83,7 @@ class CapabilityController extends Controller
             $view = $this->cache->get($key);
         } else {
             $vars = [
-                'capabilities' => $this->capability->getAll($this->request->config['config_items_per_page'], $page_id),
+                'capabilities' => $this->capability->paginate($this->request->config['config_items_per_page']),
             ];
             $view = view('cscms::backend.pages.capabilities', compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

@@ -43,7 +43,7 @@ class UserRolesController extends Controller
             $view = $this->cache->get($key);
         } else {
             $vars = [
-                'user_roles' => $this->user_roles->getAll($this->request->config['config_items_per_page'], $page_id),
+                'user_roles' => $this->user_roles->paginate($this->request->config['config_items_per_page']),
             ];
             $view = view('cscms::backend.pages.user_roles', compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));

@@ -40,7 +40,7 @@ class EmailGroupsController extends Controller
             $view = $this->cache->get($key);
         } else {
             $vars = [
-                'email_groups' => $this->email_group->getAll($this->request->config['config_items_per_page'], $page_id),
+                'email_groups' => $this->email_group->paginate($this->request->config['config_items_per_page']),
             ];
             $view = view('cscms::backend.pages.email_groups', compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
