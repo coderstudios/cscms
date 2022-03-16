@@ -85,7 +85,13 @@ class HomeController extends Controller
         if (Route::has($slug)) {
             foreach (Route::getRoutes() as $route) {
                 if ($route->uri == $slug) {
-                    return \App::call($route->getAction()['controller']);
+                    if (isset($route->getAction()['controller'])) {
+                        return \App::call($route->getAction()['controller']);
+                    }
+
+                    if (isset($route->getAction()['uses'])) {
+                        return \App::call($route->getAction()['uses']);
+                    }
                 }
             }
         }
