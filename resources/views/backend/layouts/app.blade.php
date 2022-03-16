@@ -101,18 +101,18 @@
                                     </div>
                                 </li>
                                 @else
-                                <li class="nav-item"><a class="nav-link" href="{{ route('backend.login') }}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                                 @endif
                             </ul>
                             <ul class="navbar-nav">
                                 @if (Auth::check())
-                                <li class="nav-item"><a class="nav-link" href="{{ route('backend.logout') }}"
+                                <li class="nav-item"><a class="nav-link" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('backend.logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form></li>
                                 @endif
