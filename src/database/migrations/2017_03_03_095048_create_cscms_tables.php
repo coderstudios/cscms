@@ -215,7 +215,7 @@ class CreateCSCMSTables extends Migration
             $table->boolean('enabled')->default(0)->index()->after('id');
             $table->boolean('verified')->default(0)->index()->after('enabled');
             $table->integer('user_role_id')->index()->default(1)->after('verified');
-            $table->string('username', 191)->unique()->after('updated_at');
+            $table->string('username', 191)->nullable()->after('updated_at');
         });
     }
 
