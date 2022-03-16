@@ -30,8 +30,11 @@ class NotificationsLibrary extends BaseLibrary
 
     public function unread($user_id = '')
     {
+        $notifications = collect([]);
         if ($user_id) {
             $notifications = $this->model->unreadMessages($user_id)->get();
         }
+
+        return $notifications;
     }
 }
