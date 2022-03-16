@@ -39,10 +39,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $page_id = 1;
-        if ($this->request->get('page')) {
-            $page_id = $this->request->get('page');
-        }
+        $page_id = $this->getPage();
         $key = $this->key();
         $this->request->session()->put('key', $key);
         if ($this->useCachedContent($key)) {

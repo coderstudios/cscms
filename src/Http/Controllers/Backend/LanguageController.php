@@ -35,10 +35,7 @@ class LanguageController extends Controller
 
     public function index()
     {
-        $page_id = 1;
-        if ($this->request->get('page')) {
-            $page_id = $this->request->get('page');
-        }
+        $page_id = $this->getPage();
         $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);

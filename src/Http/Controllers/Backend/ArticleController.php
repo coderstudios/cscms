@@ -39,10 +39,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $page_id = 1;
-        if ($this->request->get('page')) {
-            $page_id = $this->request->get('page');
-        }
+        $page_id = $this->getPage();
         $key = $this->key();
         if ($this->useCachedContent($key)) {
             $view = $this->cache->get($key);
@@ -80,8 +77,8 @@ class ArticleController extends Controller
                 'action' => route('backend.articles.article.store'),
                 'article' => $this->article->newInstance(),
                 'parent_id' => '',
-                'article_types' => $this->article_type->getAll(),
-                'languages' => $this->language->getAll(),
+                'article_types' => $this->article_type->get(),
+                'languages' => $this->language->get(),
             ];
             $view = view('cscms::backend.pages.article-form', compact('vars'))->render();
             $this->cache->add($key, $view, config('cscms.coderstudios.cache_duration'));
@@ -102,8 +99,8 @@ class ArticleController extends Controller
                 'action' => route('backend.articles.article.store', ['id' => $id]),
                 'article' => $article,
                 'parent_id' => '',
-                'article_types' => $this->article_type->getAll(),
-                'languages' => $this->language->getAll(),
+                'article_types' => $this->article_type->get(),
+                'languages' => $this->language->get(),
                 'revisions' => $this->article->getRevisions($id)->sortByDesc('id'),
             ];
             $view = view('cscms::backend.pages.article-form', compact('vars'))->render();

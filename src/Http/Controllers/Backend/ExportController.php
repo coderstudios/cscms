@@ -59,7 +59,7 @@ class ExportController extends Controller
     public function capabilities()
     {
         $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
-        $rows = $this->capabilities->getAll();
+        $rows = $this->capabilities->get();
 
         return $this->download->getCSV('capabilities-'.date('Ymd').'.csv', $rows->toArray());
     }
@@ -75,7 +75,7 @@ class ExportController extends Controller
     public function users()
     {
         $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
-        $rows = $this->user->getAll();
+        $rows = $this->user->get();
 
         return $this->download->getCSV('users-'.date('Ymd').'.csv', $rows->toArray());
     }
@@ -83,7 +83,7 @@ class ExportController extends Controller
     public function userRoles()
     {
         $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
-        $rows = $this->user_roles->getAll();
+        $rows = $this->user_roles->get();
 
         return $this->download->getCSV('user_roles-'.date('Ymd').'.csv', $rows->toArray());
     }
@@ -91,7 +91,7 @@ class ExportController extends Controller
     public function emails()
     {
         $this->authorize('create_export', $this->capabilities->where('name', 'view_export')->pluck('id')->first());
-        $rows = $this->email->getAll();
+        $rows = $this->email->get();
 
         return $this->download->getCSV('emails-'.date('Ymd').'.csv', $rows->toArray());
     }
