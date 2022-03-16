@@ -43,6 +43,10 @@ class Settings
             $config = $this->settings->getSettings();
         } catch (\Exception $e) {
             $config = config('cscms.coderstudios.settings');
+            foreach ($settings as $setting) {
+                $config[] = [$setting['name'] => $setting['value']];
+            }
+            $config = call_user_func_array('array_merge', $config);
         }
 
         $request->config = $config;
