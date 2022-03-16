@@ -18,7 +18,6 @@
 namespace CoderStudios\CsCms\Policies;
 
 use CoderStudios\CsCms\Models\Capability;
-use CoderStudios\CsCms\Models\User;
 
 class SettingPolicy
 {

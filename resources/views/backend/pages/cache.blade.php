@@ -5,56 +5,12 @@ Cache
 @endsection
 
 @section('content')
-
 <div class="container">
-
     <div class="row">
-
         <div class="col content-container">
-
             <h1>Cache</h1>
-
             <div class="row">
-                <div class="col col-md-3">
-                    <div class="card">
-                        <div class="card-block">
-                            <h4>Frontend Cache</h4>
-                            <p>Size: {{ $vars['frontend'] or 0 }}</p>
-                            <form method="post" action="{{ route('backend.cache.frontend.clear') }}">
-                                {!! csrf_field() !!}
-                                <input type="hidden" name="value" value="frontend" />
-                                <button type="submit" class="btn btn-primary">Clear cache</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                    <div class="card">
-                        <div class="card-block">
-                            <h4>Backend Cache</h4>
-                            <p>Size: {{ $vars['backend'] or 0 }}</p>
-                            <form method="post" action="{{ route('backend.cache.backend.clear') }}">
-                                {!! csrf_field() !!}
-                                <input type="hidden" name="value" value="backend" />
-                                <button type="submit" class="btn btn-primary">Clear cache</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                    <div class="card">
-                        <div class="card-block">
-                            <h4>Data Cache</h4>
-                            <p>Size: {{ $vars['data'] or 0 }}</p>
-                            <form method="post" action="{{ route('backend.cache.data.clear') }}">
-                                {!! csrf_field() !!}
-                                <input type="hidden" name="value" value="data" />
-                                <button type="submit" class="btn btn-primary">Clear cache</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
+                <div class="col col-md-2">
                     <div class="card">
                         <div class="card-block">
                             <h4>Image Cache</h4>
@@ -67,14 +23,7 @@ Cache
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col col-md-3">
+                <div class="col col-md-2">
                     <div class="card">
                         <div class="card-block">
                             <h4>All Cache</h4>
@@ -87,7 +36,7 @@ Cache
                         </div>
                     </div>
                 </div>
-                <div class="col col-md-3">
+                <div class="col col-md-2">
                     <div class="card">
                         <div class="card-block">
                             <h4>Optimise classes</h4>
@@ -100,7 +49,7 @@ Cache
                         </div>
                     </div>
                 </div>
-                <div class="col col-md-3">
+                <div class="col col-md-2">
                     <div class="card">
                         <div class="card-block">
                             <h4>Optimise URLS</h4>
@@ -113,7 +62,7 @@ Cache
                         </div>
                     </div>
                 </div>
-                <div class="col col-md-3">
+                <div class="col col-md-2">
                     <div class="card">
                         <div class="card-block">
                             <h4>Optimise config</h4>
@@ -129,9 +78,6 @@ Cache
             </div>
 
         </div>
-
     </div>
-
 </div>
-
 @endsection

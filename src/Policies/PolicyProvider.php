@@ -20,7 +20,6 @@ namespace CoderStudios\CsCms\Policies;
 use CoderStudios\CsCms\Models\Capability;
 use CoderStudios\CsCms\Models\Language;
 use CoderStudios\CsCms\Models\Setting;
-use CoderStudios\CsCms\Models\User;
 use CoderStudios\CsCms\Models\UserTypes;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;

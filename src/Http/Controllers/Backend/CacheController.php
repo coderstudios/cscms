@@ -29,6 +29,7 @@ class CacheController extends Controller
     public function __construct(Request $request, Cache $cache, UtilsLibrary $utils, CapabilityLibrary $capability)
     {
         $this->utils = $utils;
+        $this->cache = $cache;
         $this->capability = $capability;
         parent::__construct($cache, $request);
     }
@@ -38,25 +39,13 @@ class CacheController extends Controller
         $this->authorize('view_cache', $this->capability->where('name', 'view_cache')->pluck('id')->first());
 
         $all_size = 0;
-        $frontend = $backend = $data = $all = '0 b';
-        if (is_dir($this->frontend_cache->getDirectory())) {
-            $frontend = $this->utils->convertBytes($this->utils->getDirectorySize($this->frontend_cache->getDirectory()));
-        }
-        if (is_dir($this->backend_cache->getDirectory())) {
-            $backend = $this->utils->convertBytes($this->utils->getDirectorySize($this->backend_cache->getDirectory()));
-        }
-        if (is_dir($this->data_cache->getDirectory())) {
-            $data = $this->utils->convertBytes($this->utils->getDirectorySize($this->data_cache->getDirectory()));
-        }
+        $all = '0 b';
         if (is_dir($this->cache->getDirectory())) {
             $all_size = $this->utils->getDirectorySize($this->cache->getDirectory());
             $all = $this->utils->convertBytes($this->utils->getDirectorySize($this->cache->getDirectory()));
         }
         $image_size = $this->cacheImageDirSize();
         $vars = [
-            'frontend' => $frontend,
-            'backend' => $backend,
-            'data' => $data,
             'image' => $this->utils->convertBytes($image_size),
             'all' => $this->utils->convertBytes(($all_size + $image_size)),
         ];
