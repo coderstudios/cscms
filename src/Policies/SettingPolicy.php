@@ -26,28 +26,28 @@ class SettingPolicy
         $this->capability = $capability;
     }
 
-    public function view(User $user)
+    public function view()
     {
-        return in_array($this->capability->where('name', 'view_settings')->pluck('id')->first(), $user->role->capabilities()->get()->pluck('id')->toArray());
+        return in_array($this->capability->where('name', 'view_settings')->pluck('id')->first(), request()->user()->role->capabilities()->get()->pluck('id')->toArray());
     }
 
-    public function edit(User $user)
+    public function edit()
     {
-        return in_array($this->capability->where('name', 'edit_settings')->pluck('id')->first(), $user->role->capabilities()->get()->pluck('id')->toArray());
+        return in_array($this->capability->where('name', 'edit_settings')->pluck('id')->first(), request()->user()->role->capabilities()->get()->pluck('id')->toArray());
     }
 
-    public function create(User $user)
+    public function create()
     {
-        return in_array($this->capability->where('name', 'create_settings')->pluck('id')->first(), $user->role->capabilities()->get()->pluck('id')->toArray());
+        return in_array($this->capability->where('name', 'create_settings')->pluck('id')->first(), request()->user()->role->capabilities()->get()->pluck('id')->toArray());
     }
 
-    public function update(User $user)
+    public function update()
     {
-        return in_array($this->capability->where('name', 'update_settings')->pluck('id')->first(), $user->role->capabilities()->get()->pluck('id')->toArray());
+        return in_array($this->capability->where('name', 'update_settings')->pluck('id')->first(), request()->user()->role->capabilities()->get()->pluck('id')->toArray());
     }
 
-    public function delete(User $user)
+    public function delete()
     {
-        return in_array($this->capability->where('name', 'delete_settings')->pluck('id')->first(), $user->role->capabilities()->get()->pluck('id')->toArray());
+        return in_array($this->capability->where('name', 'delete_settings')->pluck('id')->first(), request()->user()->role->capabilities()->get()->pluck('id')->toArray());
     }
 }

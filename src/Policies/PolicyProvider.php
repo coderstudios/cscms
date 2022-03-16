@@ -42,28 +42,28 @@ class PolicyProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('view_cache', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('update_cache', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('view_backups', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('create_backups', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('delete_backups', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('view_phpinfo', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('view_export', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
         Gate::define('create_export', function ($user, $id) {
-            return in_array($id, $user->role->capabilities()->get()->pluck('id')->toArray());
+            return in_array($id, request()->user()->role->capabilities()->get()->pluck('id')->toArray());
         });
     }
 }
