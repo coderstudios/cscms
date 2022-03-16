@@ -110,7 +110,7 @@ class Install extends Command
         $password = $this->secret('What is the password?');
 
         if (!empty($email) && !empty($name) && !empty($password)) {
-            $this->users->create([
+            $user = $this->users->create([
                 'email' => $email,
                 'name' => $name,
                 'username' => 'admin',
@@ -119,6 +119,7 @@ class Install extends Command
                 'verified' => 1,
                 'user_role_id' => 2,
             ]);
+
             $this->info('Great thanks, account setup. Login with your email and the password you entered at: '.route('login'));
         } else {
             $this->info('You need to enter appropriate information for each question, please re run the install!');

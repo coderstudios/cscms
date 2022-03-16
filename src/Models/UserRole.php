@@ -83,7 +83,7 @@ class UserRole extends Model
 
     public function user()
     {
-        return $this->belongsTo('CoderStudios\CsCms\Models\User', 'id', 'user_role_id');
+        return $this->belongsTo(User::class, 'id', 'user_role_id');
     }
 
     public function capabilities()

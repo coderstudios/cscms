@@ -19,14 +19,29 @@ To install CsCms as a Composer package to be used with Laravel 5+, simply add th
 
 ..and run `composer update`.
 
-Update auth.php replace providers array with config:
+Add the trait UserTraits to your users model. For example
 
 ```
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => CoderStudios\CsCms\Models\User::class,
-        ],
+<?php
+
+namespace App\Models;
+
+use CoderStudios\CsCms\Traits\UserTraits;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens;
+    use HasFactory;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
+    use UserTraits;
 
 ```
 

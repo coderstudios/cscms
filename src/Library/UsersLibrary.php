@@ -17,14 +17,13 @@
 
 namespace CoderStudios\CsCms\Library;
 
-use CoderStudios\CsCms\Models\User as Model;
 use Illuminate\Contracts\Cache\Factory as Cache;
 
 class UsersLibrary extends BaseLibrary
 {
-    public function __construct(Model $model, Cache $cache)
+    public function __construct(Cache $cache)
     {
-        $this->model = $model;
+        $this->model = app(config('auth.providers.users.model'));
         $this->cache = $cache->store(config('cache.default'));
     }
 

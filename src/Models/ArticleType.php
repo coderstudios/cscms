@@ -85,6 +85,6 @@ class ArticleType extends Model
 
     public function user()
     {
-        return $this->belongsTo('CoderStudios\CsCms\Models\User', 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

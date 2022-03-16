@@ -89,7 +89,7 @@ class Article extends Model
 
     public function user()
     {
-        return $this->hasOne('CoderStudios\CsCms\Models\User', 'id', 'user_id');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
     public function type()

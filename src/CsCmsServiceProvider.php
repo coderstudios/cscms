@@ -129,6 +129,10 @@ class CsCmsServiceProvider extends ServiceProvider
             Commands\DBBackup::class,
         ]);
 
+        $this->app->register(
+            PolicyProvider::class
+        );
+
         $this->registerMiddleware(\CoderStudios\CsCms\Middleware\ClearCache::class);
         $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Notifications::class);
         $this->registerMiddleware(\CoderStudios\CsCms\Middleware\Settings::class);
